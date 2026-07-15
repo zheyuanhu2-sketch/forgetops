@@ -2,6 +2,8 @@
 
 The external deadline is 2026-08-11 05:00 GMT+8. ForgetOps targets an internal freeze on 2026-08-08 22:00 GMT+8.
 
+Progress as of 2026-07-15: the foundation, isolated DataHub Core runtime, synthetic privacy graph, official MCP read adapter, and live graph normalization milestones are complete and verified. The active milestone is approval, sandbox execution, verification, and write-back.
+
 | Window (GMT+8) | Outcome | Exit gate |
 |---|---|---|
 | Jul 15-16 | Foundation, rules, scoring thesis, deterministic planner | Lint, typecheck, unit tests, sample report |

@@ -27,10 +27,10 @@ verification ------------- subject coverage and post-action checks
 DataHub write-back -------- tags / structured properties / description / document
 ```
 
-## Planned components
+## Components
 
-- `forgetops-core`: deterministic models, graph normalization, policy engine, safety gates, and evidence generation.
-- `forgetops-datahub`: adapter for the official DataHub MCP server plus narrowly scoped SDK ingestion for the synthetic scenario.
+- `forgetops-core` (implemented): deterministic models, graph normalization, policy engine, safety gates, and evidence generation.
+- `forgetops-datahub` (implemented): adapter for the official DataHub MCP server plus narrowly scoped, idempotent SDK ingestion for the synthetic scenario.
 - `forgetops-executor`: idempotent DuckDB demo actions and generated SQL artifacts. No production connector is enabled by default.
 - `forgetops-api`: FastAPI endpoints and an event stream for a visible agent trace.
 - `forgetops-web`: a focused React interface for case intake, lineage evidence, approvals, execution, and verification.
@@ -43,6 +43,8 @@ Read path:
 - `list_schema_fields` confirms exact fields rather than relying on truncated search results.
 - `get_entities` obtains owners, descriptions, tags, terms, domains, and structured properties.
 - `get_lineage` traverses bounded downstream impact.
+
+Discovery first searches all matching subject-key roots, then reads direct downstream and column-level lineage for each one. If search or lineage would exceed the configured asset bound, ForgetOps fails closed instead of presenting a partial privacy scope.
 
 Write-back path (mutations disabled unless explicitly approved):
 

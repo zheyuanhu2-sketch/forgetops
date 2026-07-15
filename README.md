@@ -4,7 +4,7 @@
 
 ForgetOps turns a privacy deletion request into a safe, reviewable, and verifiable data operation. It uses DataHub's context graph to find where a subject identifier and related PII travel, applies organization-defined retention policies, generates a bounded action plan, and records evidence back in DataHub.
 
-> Current status: foundation milestone complete. The deterministic planning core, sample evidence bundle, typed DataHub MCP gateway, explicit mutation gate, and repository-local live runtime are implemented; graph normalization and the web experience are next.
+> Current status: live graph milestone complete. The deterministic planning core, synthetic DataHub seed, typed official MCP gateway, multi-root graph discovery, field-lineage normalization, explicit mutation gate, and repository-local live runtime are implemented; sandbox execution and the web experience are next.
 
 ## Why this matters
 
@@ -54,11 +54,16 @@ uv sync --extra dev --extra datahub --python 3.11
 .\scripts\setup-runtime.ps1 -Approve
 .\scripts\datahub.ps1 start -AllowPull
 .\scripts\datahub.ps1 check
+uv run python scripts/seed_datahub.py             # dry-run manifest
+uv run python scripts/seed_datahub.py --approve   # synthetic metadata only
+uv run python scripts/smoke_datahub_graph.py       # official MCP -> plan
 ```
 
 `-AllowPull` is needed only when the pinned images are not already present in the repository-local runtime. In restricted networks, `setup-runtime.ps1` accepts an alternate HTTPS Python package index; exported dependencies remain hash-verified against `uv.lock`.
 
 The wrapper verifies that the WSL virtual disk is registered at `.runtime-wsl`, uses the fixed Compose project and resource prefix `forgetops-datahub`, and refuses to run against Docker Desktop or a runtime outside the repository. DataHub is available at `http://localhost:9002` and its metadata service at `http://localhost:8080`.
+
+The approved seed is idempotent and writes seven synthetic metadata entities, field-level PII and subject-key tags, four DataHub structured properties, technical owners, and direct plus column-level lineage. The live smoke keeps MCP mutations disabled, reads that graph through the official server, normalizes it into the same strict domain model used by offline mode, and emits a review-gated erasure plan.
 
 The official quickstart needs about 8 GB of available memory and roughly 13 GB of repository-drive space. Stop only this project with `.\scripts\datahub.ps1 stop`.
 
@@ -80,6 +85,8 @@ src/forgetops/                  deterministic planning core and CLI
 tests/                          unit tests for safety and evidence behavior
 examples/input/                 synthetic DataHub-shaped graph snapshot
 examples/output/                checked-in sample plan for judge review
+infra/datahub/                  pinned, project-prefixed DataHub quickstart
+scripts/                        dry-run seed and repeatable live integration smokes
 docs/                           rules, architecture, scoring, and delivery plan
 ```
 

@@ -26,6 +26,10 @@ class MCPToolError(RuntimeError):
     """Raised when the MCP server returns an error or a non-JSON payload."""
 
 
+class DiscoveryScopeExceeded(RuntimeError):
+    """Raised rather than silently truncating a privacy discovery result."""
+
+
 class ToolSession(Protocol):
     async def call_tool(self, name: str, *, arguments: dict[str, Any]) -> object: ...
 
@@ -37,6 +41,17 @@ class DiscoveryEvidence(StrictModel):
     entity: dict[str, Any]
     schema_fields: dict[str, Any]
     downstream_lineage: dict[str, Any]
+    tool_calls: list[str] = Field(min_length=4)
+
+
+class GraphDiscoveryEvidence(StrictModel):
+    query: str
+    seed_urn: str
+    search: dict[str, Any]
+    entities: list[dict[str, Any]] = Field(min_length=1)
+    schema_fields_by_urn: dict[str, dict[str, Any]]
+    lineage_by_urn: dict[str, dict[str, Any]]
+    column_lineage_by_urn: dict[str, dict[str, dict[str, Any]]]
     tool_calls: list[str] = Field(min_length=4)
 
 
@@ -83,7 +98,9 @@ class DataHubMCPGateway:
                 "offset": 0,
             },
         )
-        entity = await self._call_json("get_entities", {"urns": [seed_urn]})
+        # The official tool returns an object for one URN and an array for a URN list.
+        # Discovery models one seed entity, so use the single-URN contract explicitly.
+        entity = await self._call_json("get_entities", {"urns": seed_urn})
         schema = await self._call_json(
             "list_schema_fields",
             {
@@ -112,6 +129,146 @@ class DataHubMCPGateway:
             schema_fields=schema,
             downstream_lineage=downstream_lineage,
             tool_calls=["search", "get_entities", "list_schema_fields", "get_lineage"],
+        )
+
+    async def discover_graph(
+        self,
+        *,
+        query: str,
+        seed_urn: str,
+        pii_keywords: list[str],
+        max_assets: int = 20,
+    ) -> GraphDiscoveryEvidence:
+        """Discover all matching roots and their direct downstream edges.
+
+        Privacy scope must never be silently truncated. Search results above ``max_assets``
+        therefore stop the workflow for a human to narrow or explicitly expand the bound.
+        """
+
+        if not query.strip():
+            raise ValueError("query must not be empty")
+        if not seed_urn.startswith("urn:li:dataset:"):
+            raise ValueError("seed_urn must be a DataHub dataset URN")
+        if not pii_keywords:
+            raise ValueError("at least one PII keyword is required")
+        if not 1 <= max_assets <= 50:
+            raise ValueError("max_assets must be between 1 and 50")
+
+        tool_calls: list[str] = []
+        search = await self._call_json(
+            "search",
+            {
+                "query": query,
+                "filter": "entity_type = DATASET",
+                "num_results": max_assets,
+                "offset": 0,
+            },
+        )
+        tool_calls.append("search")
+        total = search.get("total", 0)
+        if not isinstance(total, int):
+            raise MCPToolError("DataHub MCP search returned a non-integer total")
+        if total > max_assets:
+            raise DiscoveryScopeExceeded(
+                f"DataHub search matched {total} assets, above the safe bound of {max_assets}"
+            )
+
+        dataset_urns = {seed_urn}
+        search_results = search.get("searchResults", [])
+        if not isinstance(search_results, list):
+            raise MCPToolError("DataHub MCP search returned invalid searchResults")
+        for result in search_results:
+            if not isinstance(result, Mapping):
+                continue
+            entity = result.get("entity")
+            if not isinstance(entity, Mapping):
+                continue
+            urn = entity.get("urn")
+            if isinstance(urn, str) and urn.startswith("urn:li:dataset:"):
+                dataset_urns.add(urn)
+        if len(dataset_urns) > max_assets:
+            raise DiscoveryScopeExceeded(
+                f"DataHub search plus the verified seed produced {len(dataset_urns)} assets, "
+                f"above the safe bound of {max_assets}"
+            )
+        ordered_dataset_urns = sorted(dataset_urns)
+
+        entities = await self._call_json_array("get_entities", {"urns": ordered_dataset_urns})
+        tool_calls.append("get_entities")
+        self._raise_on_entity_errors(entities)
+
+        entities_by_urn = {
+            str(entity["urn"]): entity for entity in entities if isinstance(entity.get("urn"), str)
+        }
+        missing = sorted(set(ordered_dataset_urns) - entities_by_urn.keys())
+        if missing:
+            raise MCPToolError(f"DataHub MCP omitted discovered entities: {missing}")
+
+        schema_fields_by_urn: dict[str, dict[str, Any]] = {}
+        lineage_by_urn: dict[str, dict[str, Any]] = {}
+        column_lineage_by_urn: dict[str, dict[str, dict[str, Any]]] = {}
+        for urn in ordered_dataset_urns:
+            schema_fields_by_urn[urn] = await self._call_json(
+                "list_schema_fields",
+                {"urn": urn, "keywords": pii_keywords, "limit": 100, "offset": 0},
+            )
+            tool_calls.append("list_schema_fields")
+            lineage_by_urn[urn] = await self._call_json(
+                "get_lineage",
+                {
+                    "urn": urn,
+                    "column": None,
+                    "upstream": False,
+                    "max_hops": 1,
+                    "max_results": 100,
+                    "offset": 0,
+                },
+            )
+            tool_calls.append("get_lineage")
+
+            subject_keys = self._structured_property_strings(
+                entities_by_urn[urn], "forgetops.subjectKeys"
+            )
+            column_lineage_by_urn[urn] = {}
+            for subject_key in subject_keys:
+                column_lineage_by_urn[urn][subject_key] = await self._call_json(
+                    "get_lineage",
+                    {
+                        "urn": urn,
+                        "column": subject_key,
+                        "upstream": False,
+                        "max_hops": 1,
+                        "max_results": 100,
+                        "offset": 0,
+                    },
+                )
+                tool_calls.append("get_lineage")
+
+        related_urns = set(ordered_dataset_urns)
+        for lineage in lineage_by_urn.values():
+            related_urns.update(self._downstream_entity_urns(lineage))
+        if len(related_urns) > max_assets:
+            raise DiscoveryScopeExceeded(
+                f"DataHub lineage expanded to {len(related_urns)} assets, "
+                f"above the safe bound of {max_assets}"
+            )
+
+        extra_urns = sorted(related_urns - set(ordered_dataset_urns))
+        if extra_urns:
+            extra_entities = await self._call_json_array("get_entities", {"urns": extra_urns})
+            tool_calls.append("get_entities")
+            self._raise_on_entity_errors(extra_entities)
+            entities.extend(extra_entities)
+
+        return GraphDiscoveryEvidence(
+            query=query,
+            seed_urn=seed_urn,
+            search=search,
+            entities=entities,
+            schema_fields_by_urn=schema_fields_by_urn,
+            lineage_by_urn=lineage_by_urn,
+            column_lineage_by_urn=column_lineage_by_urn,
+            tool_calls=tool_calls,
         )
 
     async def write_case_evidence(
@@ -206,6 +363,24 @@ class DataHubMCPGateway:
                 return parsed
         raise MCPToolError(f"DataHub MCP tool {tool_name} returned no JSON object")
 
+    async def _call_json_array(
+        self, tool_name: str, arguments: dict[str, Any]
+    ) -> list[dict[str, Any]]:
+        result = await self._session.call_tool(tool_name, arguments=arguments)
+        if bool(getattr(result, "is_error", False)):
+            detail = getattr(result, "data", None)
+            raise MCPToolError(f"DataHub MCP tool {tool_name} failed: {detail!r}")
+
+        value: object = result if isinstance(result, list) else getattr(result, "data", None)
+        parsed = self._parse_json_array(value)
+        if parsed is None:
+            content = getattr(result, "content", None)
+            if isinstance(content, list) and content:
+                parsed = self._parse_json_array(getattr(content[0], "text", None))
+        if parsed is None:
+            raise MCPToolError(f"DataHub MCP tool {tool_name} returned no JSON array")
+        return parsed
+
     @staticmethod
     def _raise_on_failed_payload(tool_name: str, payload: dict[str, Any]) -> None:
         if payload.get("success") is False:
@@ -225,6 +400,72 @@ class DataHubMCPGateway:
         if not isinstance(parsed, dict):
             return None
         return cast(dict[str, Any], parsed)
+
+    @staticmethod
+    def _parse_json_array(value: object) -> list[dict[str, Any]] | None:
+        if isinstance(value, str):
+            try:
+                value = json.loads(value)
+            except json.JSONDecodeError:
+                return None
+        if not isinstance(value, list) or any(not isinstance(item, Mapping) for item in value):
+            return None
+        return [dict(item) for item in value]
+
+    @staticmethod
+    def _raise_on_entity_errors(entities: list[dict[str, Any]]) -> None:
+        errors = [str(entity["error"]) for entity in entities if "error" in entity]
+        if errors:
+            raise MCPToolError(f"DataHub MCP entity lookup failed: {'; '.join(errors)}")
+
+    @staticmethod
+    def _downstream_entity_urns(lineage: dict[str, Any]) -> set[str]:
+        urns: set[str] = set()
+        downstreams = lineage.get("downstreams")
+        if not isinstance(downstreams, Mapping):
+            return urns
+        results = downstreams.get("searchResults")
+        if not isinstance(results, list):
+            return urns
+        for result in results:
+            if not isinstance(result, Mapping):
+                continue
+            entity = result.get("entity")
+            if not isinstance(entity, Mapping):
+                continue
+            urn = entity.get("urn")
+            if isinstance(urn, str):
+                urns.add(urn)
+        return urns
+
+    @staticmethod
+    def _structured_property_strings(entity: dict[str, Any], qualified_name: str) -> list[str]:
+        structured = entity.get("structuredProperties")
+        if not isinstance(structured, Mapping):
+            return []
+        properties = structured.get("properties")
+        if not isinstance(properties, list):
+            return []
+        values: list[str] = []
+        for item in properties:
+            if not isinstance(item, Mapping):
+                continue
+            property_entity = item.get("structuredProperty")
+            if not isinstance(property_entity, Mapping):
+                continue
+            definition = property_entity.get("definition")
+            if (
+                not isinstance(definition, Mapping)
+                or definition.get("qualifiedName") != qualified_name
+            ):
+                continue
+            raw_values = item.get("values")
+            if not isinstance(raw_values, list):
+                continue
+            for raw_value in raw_values:
+                if isinstance(raw_value, Mapping) and isinstance(raw_value.get("stringValue"), str):
+                    values.append(str(raw_value["stringValue"]))
+        return values
 
 
 @asynccontextmanager

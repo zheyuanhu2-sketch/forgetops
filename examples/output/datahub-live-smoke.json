@@ -1,0 +1,17 @@
+{
+  "assets": 7,
+  "datahub_tool_calls": 21,
+  "edges": 6,
+  "held_assets": 1,
+  "mutations_enabled": false,
+  "output_dir": "artifacts/runtime/datahub-live",
+  "pii_fields": 19,
+  "plan_status": "review_required",
+  "read_tools": [
+    "get_entities",
+    "get_lineage",
+    "list_schema_fields",
+    "search"
+  ],
+  "subject_ref": "sha256:b675684fb71afde0"
+}
