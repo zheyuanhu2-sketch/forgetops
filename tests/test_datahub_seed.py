@@ -31,7 +31,8 @@ def test_manifest_describes_the_full_synthetic_datahub_graph() -> None:
     assert len(manifest.owner_groups) == 7
     assert "urn:li:tag:ForgetOps.PII" in manifest.tags
     assert "urn:li:tag:ForgetOps.LegalHold" in manifest.tags
-    assert len(manifest.structured_property_urns) == 4
+    assert len(manifest.structured_property_urns) == 5
+    assert "urn:li:tag:ForgetOps.Case.PartialVerified" in manifest.tags
 
 
 def test_seed_defaults_to_a_non_mutating_receipt() -> None:

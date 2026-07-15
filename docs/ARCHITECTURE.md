@@ -24,14 +24,14 @@ sandbox executor --------- delete / anonymize / refresh / review artifact
 verification ------------- subject coverage and post-action checks
       |
       v
-DataHub write-back -------- tags / structured properties / description / document
+DataHub write-back -------- tags / case property / evidence document
 ```
 
 ## Components
 
 - `forgetops-core` (implemented): deterministic models, graph normalization, policy engine, safety gates, and evidence generation.
 - `forgetops-datahub` (implemented): adapter for the official DataHub MCP server plus narrowly scoped, idempotent SDK ingestion for the synthetic scenario.
-- `forgetops-executor`: idempotent DuckDB demo actions and generated SQL artifacts. No production connector is enabled by default.
+- `forgetops-executor` (implemented): idempotent, transactional DuckDB demo actions and verification evidence. No production connector is enabled by default.
 - `forgetops-api`: FastAPI endpoints and an event stream for a visible agent trace.
 - `forgetops-web`: a focused React interface for case intake, lineage evidence, approvals, execution, and verification.
 
@@ -49,8 +49,9 @@ Discovery first searches all matching subject-key roots, then reads direct downs
 Write-back path (mutations disabled unless explicitly approved):
 
 - `add_tags` marks case lifecycle state.
-- `add_structured_properties` records case ID, verification status, and timestamp.
-- `save_document` upserts the final evidence summary at a deterministic case URN so future people and agents inherit it without duplicate documents on retry.
+- `add_structured_properties` records the case ID on every affected asset.
+- `save_document` lets DataHub assign the document URN on first creation; ForgetOps persists that returned URN in its audit receipt and requires retries to reuse it, preventing duplicate evidence documents.
+- `get_entities`, `search_documents`, and `grep_documents` read the write-back through a fresh mutation-disabled MCP session; any missing asset marker, case ID, document, or document-body match fails the verification gate.
 
 ## Runtime isolation
 

@@ -24,6 +24,7 @@ from forgetops.models import AssetContext, AssetKind, GraphSnapshot, StrictModel
 
 LOCAL_GMS_HOSTS = {"127.0.0.1", "localhost"}
 STRUCTURED_PROPERTY_URNS = {
+    "case_id": "urn:li:structuredProperty:forgetops.caseId",
     "handling_rule": "urn:li:structuredProperty:forgetops.handlingRule",
     "legal_hold": "urn:li:structuredProperty:forgetops.legalHold",
     "policy_source": "urn:li:structuredProperty:forgetops.policySource",
@@ -79,6 +80,8 @@ def build_seed_manifest(graph_path: Path) -> tuple[GraphSnapshot, SeedManifest]:
         "ForgetOps.Demo",
         "ForgetOps.PII",
         "ForgetOps.SubjectKey",
+        "ForgetOps.Case.PartialVerified",
+        "ForgetOps.Case.Verified",
         *(f"ForgetOps.Action.{asset.handling_rule.value}" for asset in graph.assets),
     }
     if any(asset.legal_hold for asset in graph.assets):
@@ -170,6 +173,10 @@ def seed_datahub(
         "ForgetOps.PII": "Synthetic field marked as personally identifiable information.",
         "ForgetOps.SubjectKey": "Synthetic field used to locate a verified subject reference.",
         "ForgetOps.LegalHold": "Mutation is blocked pending human retention review.",
+        "ForgetOps.Case.PartialVerified": (
+            "Approved actions verified; policy exceptions remain intentionally open."
+        ),
+        "ForgetOps.Case.Verified": "All approved ForgetOps actions verified.",
     }
     for action in {asset.handling_rule.value for asset in graph.assets}:
         tag_descriptions[f"ForgetOps.Action.{action}"] = f"ForgetOps policy action: {action}."
@@ -205,6 +212,15 @@ def seed_datahub(
         )
 
     property_definitions = [
+        StructuredProperties(
+            id="forgetops.caseId",
+            urn=None,
+            type="string",
+            display_name="ForgetOps case ID",
+            description="Privacy-operation case associated with this asset.",
+            entity_types=["dataset", "dashboard"],
+            cardinality="SINGLE",
+        ),
         StructuredProperties(
             id="forgetops.handlingRule",
             urn=None,

@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "case_id": "DSR-2026-0042",
+  "document_urn": "urn:li:document:shared-1a53b31e-52e9-4945-99e0-b43614f9c15f",
+  "eligible_for_writeback": true,
+  "entity_count": 7,
+  "execution_status": "partial_verified",
+  "idempotency_key": "demo-execute-v1:datahub-v1",
+  "mutation_tools": [
+    "add_tags",
+    "add_structured_properties",
+    "save_document"
+  ],
+  "reuses_document_urn": true,
+  "tag_urn": "urn:li:tag:ForgetOps.Case.PartialVerified",
+  "verification": {
+    "document_content_verified": true,
+    "document_found": true,
+    "tool_calls": [
+      "get_entities",
+      "search_documents",
+      "grep_documents"
+    ],
+    "verified_entity_count": 7
+  }
+}

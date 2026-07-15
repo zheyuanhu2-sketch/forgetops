@@ -1,0 +1,18 @@
+{
+  "approved": true,
+  "status": "partial_verified",
+  "verified_actions": 7,
+  "exception_actions": 2,
+  "raw_subject_in_audit_evidence": false,
+  "idempotent_replay_verified": true,
+  "transaction_rollback_verified": true,
+  "actions": [
+    {"asset": "ecommerce.customers", "outcome": "deleted", "remaining": 0},
+    {"asset": "support.tickets", "outcome": "anonymized", "remaining": 0},
+    {"asset": "analytics.customer_360", "outcome": "anonymized", "remaining": 0},
+    {"asset": "Customer Retention Overview", "outcome": "refreshed", "remaining": 0},
+    {"asset": "finance.invoices", "outcome": "retained", "remaining": 1},
+    {"asset": "marketing.customer_export", "outcome": "deleted", "remaining": 0},
+    {"asset": "ml.customer_churn_features", "outcome": "review_pending", "remaining": 1}
+  ]
+}

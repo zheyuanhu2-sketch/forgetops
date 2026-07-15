@@ -10,7 +10,6 @@ from __future__ import annotations
 import json
 from collections.abc import AsyncIterator, Mapping
 from contextlib import asynccontextmanager
-from hashlib import sha256
 from typing import Any, Protocol, cast
 
 from pydantic import Field
@@ -63,6 +62,16 @@ class WriteBackReceipt(StrictModel):
     tag_result: dict[str, Any]
     property_result: dict[str, Any]
     document_result: dict[str, Any]
+    tool_calls: list[str] = Field(min_length=3)
+
+
+class WriteBackVerification(StrictModel):
+    case_id: str
+    document_urn: str
+    entity_urns: list[str] = Field(min_length=1)
+    verified_entity_urns: list[str] = Field(min_length=1)
+    document_found: bool
+    document_content_verified: bool
     tool_calls: list[str] = Field(min_length=3)
 
 
@@ -271,6 +280,109 @@ class DataHubMCPGateway:
             tool_calls=tool_calls,
         )
 
+    async def verify_case_evidence(
+        self,
+        *,
+        case_id: str,
+        entity_urns: list[str],
+        case_tag_urn: str,
+        case_property_urn: str,
+        document_urn: str,
+    ) -> WriteBackVerification:
+        """Read evidence back through official MCP tools and fail closed on any mismatch."""
+        if not case_id.strip():
+            raise ValueError("case_id must not be empty")
+        if not entity_urns or any(not urn.startswith("urn:li:") for urn in entity_urns):
+            raise ValueError("entity_urns must contain DataHub URNs")
+        if not case_tag_urn.startswith("urn:li:tag:"):
+            raise ValueError("case_tag_urn must be a DataHub tag URN")
+        if not case_property_urn.startswith("urn:li:structuredProperty:"):
+            raise ValueError("case_property_urn must be a DataHub structured property URN")
+        if not document_urn.startswith("urn:li:document:"):
+            raise ValueError("document_urn must be a DataHub document URN")
+
+        entities = await self._call_json_array("get_entities", {"urns": entity_urns})
+        self._raise_on_entity_errors(entities)
+        entities_by_urn = {
+            str(entity["urn"]): entity for entity in entities if isinstance(entity.get("urn"), str)
+        }
+        missing_entities = sorted(set(entity_urns) - entities_by_urn.keys())
+        if missing_entities:
+            raise MCPToolError(f"DataHub MCP omitted write-back entities: {missing_entities}")
+
+        evidence_mismatches: list[str] = []
+        for urn in entity_urns:
+            entity = entities_by_urn[urn]
+            if case_tag_urn not in self._tag_urns(entity):
+                evidence_mismatches.append(f"{urn}: missing case tag")
+            if case_id not in self._structured_property_strings_by_urn(entity, case_property_urn):
+                evidence_mismatches.append(f"{urn}: missing case ID property")
+        if evidence_mismatches:
+            raise MCPToolError(
+                "DataHub write-back verification failed: " + "; ".join(evidence_mismatches)
+            )
+
+        document_search = await self._call_json(
+            "search_documents",
+            {
+                "query": f'"{case_id}"',
+                "semantic_query": None,
+                "filter": None,
+                "num_results": 50,
+                "offset": 0,
+            },
+        )
+        search_results = document_search.get("searchResults")
+        document_found = False
+        if isinstance(search_results, list):
+            for result in search_results:
+                if not isinstance(result, Mapping):
+                    continue
+                document_entity = result.get("entity")
+                if (
+                    isinstance(document_entity, Mapping)
+                    and document_entity.get("urn") == document_urn
+                ):
+                    document_found = True
+                    break
+        if not document_found:
+            raise MCPToolError("DataHub document search did not return the evidence document")
+
+        document_content = await self._call_json(
+            "grep_documents",
+            {
+                "urns": [document_urn],
+                "pattern": case_id,
+                "context_chars": 120,
+                "max_matches_per_doc": 3,
+                "start_offset": 0,
+            },
+        )
+        content_results = document_content.get("results")
+        document_content_verified = False
+        if isinstance(content_results, list):
+            for result in content_results:
+                if (
+                    isinstance(result, Mapping)
+                    and result.get("urn") == document_urn
+                    and isinstance(result.get("matches"), list)
+                    and bool(result["matches"])
+                ):
+                    document_content_verified = True
+                    break
+        if not document_content_verified:
+            raise MCPToolError("DataHub evidence document did not contain the case ID")
+
+        return WriteBackVerification(
+            case_id=case_id,
+            document_urn=document_urn,
+            entity_urns=entity_urns,
+            verified_entity_urns=sorted(entities_by_urn),
+            document_found=document_found,
+            document_content_verified=document_content_verified,
+            tool_calls=["get_entities", "search_documents", "grep_documents"],
+        )
+
     async def write_case_evidence(
         self,
         *,
@@ -282,6 +394,7 @@ class DataHubMCPGateway:
         case_property_urn: str,
         document_title: str,
         document_content: str,
+        document_urn: str | None = None,
     ) -> WriteBackReceipt:
         if not approved:
             raise MutationApprovalRequired("DataHub write-back requires explicit case approval")
@@ -299,12 +412,8 @@ class DataHubMCPGateway:
             raise ValueError("case_property_urn must be a DataHub structured property URN")
         if not document_title.strip() or not document_content.strip():
             raise ValueError("document title and content must not be empty")
-
-        # A stable document URN turns retries into updates instead of duplicate evidence.
-        document_digest = sha256(
-            f"{case_id.strip()}:{idempotency_key.strip()}".encode()
-        ).hexdigest()[:24]
-        document_urn = f"urn:li:document:forgetops-{document_digest}"
+        if document_urn is not None and not document_urn.startswith("urn:li:document:"):
+            raise ValueError("document_urn must be a DataHub document URN")
 
         tag_result = await self._call_json(
             "add_tags",
@@ -317,21 +426,25 @@ class DataHubMCPGateway:
                 "entity_urns": entity_urns,
             },
         )
-        document_result = await self._call_json(
-            "save_document",
-            {
-                "document_type": "Context",
-                "title": document_title,
-                "content": document_content,
-                "urn": document_urn,
-                "topics": ["forgetops", "privacy-operations", "right-to-erasure"],
-                "related_assets": entity_urns,
-            },
-        )
+        document_arguments: dict[str, Any] = {
+            "document_type": "Context",
+            "title": document_title,
+            "content": document_content,
+            "topics": ["forgetops", "privacy-operations", "right-to-erasure"],
+            "related_assets": entity_urns,
+        }
+        if document_urn is not None:
+            document_arguments["urn"] = document_urn
+        document_result = await self._call_json("save_document", document_arguments)
+        returned_document_urn = document_result.get("urn")
+        if not isinstance(returned_document_urn, str) or not returned_document_urn.startswith(
+            "urn:li:document:"
+        ):
+            raise MCPToolError("DataHub MCP save_document returned no document URN")
         return WriteBackReceipt(
             case_id=case_id,
             idempotency_key=idempotency_key,
-            document_urn=document_urn,
+            document_urn=returned_document_urn,
             entity_urns=entity_urns,
             tag_result=tag_result,
             property_result=property_result,
@@ -466,6 +579,46 @@ class DataHubMCPGateway:
                 if isinstance(raw_value, Mapping) and isinstance(raw_value.get("stringValue"), str):
                     values.append(str(raw_value["stringValue"]))
         return values
+
+    @staticmethod
+    def _structured_property_strings_by_urn(entity: dict[str, Any], property_urn: str) -> list[str]:
+        structured = entity.get("structuredProperties")
+        if not isinstance(structured, Mapping):
+            return []
+        properties = structured.get("properties")
+        if not isinstance(properties, list):
+            return []
+        values: list[str] = []
+        for item in properties:
+            if not isinstance(item, Mapping):
+                continue
+            property_entity = item.get("structuredProperty")
+            if (
+                not isinstance(property_entity, Mapping)
+                or property_entity.get("urn") != property_urn
+            ):
+                continue
+            raw_values = item.get("values")
+            if not isinstance(raw_values, list):
+                continue
+            for raw_value in raw_values:
+                if isinstance(raw_value, Mapping) and isinstance(raw_value.get("stringValue"), str):
+                    values.append(str(raw_value["stringValue"]))
+        return values
+
+    @staticmethod
+    def _tag_urns(entity: dict[str, Any]) -> set[str]:
+        tags = entity.get("tags")
+        if not isinstance(tags, Mapping) or not isinstance(tags.get("tags"), list):
+            return set()
+        urns: set[str] = set()
+        for item in tags["tags"]:
+            if not isinstance(item, Mapping):
+                continue
+            tag = item.get("tag")
+            if isinstance(tag, Mapping) and isinstance(tag.get("urn"), str):
+                urns.add(str(tag["urn"]))
+        return urns
 
 
 @asynccontextmanager

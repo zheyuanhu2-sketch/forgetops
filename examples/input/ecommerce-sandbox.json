@@ -1,0 +1,111 @@
+{
+  "scenario_id": "forgetops-ecommerce-sandbox-v1",
+  "tables": [
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "relation": "ecommerce_customers",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "customer_id": "customer-0042",
+          "email": "ava.chen@example.test",
+          "full_name": "Ava Chen (synthetic)",
+          "phone": "+1-555-0100"
+        },
+        {
+          "customer_id": "customer-control",
+          "email": "control@example.test",
+          "full_name": "Control Record (synthetic)",
+          "phone": "+1-555-0199"
+        }
+      ]
+    },
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,support.tickets,PROD)",
+      "relation": "support_tickets",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "ticket_id": "ticket-1042",
+          "customer_id": "customer-0042",
+          "requester_email": "ava.chen@example.test",
+          "message_body": "Synthetic delivery question"
+        },
+        {
+          "ticket_id": "ticket-control",
+          "customer_id": "customer-control",
+          "requester_email": "control@example.test",
+          "message_body": "Synthetic control ticket"
+        }
+      ]
+    },
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "relation": "analytics_customer_360",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "customer_id": "customer-0042",
+          "email_hash": "synthetic-email-hash-0042",
+          "segment": "high-intent"
+        },
+        {
+          "customer_id": "customer-control",
+          "email_hash": "synthetic-email-hash-control",
+          "segment": "control"
+        }
+      ]
+    },
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,marketing.customer_export,PROD)",
+      "relation": "marketing_customer_export",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "customer_id": "customer-0042",
+          "email": "ava.chen@example.test",
+          "audience_id": "audience-42"
+        },
+        {
+          "customer_id": "customer-control",
+          "email": "control@example.test",
+          "audience_id": "audience-control"
+        }
+      ]
+    },
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,finance.invoices,PROD)",
+      "relation": "finance_invoices",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "invoice_id": "invoice-2042",
+          "customer_id": "customer-0042",
+          "billing_name": "Ava Chen (synthetic)",
+          "billing_address": "42 Example Street"
+        },
+        {
+          "invoice_id": "invoice-control",
+          "customer_id": "customer-control",
+          "billing_name": "Control Record (synthetic)",
+          "billing_address": "99 Control Avenue"
+        }
+      ]
+    },
+    {
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,ml.customer_churn_features,PROD)",
+      "relation": "ml_customer_churn_features",
+      "subject_key": "customer_id",
+      "rows": [
+        {
+          "customer_id": "customer-0042",
+          "support_sentiment": "0.31"
+        },
+        {
+          "customer_id": "customer-control",
+          "support_sentiment": "0.72"
+        }
+      ]
+    }
+  ]
+}

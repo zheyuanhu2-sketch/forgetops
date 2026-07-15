@@ -17,6 +17,7 @@ SEED_URN = "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PRO
 ANALYTICS_URN = "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)"
 DASHBOARD_URN = "urn:li:dashboard:(looker,customer_retention_overview)"
 IDEMPOTENCY_KEY = "DSR-2026-0042:writeback:v1"
+DOCUMENT_URN = "urn:li:document:forgetops-evidence-0042"
 
 
 @dataclass
@@ -61,6 +62,25 @@ def _graph_entity(urn: str) -> dict[str, object]:
             ]
         }
     return entity
+
+
+def _writeback_entity(urn: str) -> dict[str, object]:
+    return {
+        "urn": urn,
+        "tags": {
+            "tags": [
+                {"tag": {"urn": "urn:li:tag:ForgetOps.Verified"}},
+            ]
+        },
+        "structuredProperties": {
+            "properties": [
+                {
+                    "structuredProperty": {"urn": "urn:li:structuredProperty:forgetops.caseId"},
+                    "values": [{"stringValue": "DSR-2026-0042"}],
+                }
+            ]
+        },
+    }
 
 
 class GraphSession:
@@ -300,6 +320,7 @@ def test_approved_writeback_still_validates_entity_urns(
         ({"case_property_urn": "caseId"}, "structured property URN"),
         ({"document_title": " "}, "title and content"),
         ({"document_content": " "}, "title and content"),
+        ({"document_urn": "document-0042"}, "document URN"),
     ],
 )
 def test_approved_writeback_validates_audit_contract(
@@ -324,7 +345,7 @@ def test_approved_writeback_validates_audit_contract(
 
 
 def test_approved_write_back_uses_three_auditable_mutation_tools() -> None:
-    session = FakeSession()
+    session = FakeSession(responses={"save_document": {"urn": DOCUMENT_URN, "success": True}})
     gateway = DataHubMCPGateway(session)
 
     receipt = asyncio.run(
@@ -351,14 +372,14 @@ def test_approved_write_back_uses_three_auditable_mutation_tools() -> None:
         "urn:li:structuredProperty:forgetops.caseId": ["DSR-2026-0042"]
     }
     assert session.calls[2][1]["related_assets"] == [SEED_URN]
-    assert session.calls[2][1]["urn"] == receipt.document_urn
-    assert receipt.document_urn.startswith("urn:li:document:forgetops-")
+    assert "urn" not in session.calls[2][1]
+    assert receipt.document_urn == DOCUMENT_URN
     assert receipt.idempotency_key == IDEMPOTENCY_KEY
 
 
 def test_write_back_retry_reuses_the_same_document_urn() -> None:
-    first_session = FakeSession()
-    second_session = FakeSession()
+    first_session = FakeSession(responses={"save_document": {"urn": DOCUMENT_URN}})
+    second_session = FakeSession(responses={"save_document": {"urn": DOCUMENT_URN}})
 
     arguments = {
         "approved": True,
@@ -371,10 +392,116 @@ def test_write_back_retry_reuses_the_same_document_urn() -> None:
         "document_content": "Verified synthetic evidence.",
     }
     first = asyncio.run(DataHubMCPGateway(first_session).write_case_evidence(**arguments))
-    second = asyncio.run(DataHubMCPGateway(second_session).write_case_evidence(**arguments))
+    second = asyncio.run(
+        DataHubMCPGateway(second_session).write_case_evidence(
+            **arguments,
+            document_urn=first.document_urn,
+        )
+    )
 
     assert first.document_urn == second.document_urn
-    assert first_session.calls[2][1]["urn"] == second_session.calls[2][1]["urn"]
+    assert "urn" not in first_session.calls[2][1]
+    assert second_session.calls[2][1]["urn"] == DOCUMENT_URN
+
+
+def test_write_back_rejects_a_document_response_without_an_urn() -> None:
+    session = FakeSession()
+
+    with pytest.raises(MCPToolError, match="returned no document URN"):
+        asyncio.run(
+            DataHubMCPGateway(session).write_case_evidence(
+                approved=True,
+                case_id="DSR-2026-0042",
+                idempotency_key=IDEMPOTENCY_KEY,
+                entity_urns=[SEED_URN],
+                case_tag_urn="urn:li:tag:ForgetOps.Verified",
+                case_property_urn="urn:li:structuredProperty:forgetops.caseId",
+                document_title="ForgetOps case DSR-2026-0042",
+                document_content="Verified synthetic evidence.",
+            )
+        )
+
+
+def test_write_back_verification_reads_assets_and_document_through_official_tools() -> None:
+    session = FakeSession(
+        responses={
+            "get_entities": FakeResult([_writeback_entity(SEED_URN)]),
+            "search_documents": {
+                "searchResults": [{"entity": {"urn": DOCUMENT_URN}}],
+            },
+            "grep_documents": {
+                "results": [{"urn": DOCUMENT_URN, "matches": [{"position": 1}]}],
+            },
+        }
+    )
+
+    receipt = asyncio.run(
+        DataHubMCPGateway(session).verify_case_evidence(
+            case_id="DSR-2026-0042",
+            entity_urns=[SEED_URN],
+            case_tag_urn="urn:li:tag:ForgetOps.Verified",
+            case_property_urn="urn:li:structuredProperty:forgetops.caseId",
+            document_urn=DOCUMENT_URN,
+        )
+    )
+
+    assert receipt.verified_entity_urns == [SEED_URN]
+    assert receipt.document_found is True
+    assert receipt.document_content_verified is True
+    assert [name for name, _ in session.calls] == [
+        "get_entities",
+        "search_documents",
+        "grep_documents",
+    ]
+
+
+def test_write_back_verification_fails_closed_on_missing_asset_evidence() -> None:
+    entity = _writeback_entity(SEED_URN)
+    entity["tags"] = {"tags": []}
+    session = FakeSession(responses={"get_entities": FakeResult([entity])})
+
+    with pytest.raises(MCPToolError, match="missing case tag"):
+        asyncio.run(
+            DataHubMCPGateway(session).verify_case_evidence(
+                case_id="DSR-2026-0042",
+                entity_urns=[SEED_URN],
+                case_tag_urn="urn:li:tag:ForgetOps.Verified",
+                case_property_urn="urn:li:structuredProperty:forgetops.caseId",
+                document_urn=DOCUMENT_URN,
+            )
+        )
+
+    assert [name for name, _ in session.calls] == ["get_entities"]
+
+
+@pytest.mark.parametrize(
+    "overrides",
+    [
+        {"case_id": " "},
+        {"entity_urns": []},
+        {"entity_urns": ["customers"]},
+        {"case_tag_urn": "ForgetOps.Verified"},
+        {"case_property_urn": "forgetops.caseId"},
+        {"document_urn": "document-0042"},
+    ],
+)
+def test_write_back_verification_rejects_invalid_references(
+    overrides: dict[str, Any],
+) -> None:
+    arguments: dict[str, Any] = {
+        "case_id": "DSR-2026-0042",
+        "entity_urns": [SEED_URN],
+        "case_tag_urn": "urn:li:tag:ForgetOps.Verified",
+        "case_property_urn": "urn:li:structuredProperty:forgetops.caseId",
+        "document_urn": DOCUMENT_URN,
+    }
+    arguments.update(overrides)
+    session = FakeSession()
+
+    with pytest.raises(ValueError):
+        asyncio.run(DataHubMCPGateway(session).verify_case_evidence(**arguments))
+
+    assert session.calls == []
 
 
 def test_mcp_error_result_is_not_silently_accepted() -> None:
