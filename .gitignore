@@ -1,6 +1,9 @@
 .venv/
 .uv-cache/
 .uv-python/
+.runtime-home/
+.runtime-wsl/
+.venv-wsl/
 __pycache__/
 *.py[cod]
 .pytest_cache/

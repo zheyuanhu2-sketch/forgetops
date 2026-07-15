@@ -32,6 +32,6 @@
 ## DataHub evidence loop
 
 - Read tools: search, list_schema_fields, get_entities, get_lineage
-- Planned write-back: add_tags, add_structured_properties, update_description, save_document
+- Planned write-back: add_tags, add_structured_properties, save_document
 
 > This plan is a dry run. It records organization-defined policy metadata and does not constitute legal advice.

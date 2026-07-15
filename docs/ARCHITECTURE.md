@@ -48,8 +48,16 @@ Write-back path (mutations disabled unless explicitly approved):
 
 - `add_tags` marks case lifecycle state.
 - `add_structured_properties` records case ID, verification status, and timestamp.
-- `update_description` appends a concise operational note where configured.
-- `save_document` stores the final evidence summary so future people and agents inherit it.
+- `save_document` upserts the final evidence summary at a deterministic case URN so future people and agents inherit it without duplicate documents on retry.
+
+## Runtime isolation
+
+- A dedicated WSL distribution named `forgetops-runtime` is registered at the ignored repository path `.runtime-wsl`; its Docker root therefore lives on the repository drive.
+- Linux integration dependencies live in `.venv-wsl`, while DataHub CLI state and recoverable runtime archives live in `.runtime-home`.
+- Docker Compose resources use the fixed project name and explicit network/volume prefix `forgetops-datahub`.
+- The quickstart version map and Compose file are pinned in `infra/datahub`, so startup performs no GitHub version lookup and can reuse preloaded images offline.
+- The runtime wrapper verifies the WSL registration path and never connects to Docker Desktop, enumerates unrelated containers, or reuses another project's volumes.
+- DataHub mutation tools remain disabled unless an approved workflow explicitly enables them.
 
 ## Safety invariants
 

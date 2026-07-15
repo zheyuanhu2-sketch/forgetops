@@ -97,7 +97,6 @@ class ErasurePlanner:
                 planned_write_tools=[
                     "add_tags",
                     "add_structured_properties",
-                    "update_description",
                     "save_document",
                 ],
             ),

@@ -1,0 +1,5 @@
+quickstart_version_map:
+  v1.6.0:
+    composefile_git_ref: v1.6.0
+    docker_tag: v1.6.0
+    mysql_tag: "8.2"
