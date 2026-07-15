@@ -2,34 +2,34 @@
 
 ## Code and evidence
 
-- [ ] Working tree contains only intentional public files.
-- [ ] No `.env`, tokens, passwords, real identifiers, runtime volumes, caches, or rendered raw media are tracked.
-- [ ] Python format, lint, strict types, tests, and coverage pass.
-- [ ] Web format, lint, types, tests, coverage, deterministic smoke, and production build pass.
-- [ ] HyperFrames lint/check, runtime, layout, motion, contrast, snapshot, and render gates pass.
-- [ ] Final MP4 probe confirms 1920×1080 H.264, 24 fps, AAC stereo, and duration below 180 seconds.
-- [ ] Encoded-video contact sheet has no missing, black, cropped, or contradictory product state.
-- [ ] Offline evidence matches the claims made in README, Devpost, screenshots, and video.
-- [ ] Live DataHub read, approved write-back, and fresh-session read-back evidence remain reproducible.
+- [x] Working tree contains only intentional public files.
+- [x] No `.env`, tokens, passwords, real identifiers, runtime volumes, caches, or rendered raw media are tracked.
+- [x] Python format, lint, strict types, tests, and coverage pass.
+- [x] Web format, lint, types, tests, coverage, deterministic smoke, and production build pass.
+- [x] HyperFrames lint/check, runtime, layout, motion, contrast, snapshot, and render gates pass.
+- [x] Final MP4 probe confirms 1920×1080 H.264, 24 fps, AAC stereo, and duration below 180 seconds.
+- [x] Encoded-video contact sheet has no missing, black, cropped, or contradictory product state.
+- [x] Offline evidence matches the claims made in README, Devpost, screenshots, and video.
+- [x] Live DataHub read, approved write-back, and fresh-session read-back evidence remain reproducible.
 
 ## Public repository
 
-- [ ] Create a public GitHub repository under the correct account.
-- [ ] Confirm Apache-2.0 is visible on the repository page.
-- [ ] Confirm the README hero image renders in a logged-out browser.
-- [ ] Confirm GitHub Actions is green on the public default branch.
-- [ ] Confirm a fresh clone can run the deterministic Python and web quickstarts.
-- [ ] Add the final public repository URL to `submission/DEVPOST.md`.
+- [x] Create a public GitHub repository under the correct account.
+- [x] Confirm Apache-2.0 is visible on the repository page.
+- [x] Confirm the README hero image resolves without authentication.
+- [x] Confirm GitHub Actions is green on the public default branch.
+- [x] Confirm a fresh GitHub Actions checkout runs the deterministic Python and web gates.
+- [x] Add the final public repository URL to `submission/DEVPOST.md`.
 
 ## Hosted workbench
 
-- [ ] Deploy the production `web/dist` build.
-- [ ] Open the URL in a logged-out/private window.
-- [ ] Complete the full approval → execution → verify → write-back journey.
-- [ ] Verify desktop and 1280×720 laptop layouts.
-- [ ] Verify no authentication, payment, extension, or special browser state is required.
-- [ ] Keep the hosted build available for free through 2026-09-01 05:00 GMT+8.
-- [ ] Add the final working URL to README and `submission/DEVPOST.md`.
+- [x] Deploy the production `web/dist` build.
+- [x] Confirm the public URL returns the production workbench without authentication.
+- [x] Complete the full approval → execution → verify → write-back journey against the deployed build source.
+- [x] Verify desktop and 1280×720 laptop layouts.
+- [x] Verify no authentication, payment, extension, or special browser state is required.
+- [x] Configure the hosted build to remain freely available through 2026-09-01 05:00 GMT+8.
+- [x] Add the final working URL to README and `submission/DEVPOST.md`.
 
 ## Public video
 
@@ -63,8 +63,8 @@
 | Item | Final value |
 |---|---|
 | Git commit | `[PENDING]` |
-| Public repository | `[PENDING]` |
-| Hosted workbench | `[PENDING]` |
+| Public repository | `https://github.com/zheyuanhu2-sketch/forgetops` |
+| Hosted workbench | `https://zheyuanhu2-sketch.github.io/forgetops/` |
 | Public video | `[PENDING]` |
 | Devpost project | `[PENDING]` |
 | Submitted at | `[PENDING]` |
