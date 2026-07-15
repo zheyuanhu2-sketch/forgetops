@@ -89,6 +89,7 @@ The hosted reviewer workbench uses a deterministic replay of a verified DataHub 
 - Working project URL: `https://zheyuanhu2-sketch.github.io/forgetops/`
 - Public source repository: `https://github.com/zheyuanhu2-sketch/forgetops`
 - Public demo video: `https://youtu.be/XLa1o_3wABY`
+- Devpost project: `https://devpost.com/software/forgetops`
 
 ## Suggested tags
 
@@ -96,9 +97,7 @@ The hosted reviewer workbench uses a deterministic replay of a verified DataHub 
 
 ## Suggested challenge selection
 
-Primary: **Open / Wildcard**
-
-Also relevant: **Agents That Do Real Work**
+Selected: **Agents That Do Real Work**
 
 ## Submission notes
 

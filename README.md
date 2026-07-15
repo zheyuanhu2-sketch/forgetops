@@ -12,6 +12,8 @@ The submission candidate includes a polished reviewer workbench, a deterministic
 
 **Demo video:** [ForgetOps — DataHub context becomes operational proof](https://youtu.be/XLa1o_3wABY)
 
+**Devpost submission:** [devpost.com/software/forgetops](https://devpost.com/software/forgetops)
+
 ![ForgetOps reviewer workbench showing truthful partial verification](demo-video/capture/product-states/04-verify.png)
 
 ## The problem
@@ -194,8 +196,7 @@ docs/                architecture, official rules, migration proof, and delivery
 
 ## Hackathon fit
 
-- **Primary challenge:** Open / Wildcard
-- **Also demonstrates:** Agents That Do Real Work
+- **Selected challenge:** Agents That Do Real Work
 - **DataHub technologies:** DataHub Core, official MCP Server tools, context documents, structured properties, tags, schema metadata, ownership, and lineage
 - **Differentiator:** an auditable privacy-operation control loop rather than a metadata chatbot
 

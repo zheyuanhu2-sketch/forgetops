@@ -51,7 +51,7 @@ Tie scores are resolved in that exact criterion order: the first higher applicab
 - [x] No third-party trademarks, copyrighted music, or other protected material appears in the video without documented permission.
 - [x] Checked-in synthetic sample input and validated sample-output evidence bundle.
 - [x] Free, unrestricted judge access remains available through **2026-09-01 05:00 GMT+8**. If a demo is private, include working test credentials and instructions.
-- [ ] Complete the optional feedback survey before the submission deadline if pursuing a feedback prize.
+- [x] Complete the optional feedback survey before the submission deadline if pursuing a feedback prize.
 
 Judges are not required to run the project and may judge only the text, images, and video. Those assets must therefore communicate the complete value proposition and credible proof even if the live demo is not opened.
 
@@ -59,25 +59,25 @@ Judges are not required to run the project and may judge only the text, images, 
 
 Devpost's generic submission workflow confirms these standard assets:
 
-- [ ] Team/entrant details.
-- [ ] Project name and tagline.
-- [ ] Project-gallery thumbnail (JPG, PNG, or GIF; at most 5 MB; 3:2 recommended).
-- [ ] Project story.
-- [ ] “Built with” tags.
-- [ ] Try-it-out link(s).
-- [ ] Image gallery with relevant screenshots, diagrams, or supporting images.
-- [ ] Public demo-video link.
-- [ ] Any event-specific additional details.
-- [ ] Terms acceptance and final **Submit project** action.
-- [ ] Proofread the rendered submission using Devpost's View action.
+- [x] Team/entrant details.
+- [x] Project name and tagline.
+- [x] Project-gallery thumbnail (JPG, PNG, or GIF; at most 5 MB; 3:2 recommended).
+- [x] Project story.
+- [x] “Built with” tags.
+- [x] Try-it-out link(s).
+- [x] Image gallery with relevant screenshots, diagrams, or supporting images.
+- [x] Public demo-video link.
+- [x] Event-specific additional details and **Agents That Do Real Work** category.
+- [x] Terms acceptance and final **Submit project** action.
+- [x] Proofread the rendered submission using Devpost's View action.
 
 A saved Devpost draft is **not** a submitted entry. Required steps must be complete and the final **Submit project** action must succeed before the deadline. Confirm the green success notice and the **Submitted** status under My projects. The entry may be edited and re-submitted before the deadline; the hackathon submission cannot be changed after the deadline except for narrow organizer-approved corrections described in the rules.
 
-**Unverified while logged out:** the exact DataHub-specific custom questions, category selector values, required acknowledgements, feedback fields, and any account identifiers shown in the live submission form. These fields must be inspected in a logged-in draft at [Manage submissions](https://datahub.devpost.com/submissions/manage), copied into the final release checklist, completed, and re-verified before the internal freeze. Do not infer them from Devpost's generic help examples.
+The logged-in submission flow was inspected and completed on 2026-07-16. Devpost displayed the green submission-success notice and the public project page at `https://devpost.com/software/forgetops`.
 
 ## Ownership and third-party licensing
 
-- [ ] Confirm the submission is the entrant's original work, is owned by the entrant, and does not violate copyright, trademark, patent, contract, privacy, publicity, or other rights.
+- [x] Confirm the submission is the entrant's original work, is owned by the entrant, and does not violate copyright, trademark, patent, contract, privacy, publicity, or other rights.
 - [ ] Inventory every third-party SDK, API, dataset, font, icon, media asset, and code dependency used by the project or video.
 - [ ] Confirm authorization under each third party's terms and licensing requirements; retain notices and attribution where required.
 - [ ] Confirm every open-source component is used in compliance with its license and that ForgetOps builds on, enhances, or composes the underlying functionality.

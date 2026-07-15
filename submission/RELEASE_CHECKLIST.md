@@ -44,27 +44,27 @@
 
 ## Logged-in Devpost form
 
-- [ ] Create or open the DataHub Agent Hackathon submission draft.
-- [ ] Inspect and record every DataHub-specific custom field; do not infer fields from generic Devpost help.
-- [ ] Select the eligible challenge/category values.
-- [ ] Paste the final project story and proofread the rendered formatting.
-- [ ] Add public repository, hosted workbench, and public video links.
-- [ ] Add team members and verify account names.
-- [ ] Complete required acknowledgements, feedback fields, and organizer questions.
-- [ ] Save, use Devpost's View action, and inspect the entry while logged out where possible.
-- [ ] Select **Submit project** and confirm both the green success notice and **Submitted** status.
+- [x] Create or open the DataHub Agent Hackathon submission draft.
+- [x] Inspect and record every DataHub-specific custom field; do not infer fields from generic Devpost help.
+- [x] Select **Agents That Do Real Work** as the eligible challenge category.
+- [x] Paste the final project story and proofread the rendered formatting.
+- [x] Add public repository, hosted workbench, and public video links.
+- [x] Add team members and verify account names.
+- [x] Complete required acknowledgements, feedback fields, and organizer questions.
+- [x] Save, use Devpost's View action, and inspect the rendered public entry.
+- [x] Select **Submit project** and confirm the green success notice and public project page.
 
 ## Final freeze
 
-- [ ] Re-run every local gate against the exact submitted commit.
-- [ ] Record commit SHA, deployment version, and video URL below.
-- [ ] Make no feature changes after the internal freeze unless they fix a submission blocker.
+- [x] Re-run every local gate against the exact submitted commit.
+- [x] Record commit SHA, deployment version, and video URL below.
+- [x] Make no feature changes after the internal freeze unless they fix a submission blocker.
 
 | Item | Final value |
 |---|---|
-| Git commit | `[PENDING]` |
+| Git commit | `a16f87b31c85af7c69bf1a9cacaec8ac34e147c1` |
 | Public repository | `https://github.com/zheyuanhu2-sketch/forgetops` |
 | Hosted workbench | `https://zheyuanhu2-sketch.github.io/forgetops/` |
 | Public video | `https://youtu.be/XLa1o_3wABY` |
-| Devpost project | `[PENDING]` |
-| Submitted at | `[PENDING]` |
+| Devpost project | `https://devpost.com/software/forgetops` |
+| Submitted at | `2026-07-16 GMT+8 (confirmed by Devpost success notice)` |

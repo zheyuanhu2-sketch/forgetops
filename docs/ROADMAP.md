@@ -2,7 +2,7 @@
 
 The external deadline is 2026-08-11 05:00 GMT+8. ForgetOps targets an internal freeze on 2026-08-08 22:00 GMT+8.
 
-Progress as of 2026-07-16: the foundation, isolated DataHub Core runtime, synthetic privacy graph, official MCP graph normalization, transactional sandbox execution, idempotent approved write-back, mutation-disabled read-after-write verification, interactive reviewer workbench, accessibility and browser QA, release documentation, public repository, hosted workbench, and unlisted 2:16 YouTube demo are complete and verified. The active milestone is the logged-in Devpost submission and final public-path rehearsal.
+Progress as of 2026-07-16: the foundation, isolated DataHub Core runtime, synthetic privacy graph, official MCP graph normalization, transactional sandbox execution, idempotent approved write-back, mutation-disabled read-after-write verification, interactive reviewer workbench, accessibility and browser QA, release documentation, public repository, hosted workbench, unlisted 2:16 YouTube demo, and Devpost submission are complete and verified. The submitted build is frozen at commit `a16f87b`; remaining work is limited to evidence-backed polish and public-path monitoring before the deadline.
 
 | Window (GMT+8) | Outcome | Exit gate |
 |---|---|---|
