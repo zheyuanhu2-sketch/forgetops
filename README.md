@@ -6,6 +6,9 @@ ForgetOps is a lineage-aware privacy-operations agent for right-to-erasure cases
 
 The submission candidate includes a polished reviewer workbench, a deterministic offline path, a verified live DataHub MCP path, transactional execution, two separate approval boundaries, fresh-session write-back verification, and a 2:15 captioned demo video.
 
+**Try the reviewer workbench:** [zheyuanhu2-sketch.github.io/forgetops](https://zheyuanhu2-sketch.github.io/forgetops/)  
+**Source:** [github.com/zheyuanhu2-sketch/forgetops](https://github.com/zheyuanhu2-sketch/forgetops)
+
 ![ForgetOps reviewer workbench showing truthful partial verification](demo-video/capture/product-states/04-verify.png)
 
 ## The problem

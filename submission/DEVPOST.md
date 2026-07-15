@@ -86,8 +86,8 @@ We also learned that evidence UX is part of system safety. Reviewers need to see
 
 The hosted reviewer workbench uses a deterministic replay of a verified DataHub run, so no account or credentials are required. Follow the stage rail from Discover through Remember; the approval controls unlock only after the required protected outcomes are acknowledged.
 
-- Working project URL: `[ADD AFTER DEPLOYMENT]`
-- Public source repository: `[ADD AFTER GITHUB PUBLISH]`
+- Working project URL: `https://zheyuanhu2-sketch.github.io/forgetops/`
+- Public source repository: `https://github.com/zheyuanhu2-sketch/forgetops`
 - Public demo video: `[ADD AFTER YOUTUBE/VIMEO/YOUKU UPLOAD]`
 
 ## Suggested tags
