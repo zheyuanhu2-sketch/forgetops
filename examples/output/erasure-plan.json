@@ -1,0 +1,204 @@
+{
+  "request": {
+    "request_id": "DSR-2026-0042",
+    "subject_ref": "sha256:10c6201edf7da63b",
+    "request_type": "right_to_erasure",
+    "created_at": "2026-07-15T10:47:02.670479Z"
+  },
+  "graph_snapshot_id": "datahub-ecommerce-demo-2026-07-15",
+  "generated_at": "2026-07-15T10:47:02.670479Z",
+  "status": "review_required",
+  "actions": [
+    {
+      "sequence": 1,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "asset_name": "ecommerce.customers",
+      "action": "delete",
+      "owners": [
+        "Privacy Engineering"
+      ],
+      "fields": [
+        "customer_id",
+        "email",
+        "full_name",
+        "phone"
+      ],
+      "policy_reason": "System-of-record customer profile is erasable after identity verification.",
+      "policy_source": "DataHub structured property: privacy.handling=delete",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+        "PII fields: customer_id, email, full_name, phone",
+        "Policy source: DataHub structured property: privacy.handling=delete",
+        "Owners: Privacy Engineering"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    },
+    {
+      "sequence": 2,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,support.tickets,PROD)",
+      "asset_name": "support.tickets",
+      "action": "anonymize",
+      "owners": [
+        "Support Data"
+      ],
+      "fields": [
+        "customer_id",
+        "message_body",
+        "requester_email"
+      ],
+      "policy_reason": "Preserve ticket metrics while redacting subject-linked content.",
+      "policy_source": "DataHub glossary term: Privacy.Redact",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:postgres,support.tickets,PROD)",
+        "PII fields: customer_id, message_body, requester_email",
+        "Policy source: DataHub glossary term: Privacy.Redact",
+        "Owners: Support Data"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    },
+    {
+      "sequence": 3,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "asset_name": "analytics.customer_360",
+      "action": "anonymize",
+      "owners": [
+        "Analytics Platform"
+      ],
+      "fields": [
+        "customer_id",
+        "email_hash",
+        "segment"
+      ],
+      "policy_reason": "Keep aggregate utility while removing direct and linkable identifiers.",
+      "policy_source": "DataHub glossary term: Privacy.Anonymize",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+        "PII fields: customer_id, email_hash, segment",
+        "Policy source: DataHub glossary term: Privacy.Anonymize",
+        "Owners: Analytics Platform"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    },
+    {
+      "sequence": 4,
+      "asset_urn": "urn:li:dashboard:(looker,customer_retention_overview)",
+      "asset_name": "Customer Retention Overview",
+      "action": "refresh",
+      "owners": [
+        "Growth Analytics"
+      ],
+      "fields": [
+        "customer_id"
+      ],
+      "policy_reason": "Invalidate cached subject-level drill-downs after upstream handling.",
+      "policy_source": "DataHub lineage + dashboard cache policy",
+      "evidence": [
+        "DataHub asset: urn:li:dashboard:(looker,customer_retention_overview)",
+        "PII fields: customer_id",
+        "Policy source: DataHub lineage + dashboard cache policy",
+        "Owners: Growth Analytics"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    },
+    {
+      "sequence": 5,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,finance.invoices,PROD)",
+      "asset_name": "finance.invoices",
+      "action": "retain",
+      "owners": [
+        "Finance Data"
+      ],
+      "fields": [
+        "billing_address",
+        "billing_name",
+        "customer_id"
+      ],
+      "policy_reason": "Organization policy requires a human retention review before mutation.",
+      "policy_source": "DataHub structured property: privacy.legal_hold=true",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:snowflake,finance.invoices,PROD)",
+        "PII fields: billing_address, billing_name, customer_id",
+        "Policy source: DataHub structured property: privacy.legal_hold=true",
+        "Owners: Finance Data"
+      ],
+      "requires_approval": true,
+      "blocked": true
+    },
+    {
+      "sequence": 6,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,marketing.customer_export,PROD)",
+      "asset_name": "marketing.customer_export",
+      "action": "delete",
+      "owners": [
+        "Marketing Engineering"
+      ],
+      "fields": [
+        "audience_id",
+        "customer_id",
+        "email"
+      ],
+      "policy_reason": "Operational marketing export has no configured retention exception.",
+      "policy_source": "DataHub structured property: privacy.handling=delete",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:snowflake,marketing.customer_export,PROD)",
+        "PII fields: audience_id, customer_id, email",
+        "Policy source: DataHub structured property: privacy.handling=delete",
+        "Owners: Marketing Engineering"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    },
+    {
+      "sequence": 7,
+      "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,ml.customer_churn_features,PROD)",
+      "asset_name": "ml.customer_churn_features",
+      "action": "review",
+      "owners": [
+        "ML Platform"
+      ],
+      "fields": [
+        "customer_id",
+        "support_sentiment"
+      ],
+      "policy_reason": "Feature removal may require downstream model retraining and validation.",
+      "policy_source": "DataHub domain policy: ML Governance",
+      "evidence": [
+        "DataHub asset: urn:li:dataset:(urn:li:dataPlatform:snowflake,ml.customer_churn_features,PROD)",
+        "PII fields: customer_id, support_sentiment",
+        "Policy source: DataHub domain policy: ML Governance",
+        "Owners: ML Platform"
+      ],
+      "requires_approval": true,
+      "blocked": false
+    }
+  ],
+  "review_gates": [
+    "Resolve or confirm the legal-hold gate for finance.invoices; ForgetOps will not mutate this asset."
+  ],
+  "coverage": {
+    "discovered_assets": 7,
+    "lineage_edges": 6,
+    "pii_fields": 19,
+    "actionable_assets": 6,
+    "held_assets": 1,
+    "owner_coverage_pct": 100.0
+  },
+  "datahub": {
+    "read_tools": [
+      "search",
+      "list_schema_fields",
+      "get_entities",
+      "get_lineage"
+    ],
+    "planned_write_tools": [
+      "add_tags",
+      "add_structured_properties",
+      "update_description",
+      "save_document"
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "snapshot_id": "datahub-ecommerce-demo-2026-07-15",
+  "source": "datahub_mcp_fixture",
+  "assets": [
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "name": "ecommerce.customers",
+      "platform": "postgres",
+      "kind": "dataset",
+      "owners": ["Privacy Engineering"],
+      "pii_fields": ["customer_id", "email", "full_name", "phone"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "delete",
+      "policy_reason": "System-of-record customer profile is erasable after identity verification.",
+      "legal_hold": false,
+      "policy_source": "DataHub structured property: privacy.handling=delete"
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "name": "analytics.customer_360",
+      "platform": "snowflake",
+      "kind": "dataset",
+      "owners": ["Analytics Platform"],
+      "pii_fields": ["customer_id", "email_hash", "segment"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "anonymize",
+      "policy_reason": "Keep aggregate utility while removing direct and linkable identifiers.",
+      "legal_hold": false,
+      "policy_source": "DataHub glossary term: Privacy.Anonymize"
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,marketing.customer_export,PROD)",
+      "name": "marketing.customer_export",
+      "platform": "snowflake",
+      "kind": "dataset",
+      "owners": ["Marketing Engineering"],
+      "pii_fields": ["customer_id", "email", "audience_id"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "delete",
+      "policy_reason": "Operational marketing export has no configured retention exception.",
+      "legal_hold": false,
+      "policy_source": "DataHub structured property: privacy.handling=delete"
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,support.tickets,PROD)",
+      "name": "support.tickets",
+      "platform": "postgres",
+      "kind": "dataset",
+      "owners": ["Support Data"],
+      "pii_fields": ["customer_id", "requester_email", "message_body"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "anonymize",
+      "policy_reason": "Preserve ticket metrics while redacting subject-linked content.",
+      "legal_hold": false,
+      "policy_source": "DataHub glossary term: Privacy.Redact"
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,finance.invoices,PROD)",
+      "name": "finance.invoices",
+      "platform": "snowflake",
+      "kind": "dataset",
+      "owners": ["Finance Data"],
+      "pii_fields": ["customer_id", "billing_name", "billing_address"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "retain",
+      "policy_reason": "Organization policy requires a human retention review before mutation.",
+      "legal_hold": true,
+      "policy_source": "DataHub structured property: privacy.legal_hold=true"
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,ml.customer_churn_features,PROD)",
+      "name": "ml.customer_churn_features",
+      "platform": "snowflake",
+      "kind": "feature_table",
+      "owners": ["ML Platform"],
+      "pii_fields": ["customer_id", "support_sentiment"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "review",
+      "policy_reason": "Feature removal may require downstream model retraining and validation.",
+      "legal_hold": false,
+      "policy_source": "DataHub domain policy: ML Governance"
+    },
+    {
+      "urn": "urn:li:dashboard:(looker,customer_retention_overview)",
+      "name": "Customer Retention Overview",
+      "platform": "looker",
+      "kind": "dashboard",
+      "owners": ["Growth Analytics"],
+      "pii_fields": ["customer_id"],
+      "subject_keys": ["customer_id"],
+      "handling_rule": "refresh",
+      "policy_reason": "Invalidate cached subject-level drill-downs after upstream handling.",
+      "legal_hold": false,
+      "policy_source": "DataHub lineage + dashboard cache policy"
+    }
+  ],
+  "edges": [
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "downstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "field_mapping": {"customer_id": ["customer_id"], "email": ["email_hash"]}
+    },
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "downstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,marketing.customer_export,PROD)",
+      "field_mapping": {"customer_id": ["customer_id"], "email": ["email"]}
+    },
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,support.tickets,PROD)",
+      "downstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "field_mapping": {"customer_id": ["customer_id"]}
+    },
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "downstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,ml.customer_churn_features,PROD)",
+      "field_mapping": {"customer_id": ["customer_id"], "segment": ["segment"]}
+    },
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_360,PROD)",
+      "downstream_urn": "urn:li:dashboard:(looker,customer_retention_overview)",
+      "field_mapping": {"customer_id": ["customer_id"]}
+    },
+    {
+      "upstream_urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,ecommerce.customers,PROD)",
+      "downstream_urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,finance.invoices,PROD)",
+      "field_mapping": {"customer_id": ["customer_id"], "full_name": ["billing_name"]}
+    }
+  ]
+}
