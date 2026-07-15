@@ -1,34 +1,89 @@
 # ForgetOps
 
-**A lineage-aware right-to-erasure agent powered by DataHub.**
+**DataHub context becomes operational proof.**
 
-ForgetOps turns a privacy deletion request into a safe, reviewable, and verifiable data operation. It uses DataHub's context graph to find where a subject identifier and related PII travel, applies organization-defined retention policies, generates a bounded action plan, and records evidence back in DataHub.
+ForgetOps is a lineage-aware privacy-operations agent for right-to-erasure cases. It reconstructs a subject's downstream data footprint from DataHub, applies organization-defined policy, asks a human to approve an exact mutation scope, executes only permitted work, verifies every outcome, and writes reusable evidence back to DataHub.
 
-> Current status: the end-to-end agent core is complete. ForgetOps discovers and normalizes a live DataHub graph, plans policy-aware actions, executes approved work transactionally in a deterministic sandbox, verifies outcomes, writes evidence back through official MCP tools, and reads it back through a fresh mutation-disabled session. The demo web experience is next.
+The submission candidate includes a polished reviewer workbench, a deterministic offline path, a verified live DataHub MCP path, transactional execution, two separate approval boundaries, fresh-session write-back verification, and a 2:15 captioned demo video.
 
-## Why this matters
+![ForgetOps reviewer workbench showing truthful partial verification](demo-video/capture/product-states/04-verify.png)
 
-Deleting one customer row is easy. Proving that the same person's data was handled across source tables, warehouse copies, support systems, derived features, and downstream consumers is not. Spreadsheets cannot reliably follow column-level lineage, ownership, policy signals, and later transformations.
+## The problem
 
-ForgetOps makes DataHub the source of truth for that workflow:
+Deleting one customer row is easy. Proving that the same person's data was handled across source tables, warehouse copies, support systems, derived features, and downstream consumers is not. A reliable operation must follow lineage, respect legal holds, identify owners, limit mutation scope, verify postconditions, and preserve audit evidence.
+
+ForgetOps makes DataHub the control plane for that work:
 
 1. **Discover** PII-bearing assets and subject keys through DataHub search and schema metadata.
-2. **Trace** column and asset lineage to build a bounded erasure map.
-3. **Decide** using explicit retention, legal-hold, ownership, and handling metadata—not model guesswork.
-4. **Act** through dry-run-first delete, anonymize, refresh, or manual-review steps.
-5. **Verify** coverage and post-action checks before a case can close.
-6. **Remember** by writing status, structured evidence, tags, and an audit document back to DataHub.
+2. **Trace** asset and column lineage into a bounded impact map.
+3. **Decide** from explicit retention, legal-hold, ownership, and handling metadata—not model guesswork.
+4. **Approve** an exact dry-run plan while protected outcomes remain visibly out of scope.
+5. **Execute** permitted actions in one idempotent transaction with rollback on failed contracts.
+6. **Verify** permitted residuals, exceptions, and replay behavior before reporting an honest result.
+7. **Remember** through a second approval that writes tags, structured properties, and an evidence document to DataHub.
+8. **Read back** the result from a fresh mutation-disabled MCP session.
 
-## Hackathon fit
+```mermaid
+flowchart LR
+    A[DataHub graph] --> B[Discover and trace]
+    B --> C[Policy decision]
+    C --> D{Execution approval}
+    D -->|Approved scope| E[Transactional actions]
+    D -->|Hold or review| F[Protected exceptions]
+    E --> G[Post-action verification]
+    F --> G
+    G --> H{Write-back approval}
+    H -->|Approved| I[DataHub evidence]
+    I --> J[Fresh-session read-back]
+```
 
-- **Primary challenge:** Open / Wildcard
-- **Also demonstrates:** Agents That Do Real Work
-- **DataHub technologies:** DataHub Core, MCP Server, Agent Context Kit/SDK patterns, mutation tools, and context documents
-- **Differentiator:** a full privacy-operations control loop, not a metadata chatbot or another generic schema-drift detector
+## Verified demo case
 
-## Quickstart: deterministic foundation demo
+The checked-in synthetic case contains no real personal data. One verified DataHub run produced:
 
-Prerequisites: [`uv`](https://docs.astral.sh/uv/) and Git.
+| Evidence | Result |
+|---|---:|
+| Bounded official MCP calls | 21 |
+| Assets reconstructed | 7 |
+| Lineage edges | 6 |
+| PII fields | 19 |
+| Assets with owner coverage | 100% |
+| Permitted actions | 5 |
+| Legal holds | 1 |
+| Human-review outcomes | 1 |
+
+The correct case result is `PARTIAL_VERIFIED`: every permitted residual is zero, while the legal-hold and manual-review records remain untouched and visible. An idempotent replay returns the same evidence without executing the work twice.
+
+## Why DataHub is essential
+
+ForgetOps does not use DataHub as a decorative lookup. The context graph determines the operation:
+
+- schema fields identify subject keys and PII;
+- lineage expands the downstream blast radius;
+- ownership routes unresolved outcomes;
+- structured properties encode handling, retention, and legal-hold signals;
+- official MCP mutation tools return approved status and evidence to the graph;
+- a fresh read-only session verifies the write-back instead of trusting the mutating session.
+
+The live and offline adapters normalize into one strict domain model, so judges can reproduce the complete workflow without a heavy runtime while the submission still demonstrates a real DataHub integration.
+
+## Reviewer workbench
+
+Prerequisites: Node.js 22 and npm.
+
+```bash
+cd web
+npm ci
+npm run dev
+```
+
+Open `http://localhost:5173`. The primary journey is fully interactive: inspect discovery evidence, acknowledge protected outcomes, approve five dry-run actions, execute and verify, replay idempotently, grant a separate write-back approval, and inspect the evidence contract.
+
+The deterministic UI is backed by the checked-in verified run, not invented dashboard metrics. It remains usable at 1280×720, supports keyboard navigation and reduced motion, and passes automated WCAG AA checks.
+
+## Deterministic CLI quickstart
+
+Prerequisites: [`uv`](https://docs.astral.sh/uv/) and Python 3.11.
 
 ```bash
 uv sync --extra dev --python 3.11
@@ -40,11 +95,11 @@ uv run forgetops plan \
 uv run pytest
 ```
 
-The raw subject identifier is immediately hashed and is never written to the plan or logs. The command emits a JSON plan and a judge-readable Markdown evidence report.
+The raw subject identifier is hashed immediately and never written to plans, logs, DataHub, or evidence artifacts.
 
 ## Transactional sandbox execution
 
-The synthetic DuckDB warehouse exercises real delete, anonymize, refresh, retention, review, rollback, verification, and idempotent replay behavior. Both setup and execution are non-mutating until explicitly approved:
+Both initialization and execution are non-mutating until explicitly approved:
 
 ```bash
 uv run forgetops sandbox-init \
@@ -63,13 +118,11 @@ uv run forgetops sandbox-execute \
 # Add --approve only after reviewing the dry-run evidence.
 ```
 
-Approved actions run in one transaction. Any failed field contract or post-action check rolls back the complete case. The audit ledger and exported evidence contain only the hashed subject reference; the finance legal-hold row and ML review row remain untouched by design.
+Approved actions run in one DuckDB transaction. Any failed field contract or post-action check rolls back the complete case.
 
-## Local DataHub runtime
+## Live DataHub integration
 
-The live runtime uses a dedicated WSL distribution named `forgetops-runtime`. Its virtual disk, Docker images, containers, volumes, Python environment, CLI state, and caches all live under ignored directories in this repository. Docker Desktop is not used, so unrelated projects cannot be touched.
-
-Preview the setup first, then explicitly approve it:
+The pinned DataHub Core 1.6 runtime uses a dedicated WSL distribution named `forgetops-runtime`. Its virtual disk, Docker state, Python environment, CLI state, and caches live under ignored repository-local directories on the current drive. The wrapper refuses to use Docker Desktop or a WSL distribution registered outside this repository.
 
 ```powershell
 uv sync --extra dev --extra datahub --python 3.11
@@ -84,38 +137,62 @@ uv run python scripts/smoke_datahub_writeback.py   # dry-run write-back manifest
 uv run python scripts/smoke_datahub_writeback.py --approve
 ```
 
-`-AllowPull` is needed only when the pinned images are not already present in the repository-local runtime. In restricted networks, `setup-runtime.ps1` accepts an alternate HTTPS Python package index; exported dependencies remain hash-verified against `uv.lock`.
+All published quickstart ports bind to `127.0.0.1`. The stack intentionally follows DataHub's local quickstart security posture and must not be exposed to an untrusted network. It needs approximately 8 GB of available memory and 13 GB of repository-drive space. Stop only this project with `.\scripts\datahub.ps1 stop`.
 
-The wrapper verifies that the WSL virtual disk is registered at `.runtime-wsl`, uses the fixed Compose project and resource prefix `forgetops-datahub`, and refuses to run against Docker Desktop or a runtime outside the repository. DataHub is available at `http://localhost:9002` and its metadata service at `http://localhost:8080`.
+## Safety invariants
 
-The approved seed is idempotent and writes seven synthetic metadata entities, field-level PII and subject-key tags, five DataHub structured properties, technical owners, and direct plus column-level lineage. The live smoke keeps MCP mutations disabled, reads that graph through the official server, normalizes it into the same strict domain model used by offline mode, and emits a review-gated erasure plan.
-
-The official quickstart needs about 8 GB of available memory and roughly 13 GB of repository-drive space. Stop only this project with `.\scripts\datahub.ps1 stop`.
-
-## Safety model
-
-- Dry-run is the default and mutation requires explicit approval.
-- Idempotency keys are bound to the exact approved plan and scenario. A persisted write-back receipt also binds the DataHub document URN to that case and operation, while official read tools verify every asset marker and the document body.
-- Sandbox mutations run in one DuckDB transaction and roll back on any failed contract or verification check.
-- Legal-hold or retention signals create review gates instead of being overridden.
-- Policy decisions come from organization-defined metadata; the language model may explain a decision but cannot invent policy.
+- Dry-run is the default; every mutation requires explicit approval.
+- Execution and metadata write-back use separate approval boundaries.
+- Idempotency keys bind to the exact approved plan and scenario.
+- Sandbox mutations run in one transaction and roll back on any failed contract.
+- Legal-hold and review signals create protected outcomes instead of being overridden.
+- Policy comes from organization-defined metadata; an LLM may explain but cannot invent it.
 - Every action cites the DataHub evidence that caused it.
-- No real personal data is included in this repository or demo.
+- No real personal data, credentials, or data-subject identifiers are included.
 
-ForgetOps is an engineering demonstration, not legal advice. Organizations remain responsible for configuring policies and validating obligations in their jurisdictions.
+ForgetOps is an engineering demonstration, not legal advice. Organizations remain responsible for policy configuration and legal validation in their jurisdictions.
+
+## Validation
+
+```bash
+uv run ruff format --check .
+uv run ruff check .
+uv run mypy src
+uv run pytest --cov=forgetops --cov-report=term-missing
+
+cd web
+npm ci
+npm run format:check
+npm run lint
+npm run typecheck
+npm run test:coverage
+npm run demo:smoke
+npm run build
+```
+
+The video composition is also reproducible from `demo-video/` with HyperFrames. Its final media probe is 1920×1080, H.264 at 24 fps, AAC stereo, and 135.04 seconds—strictly under the three-minute submission limit.
 
 ## Repository map
 
 ```text
-src/forgetops/                  deterministic planning core and CLI
-tests/                          unit tests for safety and evidence behavior
-examples/input/                 synthetic DataHub-shaped graph snapshot
-examples/output/                checked-in sample plan for judge review
-infra/datahub/                  pinned, project-prefixed DataHub quickstart
-scripts/                        dry-run seed and repeatable live integration smokes
-docs/                           rules, architecture, scoring, and delivery plan
+src/forgetops/       deterministic planning, policy, reporting, and execution core
+tests/               unit and integration coverage for safety and evidence behavior
+web/                 interactive reviewer workbench and browser-focused tests
+examples/            synthetic inputs and checked-in judge-readable evidence
+infra/datahub/       pinned, loopback-only, project-prefixed DataHub quickstart
+scripts/             dry-run seed, live MCP smokes, and isolated runtime controls
+demo-video/          design direction, script, captions, composition, and source captures
+submission/          Devpost copy and release checklist
+docs/                architecture, official rules, migration proof, and delivery state
 ```
+
+## Hackathon fit
+
+- **Primary challenge:** Open / Wildcard
+- **Also demonstrates:** Agents That Do Real Work
+- **DataHub technologies:** DataHub Core, official MCP Server tools, context documents, structured properties, tags, schema metadata, ownership, and lineage
+- **Differentiator:** an auditable privacy-operation control loop rather than a metadata chatbot
 
 ## License
 
-Apache License 2.0. See [LICENSE](LICENSE).
+Apache License 2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

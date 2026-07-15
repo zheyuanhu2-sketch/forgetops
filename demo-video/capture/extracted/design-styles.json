@@ -1,0 +1,206 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "32px",
+      "fontWeight": "700",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F0F2EE",
+      "sampleText": "Case evidence trace"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "17px",
+      "fontWeight": "600",
+      "lineHeight": "18.7px",
+      "letterSpacing": "normal",
+      "color": "#F0F2EE",
+      "sampleText": "Case intake"
+    },
+    {
+      "role": "label",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F0F2EE",
+      "sampleText": "01DiscoverComplete 10:4702DecideComplete 10:4803ApproveIn pr"
+    },
+    {
+      "role": "body",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "lineHeight": "16.9px",
+      "letterSpacing": "normal",
+      "color": "#A5B0B2",
+      "sampleText": "Subject request received and normalized. The raw identifier "
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#A5B0B2",
+      "sampleText": "7 assets discovered · 6 lineage edges"
+    },
+    {
+      "role": "body-small",
+      "fontFamily": "IBM Plex Sans Condensed",
+      "fontSize": "9px",
+      "fontWeight": "400",
+      "lineHeight": "10.35px",
+      "letterSpacing": "normal",
+      "color": "#A5B0B2",
+      "sampleText": "postgres · Privacy Engineering"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "3px",
+    "5px"
+  ],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "01Ecommerce customerspostgres · Privacy ",
+      "background": "#0B171D",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F0F2EE",
+      "padding": "8px 9px",
+      "borderRadius": "5px",
+      "border": "1px solid rgb(120, 221, 103)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "64px"
+    },
+    {
+      "label": "05Finance invoicessnowflake · Finance Da",
+      "background": "#0B171D",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F0F2EE",
+      "padding": "8px 9px",
+      "borderRadius": "5px",
+      "border": "1px solid rgb(243, 167, 11)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "64px"
+    },
+    {
+      "label": "07Churn featuressnowflake · ML Platform",
+      "background": "#0B171D",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F0F2EE",
+      "padding": "8px 9px",
+      "borderRadius": "5px",
+      "border": "1px dashed rgb(243, 167, 11)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "64px"
+    },
+    {
+      "label": "Authorize execution",
+      "background": "#1A252B",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#77858A",
+      "padding": "0px 15px",
+      "borderRadius": "3px",
+      "border": "1px solid rgb(59, 75, 82)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "48px"
+    },
+    {
+      "label": "Return to plan",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#A5B0B2",
+      "padding": "0px 15px",
+      "borderRadius": "3px",
+      "border": "1px solid rgb(59, 75, 82)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "48px"
+    }
+  ],
+  "cards": [],
+  "nav": {
+    "label": "navigation",
+    "background": "#081219",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#F0F2EE",
+    "padding": "0px 18px",
+    "borderRadius": "0px",
+    "border": "1px solid rgb(59, 75, 82)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "56px"
+  },
+  "chips": [
+    {
+      "label": "01",
+      "background": "transparent",
+      "color": "#78DD67",
+      "padding": "0px",
+      "borderRadius": "50%",
+      "border": "1px solid rgb(120, 221, 103)",
+      "boxShadow": "none",
+      "fontSize": "8px",
+      "fontWeight": "400",
+      "height": "19px"
+    },
+    {
+      "label": "05",
+      "background": "transparent",
+      "color": "#F3A70B",
+      "padding": "0px",
+      "borderRadius": "50%",
+      "border": "1px solid rgb(243, 167, 11)",
+      "boxShadow": "none",
+      "fontSize": "8px",
+      "fontWeight": "400",
+      "height": "19px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [],
+  "glass": []
+}

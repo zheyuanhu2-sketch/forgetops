@@ -190,6 +190,13 @@ function Assert-IsolatedRuntime {
         throw "Missing pinned compose file '$composeFile'."
     }
 
+    $composeText = [System.IO.File]::ReadAllText($composeFile)
+    $publishedPortCount = ([regex]::Matches($composeText, '(?m)^\s+published:\s+')).Count
+    $loopbackBindingCount = ([regex]::Matches($composeText, '(?m)^\s+host_ip:\s+127\.0\.0\.1\s*$')).Count
+    if ($publishedPortCount -eq 0 -or $publishedPortCount -ne $loopbackBindingCount) {
+        throw "Refusing a quickstart whose published ports are not all bound to 127.0.0.1."
+    }
+
 }
 
 function Get-MissingImages {

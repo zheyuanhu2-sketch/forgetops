@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      :root {
+        --canvas: #071117;
+        --raised: #0b161d;
+        --panel: #0d1920;
+        --text: #f0f2ee;
+        --secondary: #a5b0b2;
+        --muted: #77858a;
+        --rule: #3b4b52;
+        --quiet-rule: #26353c;
+        --crimson: #d4363e;
+        --crimson-hot: #ec4950;
+        --datahub: #45a7ff;
+        --verified: #78dd67;
+        --exception: #f3a70b;
+        --focus: #d9f0ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--canvas);
+        color: var(--text);
+      }
+
+      body {
+        font-family: Inter, sans-serif;
+        text-rendering: geometricPrecision;
+      }
+
+      .mono,
+      .metric-value,
+      .tool-rail,
+      .hud,
+      .caption-label,
+      .proof-row,
+      .scene-kicker {
+        font-family: "JetBrains Mono", monospace;
+        font-variant-numeric: tabular-nums;
+      }
+
+      #root,
+      .scene,
+      .image-plane,
+      .image-plane img,
+      .scene-shade,
+      .shutter {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+      }
+
+      #root {
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          radial-gradient(circle at 76% 18%, rgba(69, 167, 255, 0.08), transparent 35%),
+          var(--canvas);
+      }
+
+      #root::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 80;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(59, 75, 82, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 75, 82, 0.06) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), transparent 72%);
+      }
+
+      .scene {
+        opacity: 0;
+        overflow: hidden;
+        background: var(--canvas);
+      }
+
+      .image-plane {
+        overflow: hidden;
+        background: var(--canvas);
+      }
+
+      .image-plane img {
+        display: block;
+        object-fit: cover;
+        transform-origin: center center;
+        will-change: transform, opacity, filter;
+      }
+
+      #receipts-plane,
+      #contract-plane {
+        opacity: 0;
+      }
+
+      .scene-shade {
+        z-index: 2;
+        background: linear-gradient(
+          90deg,
+          rgba(7, 17, 23, 0.98) 0%,
+          rgba(7, 17, 23, 0.83) 34%,
+          rgba(7, 17, 23, 0.18) 70%,
+          rgba(7, 17, 23, 0.48) 100%
+        );
+      }
+
+      .scene-shade.bottom {
+        background: linear-gradient(
+          to top,
+          rgba(7, 17, 23, 0.97) 0%,
+          rgba(7, 17, 23, 0.38) 36%,
+          transparent 66%
+        );
+      }
+
+      .scene-copy {
+        position: absolute;
+        z-index: 5;
+        left: 92px;
+        top: 156px;
+        width: 760px;
+      }
+
+      .scene-copy.wide {
+        width: 1120px;
+      }
+
+      .scene-copy.bottom {
+        top: auto;
+        bottom: 390px;
+      }
+
+      .scene-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--datahub);
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .scene-kicker::before {
+        content: "";
+        width: 42px;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .scene-headline {
+        margin-top: 24px;
+        max-width: 1000px;
+        font-family: "EB Garamond", serif;
+        font-size: 92px;
+        font-weight: 600;
+        line-height: 0.96;
+        letter-spacing: -0.045em;
+        text-wrap: balance;
+      }
+
+      .scene-headline.compact {
+        font-family: Inter, sans-serif;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 0.94;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+      }
+
+      .scene-headline .accent {
+        color: var(--crimson-hot);
+      }
+
+      .scene-headline .blue {
+        color: var(--datahub);
+      }
+
+      .scene-support {
+        width: 680px;
+        margin-top: 28px;
+        color: var(--secondary);
+        font-size: 27px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .source-stamp {
+        position: absolute;
+        z-index: 5;
+        right: 66px;
+        top: 112px;
+        display: grid;
+        gap: 8px;
+        padding: 18px 20px;
+        border: 1px solid rgba(69, 167, 255, 0.55);
+        background: rgba(7, 17, 23, 0.9);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+      }
+
+      .source-stamp span {
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .source-stamp strong {
+        color: var(--datahub);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+      }
+
+      .metric-strip {
+        position: absolute;
+        z-index: 6;
+        left: 92px;
+        right: 92px;
+        bottom: 174px;
+        height: 205px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        background: rgba(7, 17, 23, 0.92);
+      }
+
+      .metric {
+        min-height: 203px;
+        padding: 24px 28px 22px;
+        border-right: 1px solid var(--quiet-rule);
+      }
+
+      .metric:last-child {
+        border-right: 0;
+      }
+
+      .metric-value {
+        color: var(--text);
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .metric-label {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .outcome-rail {
+        position: absolute;
+        z-index: 6;
+        left: 92px;
+        bottom: 190px;
+        display: flex;
+        gap: 12px;
+      }
+
+      .outcome {
+        min-width: 250px;
+        padding: 18px 22px;
+        border: 1px solid currentColor;
+        background: rgba(7, 17, 23, 0.94);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .outcome.safe {
+        color: var(--verified);
+      }
+
+      .outcome.exception {
+        color: var(--exception);
+      }
+
+      .approval-bracket {
+        position: absolute;
+        z-index: 7;
+        left: 56px;
+        bottom: 151px;
+        width: 1808px;
+        height: 302px;
+        border: 2px solid var(--crimson-hot);
+        box-shadow:
+          inset 0 0 0 1px rgba(236, 73, 80, 0.2),
+          0 0 70px rgba(212, 54, 62, 0.08);
+      }
+
+      .approval-bracket::before {
+        content: "HUMAN APPROVAL BOUNDARY";
+        position: absolute;
+        left: 24px;
+        top: -16px;
+        padding: 4px 10px;
+        color: var(--crimson-hot);
+        background: var(--canvas);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      .transaction-label {
+        position: absolute;
+        z-index: 6;
+        right: 88px;
+        top: 160px;
+        width: 540px;
+        padding: 24px 28px;
+        border-left: 3px solid var(--verified);
+        background: rgba(7, 17, 23, 0.93);
+      }
+
+      .transaction-label strong {
+        display: block;
+        color: var(--verified);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 24px;
+        letter-spacing: 0.05em;
+      }
+
+      .transaction-label span {
+        display: block;
+        margin-top: 12px;
+        color: var(--secondary);
+        font-size: 23px;
+        line-height: 1.3;
+      }
+
+      .verification-lockup {
+        position: absolute;
+        z-index: 6;
+        left: 92px;
+        bottom: 192px;
+        height: 130px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(220px, auto));
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+      }
+
+      .verification-lockup > div {
+        min-height: 128px;
+        padding: 18px 24px;
+        background: rgba(7, 17, 23, 0.96);
+      }
+
+      .verification-lockup strong {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 32px;
+      }
+
+      .verification-lockup span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .verification-lockup .green {
+        color: var(--verified);
+      }
+
+      .verification-lockup .amber {
+        color: var(--exception);
+      }
+
+      .tool-rail {
+        position: absolute;
+        z-index: 6;
+        left: 92px;
+        right: 92px;
+        bottom: 178px;
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 18px;
+        align-items: center;
+        padding: 17px 20px;
+        border-top: 1px solid rgba(69, 167, 255, 0.55);
+        border-bottom: 1px solid rgba(69, 167, 255, 0.55);
+        background: rgba(7, 17, 23, 0.95);
+        color: var(--datahub);
+        font-size: 18px;
+      }
+
+      .tool-rail span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .proof-ledger {
+        position: absolute;
+        z-index: 6;
+        left: 76px;
+        right: 76px;
+        top: 174px;
+        border-top: 1px solid var(--rule);
+        background: rgba(7, 17, 23, 0.88);
+      }
+
+      .proof-row {
+        display: grid;
+        grid-template-columns: 220px 1fr 210px;
+        align-items: center;
+        min-height: 92px;
+        border-bottom: 1px solid var(--quiet-rule);
+      }
+
+      .proof-row span,
+      .proof-row strong {
+        padding: 0 24px;
+      }
+
+      .proof-row span {
+        color: var(--muted);
+        font-size: 16px;
+        letter-spacing: 0.1em;
+      }
+
+      .proof-row strong {
+        color: var(--text);
+        font-size: 28px;
+      }
+
+      .proof-row em {
+        color: var(--verified);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .final-lockup {
+        position: absolute;
+        z-index: 10;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        background:
+          radial-gradient(circle at 50% 46%, rgba(69, 167, 255, 0.11), transparent 34%),
+          var(--canvas);
+        opacity: 0;
+      }
+
+      .wordmark {
+        font-family: "EB Garamond", serif;
+        font-size: 124px;
+        font-weight: 600;
+        letter-spacing: -0.06em;
+      }
+
+      .wordmark .ops {
+        color: var(--crimson-hot);
+      }
+
+      .final-statement {
+        margin-top: 26px;
+        color: var(--text);
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .final-sub {
+        margin-top: 24px;
+        color: var(--secondary);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 19px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .caption {
+        position: absolute;
+        z-index: 90;
+        left: 50%;
+        bottom: 28px;
+        width: 1440px;
+        min-height: 86px;
+        padding: 16px 26px 18px;
+        transform: translateX(-50%);
+        border-top: 1px solid rgba(240, 242, 238, 0.38);
+        background: rgba(7, 17, 23, 0.96);
+        box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.26);
+        color: var(--text);
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 1.22;
+        text-align: center;
+      }
+
+      .caption-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--datahub);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hud {
+        position: absolute;
+        z-index: 88;
+        left: 30px;
+        right: 30px;
+        top: 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;
+        color: rgba(240, 242, 238, 0.82);
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hud .brand {
+        font-family: "EB Garamond", serif;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        text-transform: none;
+      }
+
+      .hud .brand em {
+        color: var(--crimson-hot);
+        font-style: normal;
+      }
+
+      .progress-line {
+        position: absolute;
+        z-index: 89;
+        left: 30px;
+        right: 30px;
+        top: 64px;
+        height: 1px;
+        background: rgba(59, 75, 82, 0.48);
+      }
+
+      .progress-line span {
+        display: block;
+        width: 0;
+        height: 2px;
+        background: var(--datahub);
+        transform-origin: left center;
+      }
+
+      .shutter {
+        z-index: 95;
+        height: 540px;
+        background: var(--crimson);
+        pointer-events: none;
+      }
+
+      #shutter-bottom {
+        top: 540px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="135"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio
+        id="narration-audio"
+        class="clip"
+        data-start="0"
+        data-duration="130.069"
+        data-track-index="0"
+        src="narration.wav"
+        preload="auto"
+      ></audio>
+
+      <section id="scene-01" class="scene clip" data-start="0" data-duration="6.86" data-track-index="1" data-layout-allow-overflow>
+        <div class="image-plane"><img src="capture/screenshots/scroll-000.png" alt="" data-layout-allow-overflow /></div>
+        <div class="scene-shade"></div>
+        <div class="scene-copy wide">
+          <div class="scene-kicker">Privacy operations</div>
+          <h1 class="scene-headline">Delete is easy.<br /><span class="accent">Proof is the work.</span></h1>
+        </div>
+      </section>
+
+      <section id="scene-02" class="scene clip" data-start="6.5" data-duration="4.8" data-track-index="2" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="image-plane"><img src="capture/screenshots/scroll-000.png" alt="" data-layout-allow-overflow /></div>
+        <div class="source-stamp">
+          <span>Evidence source</span>
+          <strong>VERIFIED DATAHUB MCP RUN</strong>
+          <span>Deterministic product replay</span>
+        </div>
+      </section>
+
+      <section id="scene-03" class="scene clip" data-start="10.8" data-duration="24.7" data-track-index="1" data-layout-allow-overflow>
+        <div class="image-plane"><img src="capture/screenshots/scroll-000.png" alt="" data-layout-allow-overflow /></div>
+        <div class="scene-shade bottom"></div>
+        <div class="scene-copy bottom">
+          <div class="scene-kicker">01 · Discover</div>
+          <h2 class="scene-headline compact">Reconstruct the real blast radius.</h2>
+        </div>
+        <div class="metric-strip">
+          <div class="metric"><div class="metric-value">21</div><div class="metric-label">Bounded MCP calls</div></div>
+          <div class="metric"><div class="metric-value">7</div><div class="metric-label">Assets discovered</div></div>
+          <div class="metric"><div class="metric-value">6</div><div class="metric-label">Lineage edges</div></div>
+          <div class="metric"><div class="metric-value">19</div><div class="metric-label">PII fields</div></div>
+        </div>
+      </section>
+
+      <section id="scene-04" class="scene clip" data-start="35" data-duration="17" data-track-index="2" data-layout-allow-overflow>
+        <div class="image-plane"><img src="capture/product-states/01-approve.png" alt="" data-layout-allow-overflow /></div>
+        <div class="scene-shade bottom"></div>
+        <div class="scene-copy bottom wide">
+          <div class="scene-kicker">02 · Decide</div>
+          <h2 class="scene-headline compact">Policy keeps every exception visible.</h2>
+        </div>
+        <div class="outcome-rail">
+          <div class="outcome safe">5 safe mutations</div>
+          <div class="outcome exception">1 legal hold</div>
+          <div class="outcome exception">1 human review</div>
+        </div>
+      </section>
+
+      <section id="scene-05" class="scene clip" data-start="51.5" data-duration="8.7" data-track-index="1" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="image-plane"><img src="capture/product-states/01-approve.png" alt="" data-layout-allow-overflow /></div>
+        <div class="approval-bracket"></div>
+        <div class="scene-copy">
+          <div class="scene-kicker" style="color: var(--crimson-hot)">03 · Approve</div>
+          <h2 class="scene-headline compact">Scope, not a blank check.</h2>
+          <p class="scene-support">Exactly five dry-run actions. Protected outcomes acknowledged. Rollback armed.</p>
+        </div>
+      </section>
+
+      <section id="scene-06" class="scene clip" data-start="59.7" data-duration="11.8" data-track-index="2" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="image-plane"><img id="execute-shot" src="capture/product-states/02-execute.png" alt="" data-layout-allow-overflow /></div>
+        <div class="image-plane" id="receipts-plane"><img src="capture/product-states/03-receipts.png" alt="" data-layout-allow-overflow /></div>
+        <div class="transaction-label">
+          <strong>ONE IDEMPOTENT TRANSACTION</strong>
+          <span>Five receipts. Field-contract verification. Complete rollback on failure.</span>
+        </div>
+      </section>
+
+      <section id="scene-07" class="scene clip" data-start="71" data-duration="16.4" data-track-index="1" data-layout-allow-overflow>
+        <div class="image-plane"><img src="capture/product-states/04-verify.png" alt="" data-layout-allow-overflow /></div>
+        <div class="scene-shade bottom"></div>
+        <div class="scene-copy bottom wide">
+          <div class="scene-kicker">05 · Verify</div>
+          <h2 class="scene-headline compact">Truthful partial verification.</h2>
+        </div>
+        <div class="verification-lockup">
+          <div><strong class="green">0</strong><span>Permitted residuals</span></div>
+          <div><strong class="amber">1</strong><span>Legal hold</span></div>
+          <div><strong class="amber">1</strong><span>Human review</span></div>
+          <div><strong class="green">PARTIAL_VERIFIED</strong><span>Honest result</span></div>
+        </div>
+      </section>
+
+      <section id="scene-08" class="scene clip" data-start="86.9" data-duration="12.7" data-track-index="2" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="image-plane"><img src="capture/product-states/04-verify.png" alt="" data-layout-allow-overflow /></div>
+        <div class="approval-bracket"></div>
+        <div class="scene-copy wide">
+          <div class="scene-kicker" style="color: var(--crimson-hot)">Second approval</div>
+          <h2 class="scene-headline compact">Execution authority is not write-back authority.</h2>
+        </div>
+        <div class="tool-rail">
+          <span>Write tools</span>
+          add_tags · add_structured_properties · save_document
+        </div>
+      </section>
+
+      <section id="scene-09" class="scene clip" data-start="99" data-duration="10.8" data-track-index="1" data-layout-allow-overflow data-layout-allow-overlap>
+        <div class="image-plane" id="remember-plane"><img src="capture/product-states/05-remember.png" alt="" data-layout-allow-overflow /></div>
+        <div class="image-plane" id="contract-plane"><img src="capture/product-states/06-evidence-contract.png" alt="" data-layout-allow-overflow /></div>
+        <div class="tool-rail">
+          <span>Fresh read-back</span>
+          get_entities · search_documents · grep_documents · 7 of 7 verified
+        </div>
+      </section>
+
+      <section id="scene-10" class="scene clip" data-start="109.2" data-duration="25.8" data-track-index="2" data-layout-allow-overflow>
+        <div class="image-plane"><img src="capture/product-states/06-evidence-contract.png" alt="" data-layout-allow-overflow /></div>
+        <div class="scene-shade"></div>
+        <div class="proof-ledger" data-layout-allow-occlusion data-layout-allow-overlap>
+          <div class="proof-row"><span>PATHS</span><strong>Live DataHub + deterministic offline</strong><em>ONE DOMAIN MODEL</em></div>
+          <div class="proof-row"><span>TESTS</span><strong>79 automated checks</strong><em>PASSING</em></div>
+          <div class="proof-row"><span>SAFETY</span><strong>Dry-run default · approvals · rollback</strong><em>ENFORCED</em></div>
+          <div class="proof-row"><span>EVIDENCE</span><strong>Replayable receipts + fresh read-back</strong><em>VERIFIED</em></div>
+        </div>
+        <div class="final-lockup" data-layout-allow-occlusion data-layout-allow-overlap>
+          <div class="wordmark">Forget<span class="ops">Ops</span></div>
+          <div class="final-statement">DataHub context becomes operational proof.</div>
+          <div class="final-sub">Exceptions visible · Approvals explicit · Evidence replayable</div>
+        </div>
+      </section>
+
+      <div id="persistent-hud" class="hud clip" data-start="0" data-duration="135" data-track-index="8" data-layout-allow-occlusion>
+        <div class="brand">Forget<em>Ops</em></div>
+        <div>DataHub Agent Hackathon · Case DSR-2026-0042</div>
+      </div>
+      <div id="progress-line" class="progress-line clip" data-start="0" data-duration="135" data-track-index="9"><span></span></div>
+      <div id="shutter-top" class="shutter clip" data-start="0" data-duration="135" data-track-index="12" data-layout-allow-overflow data-layout-allow-occlusion></div>
+      <div id="shutter-bottom" class="shutter clip" data-start="0" data-duration="135" data-track-index="13" data-layout-allow-overflow data-layout-allow-occlusion></div>
+
+      <div id="caption-01" class="caption clip" data-start="0.06" data-duration="6.68" data-track-index="10"><span class="caption-label">Narration</span>Deleting one row is easy. Proving every downstream copy was handled—without deleting data under legal hold—is the real work.</div>
+      <div id="caption-02" class="caption clip" data-start="6.86" data-duration="4.38" data-track-index="10"><span class="caption-label">Narration</span>ForgetOps turns DataHub context into an approval-gated privacy operation.</div>
+      <div id="caption-03" class="caption clip" data-start="11.30" data-duration="11.22" data-track-index="10"><span class="caption-label">Narration</span>This workbench is a deterministic replay of one verified DataHub MCP run. The raw identifier is hashed immediately.</div>
+      <div id="caption-04" class="caption clip" data-start="22.58" data-duration="12.82" data-track-index="10"><span class="caption-label">Narration</span>Official MCP tools reconstruct seven assets, six lineage edges, and nineteen PII fields—with one hundred percent owner coverage.</div>
+      <div id="caption-05" class="caption clip" data-start="35.46" data-duration="7.62" data-track-index="10"><span class="caption-label">Narration</span>ForgetOps reads organization-defined handling rules, owners, and retention evidence from DataHub.</div>
+      <div id="caption-06" class="caption clip" data-start="43.14" data-duration="8.82" data-track-index="10" data-layout-allow-occlusion><span class="caption-label">Narration</span>Five assets are safe. Finance stays under legal hold. The machine-learning feature set requires human review.</div>
+      <div id="caption-07" class="caption clip" data-start="52.02" data-duration="8.06" data-track-index="10"><span class="caption-label">Narration</span>The reviewer acknowledges protected outcomes. Approval is scope-bound to five dry-run actions, with rollback armed.</div>
+      <div id="caption-08" class="caption clip" data-start="60.18" data-duration="9.38" data-track-index="10"><span class="caption-label">Narration</span>One idempotent transaction executes only the permitted plan. Every action produces a receipt.</div>
+      <div id="caption-09" class="caption clip" data-start="69.62" data-duration="1.78" data-track-index="10"><span class="caption-label">Narration</span>Five of five receipts are captured.</div>
+      <div id="caption-10" class="caption clip" data-start="71.46" data-duration="8.70" data-track-index="10"><span class="caption-label">Narration</span>Verification checks every outcome: zero permitted residuals, one legal hold, and one pending review.</div>
+      <div id="caption-11" class="caption clip" data-start="80.22" data-duration="7.14" data-track-index="10"><span class="caption-label">Narration</span>The honest result is partial verified. An idempotent replay returns the same evidence without repeating the work.</div>
+      <div id="caption-12" class="caption clip" data-start="87.42" data-duration="5.49" data-track-index="10"><span class="caption-label">Narration</span>Execution approval does not authorize metadata write-back. ForgetOps requires a second, separate approval.</div>
+      <div id="caption-13" class="caption clip" data-start="92.96" data-duration="6.56" data-track-index="10"><span class="caption-label">Narration</span>Only then does it add tags, structured properties, and one reusable evidence document.</div>
+      <div id="caption-14" class="caption clip" data-start="99.57" data-duration="10.15" data-track-index="10"><span class="caption-label">Narration</span>A fresh, mutation-disabled MCP session reads back seven entities, the document, and the same URN on retry.</div>
+      <div id="caption-15" class="caption clip" data-start="109.78" data-duration="12.10" data-track-index="10"><span class="caption-label">Narration</span>The live and offline paths share one strict domain model. Seventy-nine automated tests cover the complete reviewer journey.</div>
+      <div id="caption-16" class="caption clip" data-start="121.94" data-duration="5.10" data-track-index="10"><span class="caption-label">Narration</span>Exceptions are first-class, approvals explicit, and every claim replayable.</div>
+      <div id="caption-17" class="caption clip" data-start="127.10" data-duration="2.74" data-track-index="10"><span class="caption-label">Narration</span>DataHub context becomes operational proof.</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.set(".scene", { opacity: 0, x: 0, y: 0 }, 0);
+      tl.set("#shutter-top", { y: -540 }, 0);
+      tl.set("#shutter-bottom", { y: 540 }, 0);
+      tl.set("#scene-01", { opacity: 1 }, 0);
+      tl.from("#scene-01 .scene-kicker", { opacity: 0, x: -42, duration: 0.55, ease: "power3.out" }, 0.2);
+      tl.from("#scene-01 .scene-headline", { opacity: 0, y: 54, duration: 0.8, ease: "power3.out" }, 0.55);
+      tl.fromTo("#scene-01 img", { scale: 1.02, opacity: 0.18 }, { scale: 1.07, opacity: 0.42, duration: 6.5, ease: "none" }, 0);
+
+      tl.to("#scene-01", { x: -360, duration: 0.45, ease: "power3.inOut" }, 6.5);
+      tl.fromTo("#scene-02", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.inOut" }, 6.5);
+      tl.from("#scene-02 .source-stamp", { opacity: 0, y: -28, duration: 0.5, ease: "power3.out" }, 7.1);
+      tl.fromTo("#scene-02 img", { scale: 1 }, { scale: 1.045, duration: 4.6, ease: "none" }, 6.5);
+
+      tl.to("#scene-02", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 10.8);
+      tl.set("#scene-02", { opacity: 0 }, 11.3);
+      tl.fromTo("#scene-03", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 10.8);
+      tl.from("#scene-03 .scene-copy", { opacity: 0, y: 36, duration: 0.6, ease: "power3.out" }, 11.4);
+      tl.from("#scene-03 .metric", { opacity: 0, y: 24, stagger: 0.12, duration: 0.45, ease: "power3.out" }, 27.8);
+      tl.fromTo("#scene-03 img", { scale: 1.02, x: 0 }, { scale: 1.085, x: -56, duration: 24, ease: "none" }, 11);
+
+      tl.to("#scene-03", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 35);
+      tl.set("#scene-03", { opacity: 0 }, 35.5);
+      tl.fromTo("#scene-04", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 35);
+      tl.from("#scene-04 .scene-copy", { opacity: 0, x: -42, duration: 0.6, ease: "power3.out" }, 35.5);
+      tl.from("#scene-04 .outcome", { opacity: 0, y: 28, stagger: 0.16, duration: 0.5, ease: "power3.out" }, 43.1);
+      tl.fromTo("#scene-04 img", { scale: 1.02 }, { scale: 1.075, duration: 16.4, ease: "none" }, 35);
+
+      tl.to("#shutter-top", { y: 0, duration: 0.25, ease: "power3.in" }, 51.5);
+      tl.to("#shutter-bottom", { y: 0, duration: 0.25, ease: "power3.in" }, 51.5);
+      tl.set("#scene-04", { opacity: 0 }, 51.75);
+      tl.set("#scene-05", { opacity: 1 }, 51.75);
+      tl.to("#shutter-top", { y: -540, duration: 0.25, ease: "power3.out" }, 51.8);
+      tl.to("#shutter-bottom", { y: 540, duration: 0.25, ease: "power3.out" }, 51.8);
+      tl.from("#scene-05 .approval-bracket", { opacity: 0, scaleX: 0.96, duration: 0.55, ease: "power3.out" }, 52.1);
+      tl.from("#scene-05 .scene-copy", { opacity: 0, y: 30, duration: 0.6, ease: "power3.out" }, 52.25);
+      tl.fromTo("#scene-05 img", { scale: 1.02 }, { scale: 1.06, duration: 8, ease: "none" }, 51.8);
+
+      tl.to("#scene-05", { x: -420, duration: 0.48, ease: "power3.inOut" }, 59.7);
+      tl.fromTo("#scene-06", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.48, ease: "power3.inOut" }, 59.7);
+      tl.set("#receipts-plane", { opacity: 0 }, 59.7);
+      tl.from("#scene-06 .transaction-label", { opacity: 0, x: 34, duration: 0.55, ease: "power3.out" }, 60.4);
+      tl.to("#execute-shot", { scale: 1.055, duration: 5.2, ease: "none" }, 60);
+      tl.to("#receipts-plane", { opacity: 1, duration: 0.35, ease: "power2.inOut" }, 65.2);
+      tl.fromTo("#receipts-plane img", { scale: 1.02 }, { scale: 1.06, duration: 5.8, ease: "none" }, 65.2);
+
+      tl.to("#scene-06", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 71);
+      tl.set("#scene-06", { opacity: 0 }, 71.5);
+      tl.fromTo("#scene-07", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 71);
+      tl.from("#scene-07 .scene-copy", { opacity: 0, y: 30, duration: 0.55, ease: "power3.out" }, 71.5);
+      tl.from("#scene-07 .verification-lockup > div", { opacity: 0, y: 20, stagger: 0.1, duration: 0.4, ease: "power3.out" }, 74.6);
+      tl.fromTo("#scene-07 img", { scale: 1.015 }, { scale: 1.065, duration: 15.8, ease: "none" }, 71);
+
+      tl.to("#scene-07", { x: -360, duration: 0.48, ease: "power3.inOut" }, 86.9);
+      tl.fromTo("#scene-08", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.48, ease: "power3.inOut" }, 86.9);
+      tl.from("#scene-08 .scene-copy", { opacity: 0, y: 32, duration: 0.55, ease: "power3.out" }, 87.5);
+      tl.from("#scene-08 .approval-bracket", { opacity: 0, scaleX: 0.97, duration: 0.5, ease: "power3.out" }, 88.1);
+      tl.from("#scene-08 .tool-rail", { opacity: 0, y: 20, duration: 0.5, ease: "power3.out" }, 93.1);
+      tl.fromTo("#scene-08 img", { scale: 1.02 }, { scale: 1.07, duration: 12.2, ease: "none" }, 87);
+
+      tl.to("#scene-08", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 99);
+      tl.fromTo("#scene-09", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 99);
+      tl.set("#contract-plane", { opacity: 0 }, 99);
+      tl.from("#scene-09 .tool-rail", { opacity: 0, y: 22, duration: 0.5, ease: "power3.out" }, 99.7);
+      tl.fromTo("#remember-plane img", { scale: 1.015 }, { scale: 1.06, duration: 5.1, ease: "none" }, 99);
+      tl.to("#contract-plane", { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 104.2);
+      tl.fromTo("#contract-plane img", { scale: 1.08 }, { scale: 1.02, duration: 5.4, ease: "power3.out" }, 104.2);
+
+      tl.to("#scene-09", { filter: "blur(6px)", scale: 1.02, opacity: 0, duration: 0.45, ease: "power2.inOut" }, 109.2);
+      tl.fromTo("#scene-10", { filter: "blur(6px)", scale: 0.985, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, 109.2);
+      tl.from("#scene-10 .proof-row", { opacity: 0, x: -32, stagger: 0.16, duration: 0.5, ease: "power3.out" }, 110.2);
+      tl.to("#scene-10 .proof-ledger", { opacity: 0, y: -24, duration: 0.5, ease: "power2.in" }, 121.7);
+      tl.to("#scene-10 .image-plane, #scene-10 .scene-shade", { opacity: 0, duration: 0.5, ease: "power2.in" }, 121.7);
+      tl.to("#scene-10 .final-lockup", { opacity: 1, duration: 0.7, ease: "power2.out" }, 121.9);
+      tl.from("#scene-10 .wordmark", { opacity: 0, y: 28, duration: 0.65, ease: "power3.out" }, 122.1);
+      tl.from("#scene-10 .final-statement", { opacity: 0, y: 22, duration: 0.6, ease: "power3.out" }, 122.5);
+      tl.from("#scene-10 .final-sub", { opacity: 0, y: 18, duration: 0.55, ease: "power3.out" }, 122.9);
+      tl.to("#scene-10", { opacity: 0, duration: 0.8, ease: "power2.in" }, 134.2);
+
+      tl.fromTo(".progress-line span", { width: "0%" }, { width: "100%", duration: 135, ease: "none" }, 0);
+      window.__timelines.main = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1817 @@
+[
+  {
+    "text": "Deleting",
+    "start": 0.06,
+    "end": 0.56
+  },
+  {
+    "text": "one",
+    "start": 0.56,
+    "end": 0.77
+  },
+  {
+    "text": "row",
+    "start": 0.77,
+    "end": 0.91
+  },
+  {
+    "text": "is",
+    "start": 1.03,
+    "end": 1.12
+  },
+  {
+    "text": "easy.",
+    "start": 1.12,
+    "end": 1.66
+  },
+  {
+    "text": "Proving",
+    "start": 1.72,
+    "end": 2.06
+  },
+  {
+    "text": "every",
+    "start": 2.06,
+    "end": 2.35
+  },
+  {
+    "text": "downstream",
+    "start": 2.35,
+    "end": 2.92
+  },
+  {
+    "text": "copy",
+    "start": 2.92,
+    "end": 3.05
+  },
+  {
+    "text": "was",
+    "start": 3.05,
+    "end": 3.36
+  },
+  {
+    "text": "handled",
+    "start": 3.36,
+    "end": 3.76
+  },
+  {
+    "text": "without",
+    "start": 3.82,
+    "end": 4.12
+  },
+  {
+    "text": "deleting",
+    "start": 4.12,
+    "end": 4.54
+  },
+  {
+    "text": "data",
+    "start": 4.54,
+    "end": 4.67
+  },
+  {
+    "text": "under",
+    "start": 4.79,
+    "end": 5.07
+  },
+  {
+    "text": "legal",
+    "start": 5.07,
+    "end": 5.16
+  },
+  {
+    "text": "hold",
+    "start": 5.46,
+    "end": 5.64
+  },
+  {
+    "text": "is",
+    "start": 5.64,
+    "end": 5.72
+  },
+  {
+    "text": "the",
+    "start": 5.79,
+    "end": 5.99
+  },
+  {
+    "text": "real",
+    "start": 5.99,
+    "end": 6.28
+  },
+  {
+    "text": "work.",
+    "start": 6.28,
+    "end": 6.74
+  },
+  {
+    "text": "Forget",
+    "start": 6.86,
+    "end": 7.23
+  },
+  {
+    "text": "Ops",
+    "start": 7.23,
+    "end": 7.44
+  },
+  {
+    "text": "turns",
+    "start": 7.44,
+    "end": 7.7
+  },
+  {
+    "text": "data",
+    "start": 7.83,
+    "end": 8.08
+  },
+  {
+    "text": "hub",
+    "start": 8.08,
+    "end": 8.19
+  },
+  {
+    "text": "context",
+    "start": 8.5,
+    "end": 8.77
+  },
+  {
+    "text": "into",
+    "start": 8.88,
+    "end": 9.07
+  },
+  {
+    "text": "an",
+    "start": 9.07,
+    "end": 9.19
+  },
+  {
+    "text": "approval",
+    "start": 9.19,
+    "end": 9.69
+  },
+  {
+    "text": "gated",
+    "start": 9.69,
+    "end": 10
+  },
+  {
+    "text": "privacy",
+    "start": 10,
+    "end": 10.2
+  },
+  {
+    "text": "operation.",
+    "start": 10.52,
+    "end": 11.24
+  },
+  {
+    "text": "This",
+    "start": 11.3,
+    "end": 11.46
+  },
+  {
+    "text": "workbench",
+    "start": 11.46,
+    "end": 11.96
+  },
+  {
+    "text": "is",
+    "start": 11.96,
+    "end": 12.07
+  },
+  {
+    "text": "a",
+    "start": 12.07,
+    "end": 12.12
+  },
+  {
+    "text": "deterministic",
+    "start": 12.12,
+    "end": 12.62
+  },
+  {
+    "text": "replay",
+    "start": 12.94,
+    "end": 13.21
+  },
+  {
+    "text": "of",
+    "start": 13.3,
+    "end": 13.41
+  },
+  {
+    "text": "one",
+    "start": 13.41,
+    "end": 13.66
+  },
+  {
+    "text": "verified",
+    "start": 13.66,
+    "end": 14.34
+  },
+  {
+    "text": "data",
+    "start": 14.34,
+    "end": 14.62
+  },
+  {
+    "text": "hub",
+    "start": 14.62,
+    "end": 14.94
+  },
+  {
+    "text": "MCP",
+    "start": 14.94,
+    "end": 15.18
+  },
+  {
+    "text": "run.",
+    "start": 15.18,
+    "end": 15.72
+  },
+  {
+    "text": "The",
+    "start": 15.78,
+    "end": 15.89
+  },
+  {
+    "text": "subject",
+    "start": 15.89,
+    "end": 16.3
+  },
+  {
+    "text": "request",
+    "start": 16.3,
+    "end": 16.62
+  },
+  {
+    "text": "is",
+    "start": 16.75,
+    "end": 16.82
+  },
+  {
+    "text": "normalized",
+    "start": 16.82,
+    "end": 17.44
+  },
+  {
+    "text": "and",
+    "start": 17.5,
+    "end": 17.61
+  },
+  {
+    "text": "the",
+    "start": 17.61,
+    "end": 17.78
+  },
+  {
+    "text": "raw",
+    "start": 17.78,
+    "end": 17.95
+  },
+  {
+    "text": "identifier",
+    "start": 17.95,
+    "end": 18.53
+  },
+  {
+    "text": "is",
+    "start": 18.53,
+    "end": 18.63
+  },
+  {
+    "text": "hashed",
+    "start": 18.64,
+    "end": 18.84
+  },
+  {
+    "text": "immediately.",
+    "start": 19.14,
+    "end": 19.84
+  },
+  {
+    "text": "It",
+    "start": 19.9,
+    "end": 19.95
+  },
+  {
+    "text": "never",
+    "start": 19.95,
+    "end": 20.24
+  },
+  {
+    "text": "enters",
+    "start": 20.24,
+    "end": 20.58
+  },
+  {
+    "text": "the",
+    "start": 20.58,
+    "end": 20.74
+  },
+  {
+    "text": "plan,",
+    "start": 20.74,
+    "end": 21.12
+  },
+  {
+    "text": "the",
+    "start": 21.12,
+    "end": 21.23
+  },
+  {
+    "text": "logs,",
+    "start": 21.54,
+    "end": 21.71
+  },
+  {
+    "text": "or",
+    "start": 21.71,
+    "end": 21.8
+  },
+  {
+    "text": "data",
+    "start": 21.87,
+    "end": 22.1
+  },
+  {
+    "text": "hub.",
+    "start": 22.1,
+    "end": 22.52
+  },
+  {
+    "text": "Official",
+    "start": 22.58,
+    "end": 22.96
+  },
+  {
+    "text": "MCP",
+    "start": 22.96,
+    "end": 23.18
+  },
+  {
+    "text": "tools",
+    "start": 23.18,
+    "end": 23.56
+  },
+  {
+    "text": "search",
+    "start": 23.56,
+    "end": 23.9
+  },
+  {
+    "text": "the",
+    "start": 24.22,
+    "end": 24.23
+  },
+  {
+    "text": "catalog,",
+    "start": 24.27,
+    "end": 24.8
+  },
+  {
+    "text": "read",
+    "start": 24.86,
+    "end": 24.99
+  },
+  {
+    "text": "entities,",
+    "start": 24.99,
+    "end": 25.47
+  },
+  {
+    "text": "and",
+    "start": 25.47,
+    "end": 25.61
+  },
+  {
+    "text": "schema",
+    "start": 25.61,
+    "end": 25.9
+  },
+  {
+    "text": "fields",
+    "start": 25.9,
+    "end": 26.18
+  },
+  {
+    "text": "and",
+    "start": 26.3,
+    "end": 26.43
+  },
+  {
+    "text": "traverse",
+    "start": 26.43,
+    "end": 26.94
+  },
+  {
+    "text": "asset",
+    "start": 26.94,
+    "end": 27.14
+  },
+  {
+    "text": "and",
+    "start": 27.27,
+    "end": 27.43
+  },
+  {
+    "text": "column",
+    "start": 27.43,
+    "end": 27.63
+  },
+  {
+    "text": "lineage.",
+    "start": 27.94,
+    "end": 28.48
+  },
+  {
+    "text": "21",
+    "start": 28.54,
+    "end": 28.85
+  },
+  {
+    "text": "bounded",
+    "start": 28.85,
+    "end": 29.28
+  },
+  {
+    "text": "calls",
+    "start": 29.28,
+    "end": 29.59
+  },
+  {
+    "text": "reconstruct",
+    "start": 29.59,
+    "end": 30.27
+  },
+  {
+    "text": "seven",
+    "start": 30.27,
+    "end": 30.58
+  },
+  {
+    "text": "assets,",
+    "start": 30.58,
+    "end": 30.96
+  },
+  {
+    "text": "six",
+    "start": 31.02,
+    "end": 31.14
+  },
+  {
+    "text": "lineage",
+    "start": 31.14,
+    "end": 31.56
+  },
+  {
+    "text": "edges,",
+    "start": 31.56,
+    "end": 32
+  },
+  {
+    "text": "and",
+    "start": 32,
+    "end": 32.24
+  },
+  {
+    "text": "19",
+    "start": 32.24,
+    "end": 32.73
+  },
+  {
+    "text": "PII",
+    "start": 32.73,
+    "end": 32.92
+  },
+  {
+    "text": "fields",
+    "start": 32.99,
+    "end": 33.48
+  },
+  {
+    "text": "with",
+    "start": 33.54,
+    "end": 33.73
+  },
+  {
+    "text": "100%",
+    "start": 33.73,
+    "end": 34.36
+  },
+  {
+    "text": "owner",
+    "start": 34.36,
+    "end": 34.66
+  },
+  {
+    "text": "coverage.",
+    "start": 34.69,
+    "end": 35.4
+  },
+  {
+    "text": "Forget",
+    "start": 35.46,
+    "end": 35.78
+  },
+  {
+    "text": "Ops",
+    "start": 35.78,
+    "end": 35.97
+  },
+  {
+    "text": "doesn't",
+    "start": 35.97,
+    "end": 36.31
+  },
+  {
+    "text": "ask",
+    "start": 36.43,
+    "end": 36.59
+  },
+  {
+    "text": "a",
+    "start": 36.59,
+    "end": 36.63
+  },
+  {
+    "text": "model",
+    "start": 36.63,
+    "end": 36.79
+  },
+  {
+    "text": "to",
+    "start": 36.79,
+    "end": 37.1
+  },
+  {
+    "text": "invent",
+    "start": 37.1,
+    "end": 37.46
+  },
+  {
+    "text": "policy.",
+    "start": 37.46,
+    "end": 38.08
+  },
+  {
+    "text": "It",
+    "start": 38.14,
+    "end": 38.19
+  },
+  {
+    "text": "reads",
+    "start": 38.19,
+    "end": 38.46
+  },
+  {
+    "text": "organization",
+    "start": 38.46,
+    "end": 38.98
+  },
+  {
+    "text": "defined",
+    "start": 39.11,
+    "end": 39.46
+  },
+  {
+    "text": "handling",
+    "start": 39.78,
+    "end": 39.96
+  },
+  {
+    "text": "rules,",
+    "start": 39.96,
+    "end": 40.35
+  },
+  {
+    "text": "owners,",
+    "start": 40.41,
+    "end": 40.84
+  },
+  {
+    "text": "and",
+    "start": 40.9,
+    "end": 41.03
+  },
+  {
+    "text": "retention",
+    "start": 41.03,
+    "end": 41.62
+  },
+  {
+    "text": "evidence",
+    "start": 41.62,
+    "end": 42.13
+  },
+  {
+    "text": "from",
+    "start": 42.13,
+    "end": 42.24
+  },
+  {
+    "text": "data",
+    "start": 42.54,
+    "end": 42.66
+  },
+  {
+    "text": "hub.",
+    "start": 42.66,
+    "end": 43.08
+  },
+  {
+    "text": "Five",
+    "start": 43.14,
+    "end": 43.33
+  },
+  {
+    "text": "assets",
+    "start": 43.35,
+    "end": 43.74
+  },
+  {
+    "text": "are",
+    "start": 43.74,
+    "end": 43.94
+  },
+  {
+    "text": "eligible",
+    "start": 43.94,
+    "end": 44.45
+  },
+  {
+    "text": "for",
+    "start": 44.45,
+    "end": 44.48
+  },
+  {
+    "text": "a",
+    "start": 44.48,
+    "end": 44.78
+  },
+  {
+    "text": "safe",
+    "start": 44.78,
+    "end": 44.99
+  },
+  {
+    "text": "mutation.",
+    "start": 44.99,
+    "end": 45.76
+  },
+  {
+    "text": "Finance",
+    "start": 45.82,
+    "end": 46.22
+  },
+  {
+    "text": "remains",
+    "start": 46.22,
+    "end": 46.66
+  },
+  {
+    "text": "under",
+    "start": 46.66,
+    "end": 46.98
+  },
+  {
+    "text": "legal",
+    "start": 46.98,
+    "end": 47.15
+  },
+  {
+    "text": "hold.",
+    "start": 47.46,
+    "end": 47.84
+  },
+  {
+    "text": "The",
+    "start": 47.9,
+    "end": 47.97
+  },
+  {
+    "text": "machine",
+    "start": 47.97,
+    "end": 48.28
+  },
+  {
+    "text": "learning",
+    "start": 48.28,
+    "end": 48.64
+  },
+  {
+    "text": "feature",
+    "start": 48.64,
+    "end": 48.95
+  },
+  {
+    "text": "set",
+    "start": 48.95,
+    "end": 49.12
+  },
+  {
+    "text": "requires",
+    "start": 49.18,
+    "end": 49.59
+  },
+  {
+    "text": "human",
+    "start": 49.59,
+    "end": 49.88
+  },
+  {
+    "text": "review,",
+    "start": 49.88,
+    "end": 50.35
+  },
+  {
+    "text": "both",
+    "start": 50.35,
+    "end": 50.51
+  },
+  {
+    "text": "exceptions",
+    "start": 50.82,
+    "end": 51.24
+  },
+  {
+    "text": "stay",
+    "start": 51.24,
+    "end": 51.49
+  },
+  {
+    "text": "visible.",
+    "start": 51.49,
+    "end": 51.96
+  },
+  {
+    "text": "Before",
+    "start": 52.02,
+    "end": 52.25
+  },
+  {
+    "text": "anything",
+    "start": 52.25,
+    "end": 52.63
+  },
+  {
+    "text": "can",
+    "start": 52.63,
+    "end": 52.79
+  },
+  {
+    "text": "run,",
+    "start": 52.79,
+    "end": 53.04
+  },
+  {
+    "text": "a",
+    "start": 53.04,
+    "end": 53.08
+  },
+  {
+    "text": "reviewer",
+    "start": 53.08,
+    "end": 53.34
+  },
+  {
+    "text": "acknowledges",
+    "start": 53.66,
+    "end": 54.04
+  },
+  {
+    "text": "those",
+    "start": 54.1,
+    "end": 54.32
+  },
+  {
+    "text": "protected",
+    "start": 54.32,
+    "end": 54.83
+  },
+  {
+    "text": "outcomes.",
+    "start": 54.83,
+    "end": 55.43
+  },
+  {
+    "text": "The",
+    "start": 55.54,
+    "end": 55.62
+  },
+  {
+    "text": "approval",
+    "start": 55.62,
+    "end": 56
+  },
+  {
+    "text": "is",
+    "start": 56,
+    "end": 56.09
+  },
+  {
+    "text": "scope",
+    "start": 56.09,
+    "end": 56.33
+  },
+  {
+    "text": "bound",
+    "start": 56.33,
+    "end": 56.6
+  },
+  {
+    "text": "to",
+    "start": 56.6,
+    "end": 56.67
+  },
+  {
+    "text": "exactly",
+    "start": 56.67,
+    "end": 56.86
+  },
+  {
+    "text": "five",
+    "start": 57.18,
+    "end": 57.45
+  },
+  {
+    "text": "actions",
+    "start": 57.51,
+    "end": 57.96
+  },
+  {
+    "text": "in",
+    "start": 58.02,
+    "end": 58.09
+  },
+  {
+    "text": "dry",
+    "start": 58.09,
+    "end": 58.29
+  },
+  {
+    "text": "run",
+    "start": 58.29,
+    "end": 58.49
+  },
+  {
+    "text": "mode",
+    "start": 58.49,
+    "end": 58.76
+  },
+  {
+    "text": "with",
+    "start": 58.76,
+    "end": 59.03
+  },
+  {
+    "text": "rollback",
+    "start": 59.03,
+    "end": 59.36
+  },
+  {
+    "text": "armed.",
+    "start": 59.66,
+    "end": 60.08
+  },
+  {
+    "text": "One",
+    "start": 60.18,
+    "end": 60.3
+  },
+  {
+    "text": "idempotent",
+    "start": 60.3,
+    "end": 60.87
+  },
+  {
+    "text": "transaction",
+    "start": 60.87,
+    "end": 61.49
+  },
+  {
+    "text": "executes",
+    "start": 61.82,
+    "end": 62.08
+  },
+  {
+    "text": "only",
+    "start": 62.08,
+    "end": 62.32
+  },
+  {
+    "text": "the",
+    "start": 62.32,
+    "end": 62.49
+  },
+  {
+    "text": "permitted",
+    "start": 62.49,
+    "end": 63
+  },
+  {
+    "text": "plan.",
+    "start": 63,
+    "end": 63.4
+  },
+  {
+    "text": "Each",
+    "start": 63.46,
+    "end": 63.65
+  },
+  {
+    "text": "action",
+    "start": 63.67,
+    "end": 64.05
+  },
+  {
+    "text": "produces",
+    "start": 64.05,
+    "end": 64.56
+  },
+  {
+    "text": "a",
+    "start": 64.56,
+    "end": 64.63
+  },
+  {
+    "text": "receipt.",
+    "start": 64.63,
+    "end": 65.12
+  },
+  {
+    "text": "If",
+    "start": 65.18,
+    "end": 65.25
+  },
+  {
+    "text": "a",
+    "start": 65.25,
+    "end": 65.31
+  },
+  {
+    "text": "field",
+    "start": 65.31,
+    "end": 65.63
+  },
+  {
+    "text": "contract",
+    "start": 65.63,
+    "end": 66.16
+  },
+  {
+    "text": "or",
+    "start": 66.16,
+    "end": 66.26
+  },
+  {
+    "text": "verification",
+    "start": 66.26,
+    "end": 66.91
+  },
+  {
+    "text": "check",
+    "start": 66.91,
+    "end": 67.2
+  },
+  {
+    "text": "fails,",
+    "start": 67.2,
+    "end": 67.6
+  },
+  {
+    "text": "the",
+    "start": 67.66,
+    "end": 67.77
+  },
+  {
+    "text": "complete",
+    "start": 67.77,
+    "end": 68.23
+  },
+  {
+    "text": "transaction",
+    "start": 68.23,
+    "end": 68.86
+  },
+  {
+    "text": "rolls",
+    "start": 68.86,
+    "end": 68.99
+  },
+  {
+    "text": "back.",
+    "start": 69.3,
+    "end": 69.56
+  },
+  {
+    "text": "Five",
+    "start": 69.62,
+    "end": 69.79
+  },
+  {
+    "text": "of",
+    "start": 69.79,
+    "end": 69.9
+  },
+  {
+    "text": "five",
+    "start": 69.9,
+    "end": 70.13
+  },
+  {
+    "text": "receipts",
+    "start": 70.13,
+    "end": 70.46
+  },
+  {
+    "text": "are",
+    "start": 70.59,
+    "end": 70.75
+  },
+  {
+    "text": "captured.",
+    "start": 70.75,
+    "end": 71.4
+  },
+  {
+    "text": "Verification",
+    "start": 71.46,
+    "end": 72.11
+  },
+  {
+    "text": "checks",
+    "start": 72.11,
+    "end": 72.47
+  },
+  {
+    "text": "every",
+    "start": 72.47,
+    "end": 72.77
+  },
+  {
+    "text": "outcome,",
+    "start": 72.77,
+    "end": 73.2
+  },
+  {
+    "text": "not",
+    "start": 73.26,
+    "end": 73.36
+  },
+  {
+    "text": "just",
+    "start": 73.36,
+    "end": 73.57
+  },
+  {
+    "text": "the",
+    "start": 73.57,
+    "end": 73.73
+  },
+  {
+    "text": "successful",
+    "start": 73.73,
+    "end": 74.26
+  },
+  {
+    "text": "deletes.",
+    "start": 74.26,
+    "end": 74.8
+  },
+  {
+    "text": "Permitted",
+    "start": 74.86,
+    "end": 75.26
+  },
+  {
+    "text": "residuals",
+    "start": 75.26,
+    "end": 75.71
+  },
+  {
+    "text": "are",
+    "start": 75.83,
+    "end": 75.88
+  },
+  {
+    "text": "zero.",
+    "start": 75.88,
+    "end": 76.19
+  },
+  {
+    "text": "One",
+    "start": 76.34,
+    "end": 76.45
+  },
+  {
+    "text": "record",
+    "start": 76.45,
+    "end": 76.79
+  },
+  {
+    "text": "remains",
+    "start": 76.79,
+    "end": 77.18
+  },
+  {
+    "text": "under",
+    "start": 77.18,
+    "end": 77.46
+  },
+  {
+    "text": "legal",
+    "start": 77.46,
+    "end": 77.66
+  },
+  {
+    "text": "hold.",
+    "start": 77.98,
+    "end": 78.2
+  },
+  {
+    "text": "One",
+    "start": 78.26,
+    "end": 78.36
+  },
+  {
+    "text": "feature",
+    "start": 78.36,
+    "end": 78.74
+  },
+  {
+    "text": "set",
+    "start": 78.74,
+    "end": 78.9
+  },
+  {
+    "text": "remains",
+    "start": 78.9,
+    "end": 79.28
+  },
+  {
+    "text": "pending",
+    "start": 79.28,
+    "end": 79.58
+  },
+  {
+    "text": "review.",
+    "start": 79.9,
+    "end": 80.16
+  },
+  {
+    "text": "The",
+    "start": 80.22,
+    "end": 80.33
+  },
+  {
+    "text": "honest",
+    "start": 80.33,
+    "end": 80.67
+  },
+  {
+    "text": "result",
+    "start": 80.67,
+    "end": 81.01
+  },
+  {
+    "text": "is",
+    "start": 81.01,
+    "end": 81.07
+  },
+  {
+    "text": "partial",
+    "start": 81.11,
+    "end": 81.52
+  },
+  {
+    "text": "verified,",
+    "start": 81.52,
+    "end": 82
+  },
+  {
+    "text": "not",
+    "start": 82.06,
+    "end": 82.18
+  },
+  {
+    "text": "a",
+    "start": 82.18,
+    "end": 82.24
+  },
+  {
+    "text": "false",
+    "start": 82.24,
+    "end": 82.53
+  },
+  {
+    "text": "green",
+    "start": 82.53,
+    "end": 82.82
+  },
+  {
+    "text": "success",
+    "start": 82.82,
+    "end": 83.17
+  },
+  {
+    "text": "state.",
+    "start": 83.17,
+    "end": 83.56
+  },
+  {
+    "text": "An",
+    "start": 83.62,
+    "end": 83.68
+  },
+  {
+    "text": "idempotent",
+    "start": 83.68,
+    "end": 84.3
+  },
+  {
+    "text": "replay",
+    "start": 84.3,
+    "end": 84.68
+  },
+  {
+    "text": "returns",
+    "start": 84.68,
+    "end": 84.94
+  },
+  {
+    "text": "the",
+    "start": 85.26,
+    "end": 85.33
+  },
+  {
+    "text": "same",
+    "start": 85.33,
+    "end": 85.52
+  },
+  {
+    "text": "evidence",
+    "start": 85.59,
+    "end": 86.04
+  },
+  {
+    "text": "without",
+    "start": 86.1,
+    "end": 86.39
+  },
+  {
+    "text": "repeating",
+    "start": 86.39,
+    "end": 86.84
+  },
+  {
+    "text": "the",
+    "start": 86.84,
+    "end": 86.95
+  },
+  {
+    "text": "work.",
+    "start": 87.01,
+    "end": 87.36
+  },
+  {
+    "text": "Execution",
+    "start": 87.42,
+    "end": 87.89
+  },
+  {
+    "text": "approval",
+    "start": 87.89,
+    "end": 88.26
+  },
+  {
+    "text": "does",
+    "start": 88.39,
+    "end": 88.59
+  },
+  {
+    "text": "not",
+    "start": 88.59,
+    "end": 88.74
+  },
+  {
+    "text": "authorize",
+    "start": 89.06,
+    "end": 89.28
+  },
+  {
+    "text": "metadata",
+    "start": 89.28,
+    "end": 89.72
+  },
+  {
+    "text": "write",
+    "start": 89.72,
+    "end": 89.94
+  },
+  {
+    "text": "back.",
+    "start": 89.99,
+    "end": 90.32
+  },
+  {
+    "text": "Forget",
+    "start": 90.38,
+    "end": 90.69
+  },
+  {
+    "text": "ops",
+    "start": 90.69,
+    "end": 90.87
+  },
+  {
+    "text": "requires",
+    "start": 90.87,
+    "end": 91.36
+  },
+  {
+    "text": "a",
+    "start": 91.36,
+    "end": 91.42
+  },
+  {
+    "text": "second.",
+    "start": 91.42,
+    "end": 92
+  },
+  {
+    "text": "Separate",
+    "start": 92.06,
+    "end": 92.42
+  },
+  {
+    "text": "approval,",
+    "start": 92.42,
+    "end": 92.91
+  },
+  {
+    "text": "only",
+    "start": 92.96,
+    "end": 93.18
+  },
+  {
+    "text": "then",
+    "start": 93.2,
+    "end": 93.38
+  },
+  {
+    "text": "does",
+    "start": 93.38,
+    "end": 93.54
+  },
+  {
+    "text": "it",
+    "start": 93.54,
+    "end": 93.7
+  },
+  {
+    "text": "add",
+    "start": 93.7,
+    "end": 93.92
+  },
+  {
+    "text": "tags,",
+    "start": 93.92,
+    "end": 94.4
+  },
+  {
+    "text": "structured",
+    "start": 94.46,
+    "end": 94.85
+  },
+  {
+    "text": "properties,",
+    "start": 94.85,
+    "end": 95.31
+  },
+  {
+    "text": "and",
+    "start": 95.43,
+    "end": 95.58
+  },
+  {
+    "text": "one",
+    "start": 95.58,
+    "end": 95.76
+  },
+  {
+    "text": "reusable",
+    "start": 95.76,
+    "end": 96.28
+  },
+  {
+    "text": "evidence",
+    "start": 96.28,
+    "end": 96.64
+  },
+  {
+    "text": "document",
+    "start": 96.64,
+    "end": 97.08
+  },
+  {
+    "text": "through",
+    "start": 97.14,
+    "end": 97.52
+  },
+  {
+    "text": "official",
+    "start": 97.52,
+    "end": 97.98
+  },
+  {
+    "text": "data",
+    "start": 98.04,
+    "end": 98.26
+  },
+  {
+    "text": "hub",
+    "start": 98.28,
+    "end": 98.46
+  },
+  {
+    "text": "mutation",
+    "start": 98.78,
+    "end": 98.98
+  },
+  {
+    "text": "tools.",
+    "start": 98.98,
+    "end": 99.52
+  },
+  {
+    "text": "A",
+    "start": 99.57,
+    "end": 99.59
+  },
+  {
+    "text": "fresh",
+    "start": 99.59,
+    "end": 99.96
+  },
+  {
+    "text": "mutation-disabled",
+    "start": 99.96,
+    "end": 101.23
+  },
+  {
+    "text": "MCP",
+    "start": 101.24,
+    "end": 101.45
+  },
+  {
+    "text": "session",
+    "start": 101.45,
+    "end": 102
+  },
+  {
+    "text": "reads",
+    "start": 102,
+    "end": 102.2
+  },
+  {
+    "text": "everything",
+    "start": 102.2,
+    "end": 102.68
+  },
+  {
+    "text": "back.",
+    "start": 102.69,
+    "end": 103.04
+  },
+  {
+    "text": "Seven",
+    "start": 103.1,
+    "end": 103.29
+  },
+  {
+    "text": "entities,",
+    "start": 103.31,
+    "end": 103.84
+  },
+  {
+    "text": "the",
+    "start": 103.84,
+    "end": 103.95
+  },
+  {
+    "text": "evidence",
+    "start": 103.99,
+    "end": 104.41
+  },
+  {
+    "text": "document,",
+    "start": 104.74,
+    "end": 104.88
+  },
+  {
+    "text": "and",
+    "start": 104.94,
+    "end": 105.07
+  },
+  {
+    "text": "the",
+    "start": 105.07,
+    "end": 105.26
+  },
+  {
+    "text": "same",
+    "start": 105.26,
+    "end": 105.52
+  },
+  {
+    "text": "document",
+    "start": 105.52,
+    "end": 106.04
+  },
+  {
+    "text": "U",
+    "start": 106.04,
+    "end": 106.22
+  },
+  {
+    "text": "R",
+    "start": 106.22,
+    "end": 106.28
+  },
+  {
+    "text": "N",
+    "start": 106.58,
+    "end": 106.61
+  },
+  {
+    "text": "on",
+    "start": 106.63,
+    "end": 106.74
+  },
+  {
+    "text": "retry.",
+    "start": 106.74,
+    "end": 107.32
+  },
+  {
+    "text": "Raw",
+    "start": 107.38,
+    "end": 107.52
+  },
+  {
+    "text": "subject",
+    "start": 107.52,
+    "end": 107.99
+  },
+  {
+    "text": "identifiers",
+    "start": 107.99,
+    "end": 108.62
+  },
+  {
+    "text": "never",
+    "start": 109.02,
+    "end": 109.09
+  },
+  {
+    "text": "appear.",
+    "start": 109.09,
+    "end": 109.72
+  },
+  {
+    "text": "The",
+    "start": 109.78,
+    "end": 109.92
+  },
+  {
+    "text": "live",
+    "start": 109.92,
+    "end": 110.19
+  },
+  {
+    "text": "data",
+    "start": 110.19,
+    "end": 110.46
+  },
+  {
+    "text": "hub",
+    "start": 110.46,
+    "end": 110.62
+  },
+  {
+    "text": "path",
+    "start": 110.68,
+    "end": 110.94
+  },
+  {
+    "text": "and",
+    "start": 110.94,
+    "end": 111.04
+  },
+  {
+    "text": "the",
+    "start": 111.04,
+    "end": 111.12
+  },
+  {
+    "text": "deterministic",
+    "start": 111.42,
+    "end": 111.84
+  },
+  {
+    "text": "offline",
+    "start": 111.84,
+    "end": 112.3
+  },
+  {
+    "text": "path",
+    "start": 112.35,
+    "end": 112.64
+  },
+  {
+    "text": "share",
+    "start": 112.7,
+    "end": 112.93
+  },
+  {
+    "text": "one",
+    "start": 112.93,
+    "end": 113.1
+  },
+  {
+    "text": "strict",
+    "start": 113.1,
+    "end": 113.45
+  },
+  {
+    "text": "domain",
+    "start": 113.45,
+    "end": 113.8
+  },
+  {
+    "text": "model.",
+    "start": 113.8,
+    "end": 114.28
+  },
+  {
+    "text": "Seventy-nine",
+    "start": 114.34,
+    "end": 115.05
+  },
+  {
+    "text": "automated",
+    "start": 115.05,
+    "end": 115.61
+  },
+  {
+    "text": "tests",
+    "start": 115.63,
+    "end": 115.66
+  },
+  {
+    "text": "cover",
+    "start": 115.98,
+    "end": 116.25
+  },
+  {
+    "text": "policy",
+    "start": 116.31,
+    "end": 116.66
+  },
+  {
+    "text": "gates,",
+    "start": 116.66,
+    "end": 117.16
+  },
+  {
+    "text": "rollback,",
+    "start": 117.16,
+    "end": 117.68
+  },
+  {
+    "text": "idempotency,",
+    "start": 117.74,
+    "end": 118.54
+  },
+  {
+    "text": "evidence",
+    "start": 118.54,
+    "end": 119.05
+  },
+  {
+    "text": "accessibility,",
+    "start": 119.38,
+    "end": 120
+  },
+  {
+    "text": "and",
+    "start": 120.06,
+    "end": 120.17
+  },
+  {
+    "text": "the",
+    "start": 120.17,
+    "end": 120.34
+  },
+  {
+    "text": "complete",
+    "start": 120.34,
+    "end": 120.8
+  },
+  {
+    "text": "reviewer",
+    "start": 120.8,
+    "end": 121.26
+  },
+  {
+    "text": "journey.",
+    "start": 121.26,
+    "end": 121.88
+  },
+  {
+    "text": "Forget",
+    "start": 121.94,
+    "end": 122.27
+  },
+  {
+    "text": "ops",
+    "start": 122.27,
+    "end": 122.46
+  },
+  {
+    "text": "makes",
+    "start": 122.46,
+    "end": 122.78
+  },
+  {
+    "text": "exceptions",
+    "start": 122.78,
+    "end": 123.25
+  },
+  {
+    "text": "first-class,",
+    "start": 123.58,
+    "end": 124.16
+  },
+  {
+    "text": "approvals",
+    "start": 124.22,
+    "end": 124.7
+  },
+  {
+    "text": "explicit,",
+    "start": 124.7,
+    "end": 125.32
+  },
+  {
+    "text": "and",
+    "start": 125.32,
+    "end": 125.5
+  },
+  {
+    "text": "every",
+    "start": 125.51,
+    "end": 125.54
+  },
+  {
+    "text": "claim",
+    "start": 125.86,
+    "end": 126.13
+  },
+  {
+    "text": "replayable.",
+    "start": 126.19,
+    "end": 127.04
+  },
+  {
+    "text": "Data",
+    "start": 127.1,
+    "end": 127.32
+  },
+  {
+    "text": "hub",
+    "start": 127.32,
+    "end": 127.53
+  },
+  {
+    "text": "context",
+    "start": 127.53,
+    "end": 127.94
+  },
+  {
+    "text": "becomes",
+    "start": 128.07,
+    "end": 128.42
+  },
+  {
+    "text": "operational",
+    "start": 128.74,
+    "end": 129.29
+  },
+  {
+    "text": "proof.",
+    "start": 129.29,
+    "end": 129.84
+  }
+]

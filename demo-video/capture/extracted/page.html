@@ -1,0 +1,2549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/fraunces/600.css">/* fraunces-vietnamese-600-normal */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/fraunces/files/fraunces-vietnamese-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/fraunces/files/fraunces-vietnamese-600-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* fraunces-latin-ext-600-normal */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/fraunces/files/fraunces-latin-ext-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/fraunces/files/fraunces-latin-ext-600-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* fraunces-latin-600-normal */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-mono/400.css">/* ibm-plex-mono-cyrillic-ext-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-400-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-mono-cyrillic-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-400-normal.woff) format('woff');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+
+/* ibm-plex-mono-vietnamese-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-400-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-mono-latin-ext-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-400-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-mono-latin-400-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-mono/500.css">/* ibm-plex-mono-cyrillic-ext-500-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-500-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-mono-cyrillic-500-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-500-normal.woff) format('woff');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+
+/* ibm-plex-mono-vietnamese-500-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-500-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-mono-latin-ext-500-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-500-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-mono-latin-500-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-mono/600.css">/* ibm-plex-mono-cyrillic-ext-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-ext-600-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-mono-cyrillic-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-600-normal.woff) format('woff');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+
+/* ibm-plex-mono-vietnamese-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-vietnamese-600-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-mono-latin-ext-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-ext-600-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-mono-latin-600-normal */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-sans-condensed/400.css">/* ibm-plex-sans-condensed-cyrillic-ext-400-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-400-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-sans-condensed-vietnamese-400-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-400-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-sans-condensed-latin-ext-400-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-400-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-sans-condensed-latin-400-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-400-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-sans-condensed/500.css">/* ibm-plex-sans-condensed-cyrillic-ext-500-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-500-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-sans-condensed-vietnamese-500-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-500-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-sans-condensed-latin-ext-500-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-500-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-sans-condensed-latin-500-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-500-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-500-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@fontsource/ibm-plex-sans-condensed/600.css">/* ibm-plex-sans-condensed-cyrillic-ext-600-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-cyrillic-ext-600-normal.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* ibm-plex-sans-condensed-vietnamese-600-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-vietnamese-600-normal.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* ibm-plex-sans-condensed-latin-ext-600-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-ext-600-normal.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ibm-plex-sans-condensed-latin-600-normal */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-600-normal.woff2) format('woff2'), url(/node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-600-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/node_modules/@xyflow/react/dist/style.css">/* this gets exported as style.css and can be used for the default theming */
+/* these are the necessary styles for React/Svelte Flow, they get used by base.css and style.css */
+.react-flow {
+  direction: ltr;
+
+  --xy-edge-stroke-default: #b1b1b7;
+  --xy-edge-stroke-width-default: 1;
+  --xy-edge-stroke-selected-default: #555;
+
+  --xy-connectionline-stroke-default: #b1b1b7;
+  --xy-connectionline-stroke-width-default: 1;
+
+  --xy-attribution-background-color-default: rgba(255, 255, 255, 0.5);
+
+  --xy-minimap-background-color-default: #fff;
+  --xy-minimap-mask-background-color-default: rgba(240, 240, 240, 0.6);
+  --xy-minimap-mask-stroke-color-default: transparent;
+  --xy-minimap-mask-stroke-width-default: 1;
+  --xy-minimap-node-background-color-default: #e2e2e2;
+  --xy-minimap-node-stroke-color-default: transparent;
+  --xy-minimap-node-stroke-width-default: 2;
+
+  --xy-background-color-default: transparent;
+  --xy-background-pattern-dots-color-default: #91919a;
+  --xy-background-pattern-lines-color-default: #eee;
+  --xy-background-pattern-cross-color-default: #e2e2e2;
+  background-color: var(--xy-background-color, var(--xy-background-color-default));
+  --xy-node-color-default: inherit;
+  --xy-node-border-default: 1px solid #1a192b;
+  --xy-node-background-color-default: #fff;
+  --xy-node-group-background-color-default: rgba(240, 240, 240, 0.25);
+  --xy-node-boxshadow-hover-default: 0 1px 4px 1px rgba(0, 0, 0, 0.08);
+  --xy-node-boxshadow-selected-default: 0 0 0 0.5px #1a192b;
+  --xy-node-border-radius-default: 3px;
+
+  --xy-handle-background-color-default: #1a192b;
+  --xy-handle-border-color-default: #fff;
+
+  --xy-selection-background-color-default: rgba(0, 89, 220, 0.08);
+  --xy-selection-border-default: 1px dotted rgba(0, 89, 220, 0.8);
+
+  --xy-controls-button-background-color-default: #fefefe;
+  --xy-controls-button-background-color-hover-default: #f4f4f4;
+  --xy-controls-button-color-default: inherit;
+  --xy-controls-button-color-hover-default: inherit;
+  --xy-controls-button-border-color-default: #eee;
+  --xy-controls-box-shadow-default: 0 0 2px 1px rgba(0, 0, 0, 0.08);
+
+  --xy-edge-label-background-color-default: #ffffff;
+  --xy-edge-label-color-default: inherit;
+  --xy-resize-background-color-default: #3367d9;
+}
+.react-flow.dark {
+  --xy-edge-stroke-default: #3e3e3e;
+  --xy-edge-stroke-width-default: 1;
+  --xy-edge-stroke-selected-default: #727272;
+
+  --xy-connectionline-stroke-default: #b1b1b7;
+  --xy-connectionline-stroke-width-default: 1;
+
+  --xy-attribution-background-color-default: rgba(150, 150, 150, 0.25);
+
+  --xy-minimap-background-color-default: #141414;
+  --xy-minimap-mask-background-color-default: rgba(60, 60, 60, 0.6);
+  --xy-minimap-mask-stroke-color-default: transparent;
+  --xy-minimap-mask-stroke-width-default: 1;
+  --xy-minimap-node-background-color-default: #2b2b2b;
+  --xy-minimap-node-stroke-color-default: transparent;
+  --xy-minimap-node-stroke-width-default: 2;
+
+  --xy-background-color-default: #141414;
+  --xy-background-pattern-dots-color-default: #555;
+  --xy-background-pattern-lines-color-default: #333;
+  --xy-background-pattern-cross-color-default: #333;
+  --xy-node-color-default: #f8f8f8;
+  --xy-node-border-default: 1px solid #3c3c3c;
+  --xy-node-background-color-default: #1e1e1e;
+  --xy-node-group-background-color-default: rgba(240, 240, 240, 0.25);
+  --xy-node-boxshadow-hover-default: 0 1px 4px 1px rgba(255, 255, 255, 0.08);
+  --xy-node-boxshadow-selected-default: 0 0 0 0.5px #999;
+
+  --xy-handle-background-color-default: #bebebe;
+  --xy-handle-border-color-default: #1e1e1e;
+
+  --xy-selection-background-color-default: rgba(200, 200, 220, 0.08);
+  --xy-selection-border-default: 1px dotted rgba(200, 200, 220, 0.8);
+
+  --xy-controls-button-background-color-default: #2b2b2b;
+  --xy-controls-button-background-color-hover-default: #3e3e3e;
+  --xy-controls-button-color-default: #f8f8f8;
+  --xy-controls-button-color-hover-default: #fff;
+  --xy-controls-button-border-color-default: #5b5b5b;
+  --xy-controls-box-shadow-default: 0 0 2px 1px rgba(0, 0, 0, 0.08);
+
+  --xy-edge-label-background-color-default: #141414;
+  --xy-edge-label-color-default: #f8f8f8;
+}
+.react-flow__background {
+  background-color: var(--xy-background-color-props, var(--xy-background-color, var(--xy-background-color-default)));
+  pointer-events: none;
+  z-index: -1;
+}
+.react-flow__container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.react-flow__pane {
+  z-index: 1;
+  touch-action: none;
+}
+.react-flow__pane.draggable {
+    cursor: grab;
+  }
+.react-flow__pane.dragging {
+    cursor: grabbing;
+  }
+.react-flow__pane.selection {
+    cursor: pointer;
+  }
+.react-flow__viewport {
+  transform-origin: 0 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.react-flow__renderer {
+  z-index: 4;
+}
+.react-flow__selection {
+  z-index: 6;
+}
+.react-flow__nodesselection-rect:focus,
+.react-flow__nodesselection-rect:focus-visible {
+  outline: none;
+}
+.react-flow__edge-path {
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+  stroke-width: var(--xy-edge-stroke-width, var(--xy-edge-stroke-width-default));
+  fill: none;
+}
+.react-flow__connection-path {
+  stroke: var(--xy-connectionline-stroke, var(--xy-connectionline-stroke-default));
+  stroke-width: var(--xy-connectionline-stroke-width, var(--xy-connectionline-stroke-width-default));
+  fill: none;
+}
+.react-flow .react-flow__edges {
+  position: absolute;
+}
+.react-flow .react-flow__edges svg {
+    overflow: visible;
+    position: absolute;
+    pointer-events: none;
+  }
+.react-flow__edge {
+  pointer-events: visibleStroke;
+}
+.react-flow__edge.selectable {
+    cursor: pointer;
+  }
+.react-flow__edge.animated path {
+    stroke-dasharray: 5;
+    animation: dashdraw 0.5s linear infinite;
+  }
+.react-flow__edge.animated path.react-flow__edge-interaction {
+    stroke-dasharray: none;
+    animation: none;
+  }
+.react-flow__edge.inactive {
+    pointer-events: none;
+  }
+.react-flow__edge.selected,
+  .react-flow__edge:focus,
+  .react-flow__edge:focus-visible {
+    outline: none;
+  }
+.react-flow__edge.selected .react-flow__edge-path,
+  .react-flow__edge.selectable:focus .react-flow__edge-path,
+  .react-flow__edge.selectable:focus-visible .react-flow__edge-path {
+    stroke: var(--xy-edge-stroke-selected, var(--xy-edge-stroke-selected-default));
+  }
+.react-flow__edge-textwrapper {
+    pointer-events: all;
+  }
+.react-flow__edge .react-flow__edge-text {
+    pointer-events: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+  }
+/* Arrowhead marker styles - use CSS custom properties as default */
+.react-flow__arrowhead polyline {
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+}
+.react-flow__arrowhead polyline.arrowclosed {
+  fill: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+}
+.react-flow__connection {
+  pointer-events: none;
+}
+.react-flow__connection .animated {
+    stroke-dasharray: 5;
+    animation: dashdraw 0.5s linear infinite;
+  }
+svg.react-flow__connectionline {
+  z-index: 1001;
+  overflow: visible;
+  position: absolute;
+}
+.react-flow__nodes {
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+.react-flow__node {
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: all;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+.react-flow__node.selectable {
+    cursor: pointer;
+  }
+.react-flow__node.draggable {
+    cursor: grab;
+    pointer-events: all;
+  }
+.react-flow__node.draggable.dragging {
+      cursor: grabbing;
+    }
+.react-flow__nodesselection {
+  z-index: 3;
+  transform-origin: left top;
+  pointer-events: none;
+}
+.react-flow__nodesselection-rect {
+    position: absolute;
+    pointer-events: all;
+    cursor: grab;
+  }
+.react-flow__handle {
+  position: absolute;
+  pointer-events: none;
+  min-width: 5px;
+  min-height: 5px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--xy-handle-background-color, var(--xy-handle-background-color-default));
+  border: 1px solid var(--xy-handle-border-color, var(--xy-handle-border-color-default));
+  border-radius: 100%;
+}
+.react-flow__handle.connectingfrom {
+    pointer-events: all;
+  }
+.react-flow__handle.connectionindicator {
+    pointer-events: all;
+    cursor: crosshair;
+  }
+.react-flow__handle-bottom {
+    top: auto;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+  }
+.react-flow__handle-top {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.react-flow__handle-left {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+.react-flow__handle-right {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+.react-flow__edgeupdater {
+  cursor: move;
+  pointer-events: all;
+}
+.react-flow__pane.selection .react-flow__panel {
+  pointer-events: none;
+}
+.react-flow__panel {
+  position: absolute;
+  z-index: 5;
+  margin: 15px;
+}
+.react-flow__panel.top {
+    top: 0;
+  }
+.react-flow__panel.bottom {
+    bottom: 0;
+  }
+.react-flow__panel.top.center, .react-flow__panel.bottom.center {
+      left: 50%;
+      transform: translateX(-15px) translateX(-50%);
+    }
+.react-flow__panel.left {
+    left: 0;
+  }
+.react-flow__panel.right {
+    right: 0;
+  }
+.react-flow__panel.left.center, .react-flow__panel.right.center {
+      top: 50%;
+      transform: translateY(-15px) translateY(-50%);
+    }
+.react-flow__attribution {
+  font-size: 10px;
+  background: var(--xy-attribution-background-color, var(--xy-attribution-background-color-default));
+  padding: 2px 3px;
+  margin: 0;
+}
+.react-flow__attribution a {
+    text-decoration: none;
+    color: #999;
+  }
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
+}
+.react-flow__edgelabel-renderer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  left: 0;
+  top: 0;
+}
+.react-flow__viewport-portal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.react-flow__minimap {
+  background: var(
+    --xy-minimap-background-color-props,
+    var(--xy-minimap-background-color, var(--xy-minimap-background-color-default))
+  );
+}
+.react-flow__minimap-svg {
+    display: block;
+  }
+.react-flow__minimap-mask {
+    fill: var(
+      --xy-minimap-mask-background-color-props,
+      var(--xy-minimap-mask-background-color, var(--xy-minimap-mask-background-color-default))
+    );
+    stroke: var(
+      --xy-minimap-mask-stroke-color-props,
+      var(--xy-minimap-mask-stroke-color, var(--xy-minimap-mask-stroke-color-default))
+    );
+    stroke-width: var(
+      --xy-minimap-mask-stroke-width-props,
+      var(--xy-minimap-mask-stroke-width, var(--xy-minimap-mask-stroke-width-default))
+    );
+  }
+.react-flow__minimap-node {
+    fill: var(
+      --xy-minimap-node-background-color-props,
+      var(--xy-minimap-node-background-color, var(--xy-minimap-node-background-color-default))
+    );
+    stroke: var(
+      --xy-minimap-node-stroke-color-props,
+      var(--xy-minimap-node-stroke-color, var(--xy-minimap-node-stroke-color-default))
+    );
+    stroke-width: var(
+      --xy-minimap-node-stroke-width-props,
+      var(--xy-minimap-node-stroke-width, var(--xy-minimap-node-stroke-width-default))
+    );
+  }
+.react-flow__background-pattern.dots {
+    fill: var(
+      --xy-background-pattern-color-props,
+      var(--xy-background-pattern-color, var(--xy-background-pattern-dots-color-default))
+    );
+  }
+.react-flow__background-pattern.lines {
+    stroke: var(
+      --xy-background-pattern-color-props,
+      var(--xy-background-pattern-color, var(--xy-background-pattern-lines-color-default))
+    );
+  }
+.react-flow__background-pattern.cross {
+    stroke: var(
+      --xy-background-pattern-color-props,
+      var(--xy-background-pattern-color, var(--xy-background-pattern-cross-color-default))
+    );
+  }
+.react-flow__controls {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--xy-controls-box-shadow, var(--xy-controls-box-shadow-default));
+}
+.react-flow__controls.horizontal {
+    flex-direction: row;
+  }
+.react-flow__controls-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26px;
+    width: 26px;
+    padding: 4px;
+    border: none;
+    background: var(--xy-controls-button-background-color, var(--xy-controls-button-background-color-default));
+    border-bottom: 1px solid
+      var(
+        --xy-controls-button-border-color-props,
+        var(--xy-controls-button-border-color, var(--xy-controls-button-border-color-default))
+      );
+    color: var(
+      --xy-controls-button-color-props,
+      var(--xy-controls-button-color, var(--xy-controls-button-color-default))
+    );
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+  }
+.react-flow__controls-button svg {
+      width: 100%;
+      max-width: 12px;
+      max-height: 12px;
+      fill: currentColor;
+    }
+.react-flow__edge.updating .react-flow__edge-path {
+      stroke: #777;
+    }
+.react-flow__edge-text {
+    font-size: 10px;
+  }
+.react-flow__node.selectable:focus,
+  .react-flow__node.selectable:focus-visible {
+    outline: none;
+  }
+.react-flow__node-input,
+.react-flow__node-default,
+.react-flow__node-output,
+.react-flow__node-group {
+  padding: 10px;
+  border-radius: var(--xy-node-border-radius, var(--xy-node-border-radius-default));
+  width: 150px;
+  font-size: 12px;
+  color: var(--xy-node-color, var(--xy-node-color-default));
+  text-align: center;
+  border: var(--xy-node-border, var(--xy-node-border-default));
+  background-color: var(--xy-node-background-color, var(--xy-node-background-color-default));
+}
+.react-flow__node-input.selectable:hover, .react-flow__node-default.selectable:hover, .react-flow__node-output.selectable:hover, .react-flow__node-group.selectable:hover {
+      box-shadow: var(--xy-node-boxshadow-hover, var(--xy-node-boxshadow-hover-default));
+    }
+.react-flow__node-input.selectable.selected,
+    .react-flow__node-input.selectable:focus,
+    .react-flow__node-input.selectable:focus-visible,
+    .react-flow__node-default.selectable.selected,
+    .react-flow__node-default.selectable:focus,
+    .react-flow__node-default.selectable:focus-visible,
+    .react-flow__node-output.selectable.selected,
+    .react-flow__node-output.selectable:focus,
+    .react-flow__node-output.selectable:focus-visible,
+    .react-flow__node-group.selectable.selected,
+    .react-flow__node-group.selectable:focus,
+    .react-flow__node-group.selectable:focus-visible {
+      box-shadow: var(--xy-node-boxshadow-selected, var(--xy-node-boxshadow-selected-default));
+    }
+.react-flow__node-group {
+  background-color: var(--xy-node-group-background-color, var(--xy-node-group-background-color-default));
+}
+.react-flow__nodesselection-rect,
+.react-flow__selection {
+  background: var(--xy-selection-background-color, var(--xy-selection-background-color-default));
+  border: var(--xy-selection-border, var(--xy-selection-border-default));
+}
+.react-flow__nodesselection-rect:focus,
+  .react-flow__nodesselection-rect:focus-visible,
+  .react-flow__selection:focus,
+  .react-flow__selection:focus-visible {
+    outline: none;
+  }
+.react-flow__controls-button:hover {
+      background: var(
+        --xy-controls-button-background-color-hover-props,
+        var(--xy-controls-button-background-color-hover, var(--xy-controls-button-background-color-hover-default))
+      );
+      color: var(
+        --xy-controls-button-color-hover-props,
+        var(--xy-controls-button-color-hover, var(--xy-controls-button-color-hover-default))
+      );
+    }
+.react-flow__controls-button:disabled {
+      pointer-events: none;
+    }
+.react-flow__controls-button:disabled svg {
+        fill-opacity: 0.4;
+      }
+.react-flow__controls-button:last-child {
+    border-bottom: none;
+  }
+.react-flow__controls.horizontal .react-flow__controls-button {
+    border-bottom: none;
+    border-right: 1px solid
+      var(
+        --xy-controls-button-border-color-props,
+        var(--xy-controls-button-border-color, var(--xy-controls-button-border-color-default))
+      );
+  }
+.react-flow__controls.horizontal .react-flow__controls-button:last-child {
+    border-right: none;
+  }
+.react-flow__resize-control {
+  position: absolute;
+}
+.react-flow__resize-control.left,
+.react-flow__resize-control.right {
+  cursor: ew-resize;
+}
+.react-flow__resize-control.top,
+.react-flow__resize-control.bottom {
+  cursor: ns-resize;
+}
+.react-flow__resize-control.top.left,
+.react-flow__resize-control.bottom.right {
+  cursor: nwse-resize;
+}
+.react-flow__resize-control.bottom.left,
+.react-flow__resize-control.top.right {
+  cursor: nesw-resize;
+}
+/* handle styles */
+.react-flow__resize-control.handle {
+  width: 5px;
+  height: 5px;
+  border: 1px solid #fff;
+  border-radius: 1px;
+  background-color: var(--xy-resize-background-color, var(--xy-resize-background-color-default));
+  translate: -50% -50%;
+}
+.react-flow__resize-control.handle.left {
+  left: 0;
+  top: 50%;
+}
+.react-flow__resize-control.handle.right {
+  left: 100%;
+  top: 50%;
+}
+.react-flow__resize-control.handle.top {
+  left: 50%;
+  top: 0;
+}
+.react-flow__resize-control.handle.bottom {
+  left: 50%;
+  top: 100%;
+}
+.react-flow__resize-control.handle.top.left {
+  left: 0;
+}
+.react-flow__resize-control.handle.bottom.left {
+  left: 0;
+}
+.react-flow__resize-control.handle.top.right {
+  left: 100%;
+}
+.react-flow__resize-control.handle.bottom.right {
+  left: 100%;
+}
+/* line styles */
+.react-flow__resize-control.line {
+  border-color: var(--xy-resize-background-color, var(--xy-resize-background-color-default));
+  border-width: 0;
+  border-style: solid;
+}
+.react-flow__resize-control.line.left,
+.react-flow__resize-control.line.right {
+  width: 1px;
+  transform: translate(-50%, 0);
+  top: 0;
+  height: 100%;
+}
+.react-flow__resize-control.line.left {
+  left: 0;
+  border-left-width: 1px;
+}
+.react-flow__resize-control.line.right {
+  left: 100%;
+  border-right-width: 1px;
+}
+.react-flow__resize-control.line.top,
+.react-flow__resize-control.line.bottom {
+  height: 1px;
+  transform: translate(0, -50%);
+  left: 0;
+  width: 100%;
+}
+.react-flow__resize-control.line.top {
+  top: 0;
+  border-top-width: 1px;
+}
+.react-flow__resize-control.line.bottom {
+  border-bottom-width: 1px;
+  top: 100%;
+}
+.react-flow__edge-textbg {
+  fill: var(--xy-edge-label-background-color, var(--xy-edge-label-background-color-default));
+}
+.react-flow__edge-text {
+  fill: var(--xy-edge-label-color, var(--xy-edge-label-color-default));
+}
+</style>
+<style type="text/css" data-vite-dev-id="E:/Codex Work/DataHub Hackathon/web/src/styles.css">:root {
+  color-scheme: dark;
+  font-family: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+  font-synthesis: none;
+  --canvas: #071117;
+  --canvas-raised: #0b161d;
+  --panel: #0d1920;
+  --rule: #3b4b52;
+  --rule-quiet: #26353c;
+  --text: #f0f2ee;
+  --text-secondary: #a5b0b2;
+  --text-muted: #77858a;
+  --crimson: #d4363e;
+  --crimson-hover: #ec4950;
+  --datahub: #45a7ff;
+  --verified: #78dd67;
+  --exception: #f3a70b;
+  --focus: #d9f0ff;
+  --mono: "IBM Plex Mono", "Cascadia Mono", monospace;
+  --sans: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+  --brand: "Fraunces", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--canvas);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.workbench {
+  display: grid;
+  grid-template-rows: 56px 74px minmax(520px, 1fr) 168px 100px;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  background: var(--canvas);
+  overflow: hidden;
+}
+
+.identity-bar {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0 18px;
+  border: 1px solid var(--rule);
+  background: #081219;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--brand);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.brand-lockup span:last-child {
+  color: var(--crimson-hover);
+}
+
+.identity-divider {
+  width: 1px;
+  height: 25px;
+  margin: 0 22px;
+  background: var(--text-secondary);
+}
+
+.case-identity,
+.connection-state,
+.mode-state,
+.audit-clock {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.case-identity {
+  gap: 11px;
+}
+
+.case-identity span,
+.audit-clock span {
+  color: var(--text-secondary);
+}
+
+.case-identity strong {
+  font-size: 12px;
+  letter-spacing: 0.045em;
+}
+
+.identity-spacer {
+  flex: 1;
+  min-width: 18px;
+}
+
+.connection-state {
+  gap: 8px;
+  color: var(--datahub);
+}
+
+.mode-state {
+  gap: 7px;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--crimson);
+  border-radius: 4px;
+  color: #ff6268;
+}
+
+.audit-clock {
+  gap: 12px;
+  margin-left: auto;
+  padding-left: 44px;
+  color: var(--text);
+  font-size: 10px;
+}
+
+.stage-rail {
+  min-width: 0;
+  padding: 4px 6px 5px;
+  border-top: 3px dotted var(--rule-quiet);
+  border-bottom: 3px dotted var(--rule-quiet);
+  background: #081219;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.stage-rail ol {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  height: 100%;
+  min-width: 930px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--rule-quiet);
+}
+
+.stage-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 8px 18px;
+  border-right: 1px solid var(--rule-quiet);
+  background: var(--canvas-raised);
+  color: var(--text-secondary);
+}
+
+.stage-item:last-child {
+  border-right: 0;
+}
+
+.stage-item[data-state="complete"] {
+  color: var(--verified);
+}
+
+.stage-item[data-state="current"] {
+  background: var(--crimson);
+  color: #fff;
+}
+
+.stage-copy {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 9px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.stage-index,
+.stage-label,
+.stage-state {
+  font-family: var(--mono);
+}
+
+.stage-index,
+.stage-label {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.stage-state {
+  grid-column: 2;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.case-work-area {
+  display: grid;
+  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+  min-height: 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.evidence-timeline,
+.impact-map {
+  min-width: 0;
+  min-height: 0;
+  background: var(--canvas-raised);
+}
+
+.evidence-timeline {
+  display: grid;
+  grid-template-rows: 41px minmax(0, 1fr);
+  border-right: 1px solid var(--rule);
+}
+
+.section-columns {
+  display: grid;
+  grid-template-columns: 136px minmax(250px, 1fr) minmax(210px, 0.82fr);
+  align-items: center;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.evidence-timeline > ol {
+  min-height: 0;
+  margin: 0;
+  padding: 0 20px;
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-color: var(--rule) transparent;
+  scrollbar-width: thin;
+}
+
+.timeline-event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 92px 44px minmax(230px, 1.15fr) minmax(180px, 0.8fr) 78px;
+  gap: 0;
+  min-height: 142px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--rule-quiet);
+}
+
+.timeline-event[data-state="current"] {
+  border-top: 1px solid var(--crimson-hover);
+  border-bottom-color: var(--crimson-hover);
+}
+
+.timeline-event > time {
+  padding-top: 2px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.timeline-event[data-state="current"] > time {
+  color: #ff5d63;
+  font-weight: 600;
+}
+
+.event-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--text-secondary);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: var(--canvas-raised);
+}
+
+.event-marker::after {
+  position: absolute;
+  top: 37px;
+  left: 18px;
+  width: 1px;
+  height: 105px;
+  background: var(--rule);
+  content: "";
+}
+
+.timeline-event[data-last="true"] .event-marker::after {
+  height: 92px;
+  background: var(--crimson-hover);
+}
+
+.timeline-event[data-state="current"] .event-marker {
+  border-color: var(--crimson-hover);
+  color: var(--crimson-hover);
+}
+
+.event-copy {
+  min-width: 0;
+  padding: 0 16px 0 4px;
+}
+
+.event-copy h2,
+.impact-map-header h2,
+.approval-scope h2,
+.evidence-dialog h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+.event-copy h2 {
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.timeline-event[data-state="current"] .event-copy h2 {
+  color: #ff666c;
+}
+
+.event-copy > p {
+  max-width: 370px;
+  margin: 5px 0 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.proof-alert,
+.event-facts strong,
+.decision-facts strong,
+.scope-facts strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.proof-alert {
+  color: #ff5e64;
+}
+
+.event-facts strong {
+  color: var(--text);
+}
+
+.decision-facts strong:first-child {
+  color: var(--verified);
+}
+
+.decision-facts strong:nth-child(2),
+.decision-facts strong:nth-child(3) {
+  color: var(--exception);
+}
+
+.scope-facts {
+  display: grid;
+  padding-top: 2px;
+}
+
+.scope-facts > span {
+  margin-bottom: 3px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scope-facts strong {
+  color: var(--text-secondary);
+  text-transform: none;
+}
+
+.execution-meter {
+  position: relative;
+  width: min(290px, 100%);
+  height: 21px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.execution-meter > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--crimson);
+  transition: width 180ms ease-out;
+}
+
+.execution-meter strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 3px 7px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.event-provenance {
+  min-width: 0;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule-quiet);
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.event-provenance > strong {
+  color: var(--datahub);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.event-provenance dl {
+  display: grid;
+  gap: 3px;
+  margin: 7px 0 0;
+}
+
+.event-provenance dl div {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  gap: 4px;
+}
+
+.event-provenance dt,
+.event-provenance dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.event-provenance dt {
+  color: var(--text-muted);
+}
+
+.event-provenance dd {
+  min-width: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.subject-proof {
+  margin: 8px 0 0;
+  padding: 6px 8px;
+  border: 1px solid var(--rule);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.event-status {
+  justify-self: end;
+  align-self: start;
+  min-width: 69px;
+  padding: 4px 5px;
+  border: 1px solid var(--verified);
+  border-radius: 3px;
+  color: var(--verified);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.timeline-event[data-state="current"] .event-status {
+  border-color: var(--crimson-hover);
+  color: #ff6268;
+}
+
+.impact-map {
+  position: relative;
+  display: grid;
+  grid-template-rows: 54px 28px minmax(0, 1fr) 84px;
+  padding: 0 22px;
+}
+
+.impact-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.impact-map-header > div {
+  min-width: 0;
+}
+
+.section-kicker,
+.console-label,
+.footer-heading > span {
+  display: block;
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.impact-map-header h2 {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.impact-map-header > strong {
+  flex: none;
+  color: var(--datahub);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.provenance-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 7px 0 0;
+  color: var(--datahub);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.flow-map {
+  min-height: 0;
+  margin: 2px -4px 0;
+}
+
+.react-flow {
+  background: transparent;
+}
+
+.react-flow__pane {
+  cursor: default;
+}
+
+.react-flow__handle {
+  width: 5px;
+  height: 5px;
+  border: 0;
+  background: var(--text-secondary);
+  opacity: 0;
+}
+
+.flow-node-shell {
+  width: 184px;
+}
+
+.asset-node {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 15px;
+  gap: 6px;
+  align-items: center;
+  width: 184px;
+  min-height: 64px;
+  padding: 8px 9px;
+  border: 1px solid var(--verified);
+  border-radius: 5px;
+  background: #0b171d;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.asset-node:hover,
+.asset-node:focus-visible {
+  background: #101f26;
+}
+
+.asset-node[data-state="executing"] {
+  border-color: var(--crimson-hover);
+}
+
+.asset-node[data-state="legal-hold"] {
+  border-color: var(--exception);
+}
+
+.asset-node[data-state="manual-review"] {
+  border-color: var(--exception);
+  border-style: dashed;
+}
+
+.asset-node-index {
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--verified);
+  font-family: var(--mono);
+  font-size: 8px;
+}
+
+.asset-node[data-state="legal-hold"] .asset-node-index,
+.asset-node[data-state="manual-review"] .asset-node-index {
+  color: var(--exception);
+}
+
+.asset-node-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.asset-node-copy strong {
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.asset-node-copy small {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 9px;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.asset-node > svg {
+  color: var(--verified);
+}
+
+.asset-node[data-state="legal-hold"] > svg,
+.asset-node[data-state="manual-review"] > svg {
+  color: var(--exception);
+}
+
+.mobile-asset-list {
+  display: none;
+}
+
+.impact-map-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 0 14px;
+}
+
+.graph-legend {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.graph-legend li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.graph-legend li::before {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 16px;
+  height: 9px;
+  border: 1px solid var(--verified);
+  content: "";
+}
+
+.graph-legend li[data-state="legal-hold"]::before {
+  border-color: var(--exception);
+}
+
+.graph-legend li[data-state="manual-review"]::before {
+  border-color: var(--exception);
+  border-style: dashed;
+}
+
+.graph-proof {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 215px;
+  min-height: 58px;
+  padding: 8px 10px;
+  border: 1px dashed var(--rule);
+  color: var(--datahub);
+}
+
+.graph-proof > span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.graph-proof strong,
+.graph-proof span {
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.graph-proof strong {
+  overflow: hidden;
+  color: var(--datahub);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.graph-proof span {
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.approval-console {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(390px, 1.55fr) minmax(255px, 0.84fr) minmax(
+      190px,
+      0.62fr
+    );
+  min-width: 0;
+  border-bottom: 1px solid var(--rule);
+  background: #081219;
+}
+
+.approval-console > div {
+  min-width: 0;
+  padding: 16px 20px;
+  border-right: 1px solid var(--rule);
+}
+
+.approval-console > div:last-child {
+  border-right: 0;
+}
+
+.approval-review {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.review-check {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.review-check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.review-check > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--text);
+  border-radius: 3px;
+  color: var(--verified);
+}
+
+.review-check input:focus-visible + span {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.review-check strong {
+  color: var(--text);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.approval-review > p,
+.action-explainer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.approval-review > p {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.approval-scope {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.approval-scope h2 {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.safety-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 5px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--rule);
+}
+
+.safety-facts > div {
+  min-width: 0;
+  padding: 0 14px;
+  border-right: 1px solid var(--rule);
+}
+
+.safety-facts > div:first-child {
+  padding-left: 0;
+}
+
+.safety-facts > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.safety-facts dt {
+  margin-bottom: 5px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.safety-facts dd {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.safety-facts dd svg {
+  flex: none;
+  color: var(--verified);
+}
+
+.approval-actions {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.primary-action,
+.secondary-action,
+.writeback-proof button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 15px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primary-action {
+  border-color: var(--crimson);
+  background: var(--crimson);
+  color: #fff;
+}
+
+.primary-action:hover:not(:disabled) {
+  border-color: var(--crimson-hover);
+  background: var(--crimson-hover);
+}
+
+.primary-action:disabled {
+  border-color: var(--rule);
+  background: #1a252b;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.secondary-action {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.secondary-action:hover {
+  border-color: var(--text-secondary);
+  color: var(--text);
+}
+
+.success-action {
+  border-color: #2f7f3d;
+  background: #2f7f3d;
+}
+
+.action-explainer {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.running-state,
+.remembered-review {
+  color: var(--verified);
+}
+
+.running-state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remembered-review > strong {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.spinner {
+  animation: spin 1.1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.console-progress {
+  width: 100%;
+  height: 5px;
+  background: var(--rule-quiet);
+  overflow: hidden;
+}
+
+.console-progress span {
+  display: block;
+  height: 100%;
+  background: var(--crimson-hover);
+  transition: width 180ms ease-out;
+}
+
+.evidence-footer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px minmax(520px, 1fr) minmax(350px, 0.78fr);
+  align-items: stretch;
+  min-width: 0;
+  background: #081219;
+}
+
+.footer-heading,
+.proof-metrics,
+.writeback-proof {
+  min-width: 0;
+  padding: 15px 20px;
+}
+
+.footer-heading {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  border-right: 1px solid var(--rule);
+}
+
+.footer-heading em {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.proof-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+
+.proof-metrics > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 0 14px;
+  border-right: 1px solid var(--rule);
+  text-align: center;
+}
+
+.proof-metrics dt {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.proof-metrics dd {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.proof-metrics dd[data-tone="verified"] {
+  color: var(--verified);
+}
+
+.proof-metrics dd[data-tone="exception"] {
+  color: var(--exception);
+}
+
+.proof-metrics > div:last-child dd {
+  font-size: 18px;
+}
+
+.writeback-proof {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  color: var(--datahub);
+}
+
+.writeback-proof[data-state="verified"] {
+  color: var(--verified);
+}
+
+.writeback-proof > span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.writeback-proof strong {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.writeback-proof small {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.writeback-proof button {
+  min-height: 42px;
+  background: transparent;
+  color: var(--text);
+  font-size: 11px;
+}
+
+.writeback-proof button:hover {
+  border-color: var(--text-secondary);
+}
+
+.evidence-dialog-backdrop {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(2 7 10 / 84%);
+}
+
+.evidence-dialog {
+  position: relative;
+  width: min(560px, 100%);
+  padding: 28px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+
+.evidence-dialog h2 {
+  max-width: 430px;
+  margin: 10px 0 22px;
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+.evidence-dialog dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.evidence-dialog dl div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-quiet);
+}
+
+.evidence-dialog dt {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.evidence-dialog dd {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-height: 800px) and (min-width: 1024px) {
+  .workbench {
+    grid-template-rows: 48px 62px minmax(360px, 1fr) 132px 74px;
+  }
+
+  .identity-bar {
+    padding-inline: 14px;
+  }
+
+  .stage-item {
+    padding-block: 5px;
+  }
+
+  .timeline-event {
+    min-height: 90px;
+    padding-block: 8px;
+  }
+
+  .event-marker::after {
+    height: 58px;
+  }
+
+  .event-copy > p {
+    display: -webkit-box;
+    margin-block: 3px 5px;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 1.2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .proof-alert,
+  .event-facts strong,
+  .decision-facts strong,
+  .scope-facts strong {
+    font-size: 7.5px;
+    line-height: 1.45;
+  }
+
+  .decision-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 9px;
+  }
+
+  .event-provenance dl div:not(:first-child) {
+    display: none;
+  }
+
+  .subject-proof {
+    margin-top: 5px;
+    padding-block: 4px;
+    font-size: 7px;
+  }
+
+  .approval-console > div {
+    padding: 11px 15px;
+  }
+
+  .primary-action,
+  .secondary-action {
+    min-height: 42px;
+    font-size: 12px;
+  }
+
+  .footer-heading,
+  .proof-metrics,
+  .writeback-proof {
+    padding: 8px 13px;
+  }
+
+  .proof-metrics dd {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 1024px) {
+  .case-work-area {
+    grid-template-columns: minmax(0, 61%) minmax(0, 39%);
+  }
+
+  .timeline-event {
+    grid-template-columns: 72px 42px minmax(200px, 1fr) minmax(150px, 0.72fr) 72px;
+  }
+
+  .impact-map {
+    padding-inline: 14px;
+  }
+
+  .graph-proof {
+    display: none;
+  }
+
+  .approval-console {
+    grid-template-columns: minmax(230px, 0.9fr) minmax(330px, 1.45fr) minmax(225px, 0.82fr) minmax(
+        175px,
+        0.58fr
+      );
+  }
+}
+
+@media (max-width: 1023px) {
+  .workbench {
+    display: block;
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .identity-bar {
+    min-height: 58px;
+  }
+
+  .audit-clock {
+    display: none;
+  }
+
+  .stage-rail {
+    height: 74px;
+  }
+
+  .case-work-area {
+    display: block;
+  }
+
+  .evidence-timeline {
+    height: 610px;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .impact-map {
+    height: 590px;
+  }
+
+  .approval-console {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .approval-console > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .approval-console > div {
+    min-height: 160px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .evidence-footer {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .writeback-proof {
+    grid-column: 1 / -1;
+    min-height: 92px;
+    border-top: 1px solid var(--rule);
+  }
+}
+
+@media (max-width: 700px) {
+  .identity-bar {
+    min-height: 106px;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    padding-block: 13px;
+  }
+
+  .identity-divider,
+  .identity-spacer {
+    display: none;
+  }
+
+  .brand-lockup {
+    flex: 1 0 calc(50% - 7px);
+  }
+
+  .case-identity {
+    justify-content: flex-end;
+    flex: 1 0 calc(50% - 7px);
+  }
+
+  .connection-state,
+  .mode-state {
+    flex: 1 0 auto;
+  }
+
+  .stage-rail {
+    height: 72px;
+  }
+
+  .stage-rail ol {
+    grid-template-columns: repeat(6, 150px);
+  }
+
+  .evidence-timeline {
+    height: 700px;
+    grid-template-rows: 35px minmax(0, 1fr);
+  }
+
+  .section-columns {
+    grid-template-columns: 95px 1fr;
+    padding-inline: 14px;
+  }
+
+  .section-columns span:last-child {
+    display: none;
+  }
+
+  .evidence-timeline > ol {
+    padding-inline: 14px;
+  }
+
+  .timeline-event {
+    grid-template-columns: 68px 38px minmax(0, 1fr);
+    min-height: 152px;
+  }
+
+  .timeline-event > time {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 10px;
+  }
+
+  .event-marker {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: 32px;
+    height: 32px;
+  }
+
+  .event-marker::after {
+    top: 31px;
+    left: 15px;
+    height: 120px;
+  }
+
+  .event-copy {
+    grid-column: 3;
+    grid-row: 1;
+    padding-right: 0;
+  }
+
+  .event-provenance {
+    grid-column: 3;
+    grid-row: 2;
+    margin-top: 8px;
+    padding: 7px 0 0;
+    border-top: 1px solid var(--rule-quiet);
+    border-left: 0;
+  }
+
+  .event-provenance dl,
+  .subject-proof {
+    display: none;
+  }
+
+  .event-status {
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: start;
+    margin-top: 8px;
+  }
+
+  .impact-map {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 0 14px 18px;
+  }
+
+  .impact-map-header {
+    min-height: 64px;
+  }
+
+  .flow-map,
+  .provenance-line,
+  .impact-map-footer {
+    display: none;
+  }
+
+  .mobile-asset-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+  }
+
+  .mobile-asset-list li {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 4px 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-quiet);
+  }
+
+  .mobile-asset-list li > span {
+    grid-row: 1 / 3;
+    color: var(--verified);
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .mobile-asset-list li[data-state="legal-hold"] > span,
+  .mobile-asset-list li[data-state="manual-review"] > span,
+  .mobile-asset-list li[data-state="legal-hold"] em,
+  .mobile-asset-list li[data-state="manual-review"] em {
+    color: var(--exception);
+  }
+
+  .mobile-asset-list div {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .mobile-asset-list strong {
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .mobile-asset-list small,
+  .mobile-asset-list em {
+    color: var(--text-secondary);
+    font-size: 10px;
+  }
+
+  .mobile-asset-list em {
+    grid-column: 2;
+    font-style: normal;
+  }
+
+  .approval-console {
+    display: block;
+  }
+
+  .approval-console > div {
+    min-height: 0;
+    border-right: 0;
+  }
+
+  .approval-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+    background: #081219;
+  }
+
+  .safety-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .safety-facts > div,
+  .safety-facts > div:first-child,
+  .safety-facts > div:last-child {
+    padding: 8px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule-quiet);
+  }
+
+  .evidence-footer {
+    display: block;
+  }
+
+  .footer-heading,
+  .proof-metrics,
+  .writeback-proof {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .proof-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proof-metrics > div {
+    min-height: 90px;
+    border-bottom: 1px solid var(--rule-quiet);
+  }
+
+  .writeback-proof {
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .writeback-proof button {
+    grid-column: 1 / -1;
+  }
+
+  .evidence-dialog dl div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+<script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+<script type="module" src="/@vite/client"></script>
+</head>
+<body>
+
+    <div id="root"><main class="workbench" data-phase="approve"><header class="identity-bar"><div class="brand-lockup" aria-label="ForgetOps"><span>Forget</span><span>Ops</span></div><div class="identity-divider" aria-hidden="true"></div><p class="case-identity"><span>Case</span><strong>DSR-2026-0042</strong></p><div class="identity-spacer"></div><p class="connection-state" data-connected="true"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-layers-linked " aria-hidden="true"><path d="M19 8.268a2 2 0 0 1 1 1.732v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h3"></path><path d="M5 15.734a2 2 0 0 1 -1 -1.734v-8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-3"></path></svg><span>DataHub connected</span></p><div class="identity-divider" aria-hidden="true"></div><p class="mode-state"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-shield-lock " aria-hidden="true"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path><path d="M12 12l0 2.5"></path></svg><span>Dry run</span></p><p class="audit-clock"><span>Audit clock</span><time datetime="2026-07-15T10:47:02.670479Z">2026-07-15 10:47:02 UTC</time></p></header><nav class="stage-rail" aria-label="Case workflow progress"><ol><li class="stage-item" data-state="complete"><div class="stage-copy"><span class="stage-index">01</span><span class="stage-label">Discover</span><span class="stage-state">Complete 10:47</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-circle-check " aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M9 12l2 2l4 -4"></path></svg></li><li class="stage-item" data-state="complete"><div class="stage-copy"><span class="stage-index">02</span><span class="stage-label">Decide</span><span class="stage-state">Complete 10:48</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-circle-check " aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M9 12l2 2l4 -4"></path></svg></li><li class="stage-item" data-state="current"><div class="stage-copy"><span class="stage-index">03</span><span class="stage-label">Approve</span><span class="stage-state">In progress</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-circle-dot " aria-hidden="true"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg></li><li class="stage-item" data-state="locked"><div class="stage-copy"><span class="stage-index">04</span><span class="stage-label">Execute</span><span class="stage-state">Queued</span></div><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-lock " aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M8 11v-4a4 4 0 1 1 8 0v4"></path></svg></li><li class="stage-item" data-state="locked"><div class="stage-copy"><span class="stage-index">05</span><span class="stage-label">Verify</span><span class="stage-state">Queued</span></div><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-lock " aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M8 11v-4a4 4 0 1 1 8 0v4"></path></svg></li><li class="stage-item" data-state="locked"><div class="stage-copy"><span class="stage-index">06</span><span class="stage-label">Remember</span><span class="stage-state">Queued</span></div><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-lock " aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M8 11v-4a4 4 0 1 1 8 0v4"></path></svg></li></ol></nav><div class="case-work-area"><section class="evidence-timeline" aria-labelledby="evidence-trace-title"><header class="section-columns" aria-hidden="true"><span>Time (UTC)</span><span>Event</span><span>Evidence &amp; provenance</span></header><h1 id="evidence-trace-title" class="sr-only">Case evidence trace</h1><ol><li class="timeline-event" data-state="complete" data-last="false"><time>10:46:58</time><div class="event-marker" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-file-text-shield "><path d="M13 3v4a.997 .997 0 0 0 1 1h4"></path><path d="M11 21h-5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v3.5"></path><path d="M8 9h1"></path><path d="M8 12.994l3 0"></path><path d="M8 16.997l2 0"></path><path d="M21 15.994c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5"></path></svg></div><div class="event-copy"><h2>Case intake</h2><p>Subject request received and normalized. The raw identifier was immediately hashed.</p><strong class="proof-alert">0 raw identifiers in audit</strong></div><div class="event-provenance"><strong>ForgetOps</strong><dl><div><dt>call</dt><dd>hash_subject</dd></div><div><dt>duration</dt><dd>0.42s</dd></div><div><dt>evidence</dt><dd>ev_20260715_104658_01</dd></div></dl></div><span class="event-status">Complete</span></li><li class="timeline-event" data-state="complete" data-last="false"><time>10:47:02</time><div class="event-marker" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-search "><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg></div><div class="event-copy"><h2>DataHub discovery</h2><p>Bounded MCP traversal reconstructed the privacy scope without retrieving a raw subject identifier.</p><div class="event-facts"><strong>7 assets · 6 edges · 19 PII fields</strong><strong>21 DataHub calls · 100% owner coverage</strong></div></div><div class="event-provenance"><strong>DataHub</strong><dl><div><dt>call</dt><dd>discover_scope</dd></div><div><dt>duration</dt><dd>2.81s</dd></div><div><dt>evidence</dt><dd>ev_20260715_104702_02</dd></div></dl></div><span class="event-status">Complete</span></li><li class="timeline-event" data-state="complete" data-last="false"><time>10:47:06</time><div class="event-marker" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-scale "><path d="M7 20l10 0"></path><path d="M6 6l6 -1l6 1"></path><path d="M12 3l0 17"></path><path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0"></path><path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0"></path></svg></div><div class="event-copy"><h2>Decision</h2><p>Policy evidence classified every asset and preserved both protected outcomes.</p><div class="decision-facts"><strong>5 approved mutations</strong><strong>1 legal hold</strong><strong>1 manual review</strong></div></div><div class="event-provenance"><strong>DataHub context</strong><dl><div><dt>call</dt><dd>compile_plan</dd></div><div><dt>duration</dt><dd>0.91s</dd></div><div><dt>evidence</dt><dd>ev_20260715_104706_03</dd></div></dl></div><span class="event-status">Complete</span></li><li class="timeline-event" data-state="current" data-last="true"><time>10:47:08</time><div class="event-marker" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-shield-check "><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"></path><path d="M15 19l2 2l4 -4"></path></svg></div><div class="event-copy"><h2>Approval boundary</h2><p>Approval is scope-bound to five safe mutations in dry-run mode.</p><div class="scope-facts"><span>Scope</span><strong>5 assets scheduled for safe mutation.</strong><strong>1 retained under legal hold.</strong><strong>1 routed to manual review — not modified.</strong></div></div><div class="event-provenance"><strong>ForgetOps</strong><dl><div><dt>call</dt><dd>bind_approval</dd></div><div><dt>duration</dt><dd>0.67s</dd></div><div><dt>evidence</dt><dd>ev_20260715_104708_04</dd></div></dl><p class="subject-proof">Raw subject identifiers never appear.</p></div><span class="event-status">In progress</span></li></ol></section><section class="impact-map" aria-labelledby="impact-map-title"><header class="impact-map-header"><div><span class="section-kicker">Impact map</span><h2 id="impact-map-title">7 assets discovered · 6 lineage edges</h2></div><strong>Owner coverage: 100%</strong></header><p class="provenance-line"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-layers-linked " aria-hidden="true"><path d="M19 8.268a2 2 0 0 1 1 1.732v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h3"></path><path d="M5 15.734a2 2 0 0 1 -1 -1.734v-8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-3"></path></svg>Provenance: DataHub</p><div class="flow-map" role="group" aria-label="DataHub lineage impact graph"><div data-testid="rf__wrapper" class="react-flow light" role="application" style="width: 100%; height: 100%; overflow: hidden; position: relative; z-index: 0;"><div class="react-flow__renderer" style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;"><div class="react-flow__pane" style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;"><div class="react-flow__viewport xyflow__viewport react-flow__container" style="transform: translate(129.4px, 75.6px) scale(0.9);"><div class="react-flow__edges"><svg class="react-flow__marker" aria-hidden="true"><defs><marker class="react-flow__arrowhead" id="1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13" markerWidth="13" markerHeight="13" viewBox="-10 -10 20 20" markerUnits="strokeWidth" orient="auto-start-reverse" refX="0" refY="0"><polyline class="arrowclosed" stroke-linecap="round" stroke-linejoin="round" points="-5,-4 0,0 -5,4 -5,-4" style="stroke-width: 1; stroke: rgb(155, 171, 173); fill: rgb(155, 171, 173);"></polyline></marker></defs></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-01-asset-03" data-testid="rf__edge-edge-asset-01-asset-03" aria-label="Edge from asset-01 to asset-03" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L283.99996284816575 116.99999933657438L283.99996284816575 116.99999933657438L283.99996284816575 131.50001326851222L283.99996284816575 151.50001326851222" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L283.99996284816575 116.99999933657438L283.99996284816575 116.99999933657438L283.99996284816575 131.50001326851222L283.99996284816575 151.50001326851222" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-01-asset-05" data-testid="rf__edge-edge-asset-01-asset-05" aria-label="Edge from asset-01 to asset-05" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L 283.99996284816575,111.99999933657438Q 283.99996284816575,116.99999933657438 288.99996284816575,116.99999933657438L 462.99996284816575,116.99999933657438Q 467.99996284816575,116.99999933657438 467.99996284816575,121.99999933657438L467.99996284816575 131.50001326851222L467.99996284816575 151.50001326851222" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L 283.99996284816575,111.99999933657438Q 283.99996284816575,116.99999933657438 288.99996284816575,116.99999933657438L 462.99996284816575,116.99999933657438Q 467.99996284816575,116.99999933657438 467.99996284816575,121.99999933657438L467.99996284816575 131.50001326851222L467.99996284816575 151.50001326851222" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-01-asset-06" data-testid="rf__edge-edge-asset-01-asset-06" aria-label="Edge from asset-01 to asset-06" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L 283.99996284816575,186.99999933657438Q 283.99996284816575,191.99999933657438 278.99996284816575,191.99999933657438L 104.99996284816575,191.99999933657438Q 99.99996284816575,191.99999933657438 99.99996284816575,196.99999933657438L99.99996284816575 281.50001326851225L99.99996284816575 301.50001326851225" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M283.99996284816575 82.49998540463655L283.99996284816575 102.49998540463655L 283.99996284816575,186.99999933657438Q 283.99996284816575,191.99999933657438 278.99996284816575,191.99999933657438L 104.99996284816575,191.99999933657438Q 99.99996284816575,191.99999933657438 99.99996284816575,196.99999933657438L99.99996284816575 281.50001326851225L99.99996284816575 301.50001326851225" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-02-asset-03" data-testid="rf__edge-edge-asset-02-asset-03" aria-label="Edge from asset-02 to asset-03" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M99.99996284816575 204.50001857591712L 99.99996284816575,219.50001857591712Q 99.99996284816575,224.50001857591712 104.99996284816575,224.50001857591712L 186.99996284816575,224.50001857591712Q 191.99996284816575,224.50001857591712 191.99996284816575,219.50001857591712L 191.99996284816575,136.50001326851222Q 191.99996284816575,131.50001326851222 196.99996284816575,131.50001326851222L 278.99996284816575,131.50001326851222Q 283.99996284816575,131.50001326851222 283.99996284816575,136.50001326851222L283.99996284816575 151.50001326851222" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M99.99996284816575 204.50001857591712L 99.99996284816575,219.50001857591712Q 99.99996284816575,224.50001857591712 104.99996284816575,224.50001857591712L 186.99996284816575,224.50001857591712Q 191.99996284816575,224.50001857591712 191.99996284816575,219.50001857591712L 191.99996284816575,136.50001326851222Q 191.99996284816575,131.50001326851222 196.99996284816575,131.50001326851222L 278.99996284816575,131.50001326851222Q 283.99996284816575,131.50001326851222 283.99996284816575,136.50001326851222L283.99996284816575 151.50001326851222" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-03-asset-04" data-testid="rf__edge-edge-asset-03-asset-04" aria-label="Edge from asset-03 to asset-04" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M283.99996284816575 220.50001857591712L283.99996284816575 240.50001857591712L 283.99996284816575,256.0000159222147Q 283.99996284816575,261.0000159222147 288.99996284816575,261.0000159222147L 462.99996284816575,261.0000159222147Q 467.99996284816575,261.0000159222147 467.99996284816575,266.0000159222147L467.99996284816575 281.50001326851225L467.99996284816575 301.50001326851225" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M283.99996284816575 220.50001857591712L283.99996284816575 240.50001857591712L 283.99996284816575,256.0000159222147Q 283.99996284816575,261.0000159222147 288.99996284816575,261.0000159222147L 462.99996284816575,261.0000159222147Q 467.99996284816575,261.0000159222147 467.99996284816575,266.0000159222147L467.99996284816575 281.50001326851225L467.99996284816575 301.50001326851225" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg><svg style="z-index: 0;"><g class="react-flow__edge react-flow__edge-smoothstep nopan inactive" tabindex="0" role="group" aria-roledescription="edge" data-id="edge-asset-03-asset-07" data-testid="rf__edge-edge-asset-03-asset-07" aria-label="Edge from asset-03 to asset-07" aria-describedby="react-flow__edge-desc-1"><path marker-end="url('#1__color=#9babad&amp;height=13&amp;type=arrowclosed&amp;width=13')" d="M283.99996284816575 220.50001857591712L283.99996284816575 240.50001857591712L283.99996284816575 270.0000159222147L283.99996284816575 270.0000159222147L283.99996284816575 299.50001326851225L283.99996284816575 319.50001326851225" fill="none" class="react-flow__edge-path" style="stroke: rgb(155, 171, 173); stroke-width: 1.25;"></path><path d="M283.99996284816575 220.50001857591712L283.99996284816575 240.50001857591712L283.99996284816575 270.0000159222147L283.99996284816575 270.0000159222147L283.99996284816575 299.50001326851225L283.99996284816575 319.50001326851225" fill="none" stroke-opacity="0" stroke-width="20" class="react-flow__edge-interaction"></path></g></svg></div><div class="react-flow__edgelabel-renderer"></div><div class="react-flow__nodes" style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;"><div class="react-flow__node react-flow__node-asset" data-id="asset-01" data-testid="rf__node-asset-01" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(192px, 16px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-01" data-handlepos="top" data-id="1-asset-01-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="planned" type="button" aria-label="ecommerce.customers, Scheduled for safe mutation"><span class="asset-node-index">01</span><span class="asset-node-copy"><strong>Ecommerce customers</strong><small>postgres · Privacy Engineering</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-database " aria-hidden="true"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"></path><path d="M4 6v6a8 3 0 0 0 16 0v-6"></path><path d="M4 12v6a8 3 0 0 0 16 0v-6"></path></svg></button><div data-nodeid="asset-01" data-handlepos="bottom" data-id="1-asset-01-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-02" data-testid="rf__node-asset-02" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(8px, 138px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-02" data-handlepos="top" data-id="1-asset-02-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="planned" type="button" aria-label="support.tickets, Scheduled for safe mutation"><span class="asset-node-index">02</span><span class="asset-node-copy"><strong>Support tickets</strong><small>postgres · Support Data</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-database " aria-hidden="true"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"></path><path d="M4 6v6a8 3 0 0 0 16 0v-6"></path><path d="M4 12v6a8 3 0 0 0 16 0v-6"></path></svg></button><div data-nodeid="asset-02" data-handlepos="bottom" data-id="1-asset-02-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-03" data-testid="rf__node-asset-03" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(192px, 154px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-03" data-handlepos="top" data-id="1-asset-03-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="planned" type="button" aria-label="analytics.customer_360, Scheduled for safe mutation"><span class="asset-node-index">03</span><span class="asset-node-copy"><strong>Customer 360</strong><small>snowflake · Analytics Platform</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-database " aria-hidden="true"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"></path><path d="M4 6v6a8 3 0 0 0 16 0v-6"></path><path d="M4 12v6a8 3 0 0 0 16 0v-6"></path></svg></button><div data-nodeid="asset-03" data-handlepos="bottom" data-id="1-asset-03-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-04" data-testid="rf__node-asset-04" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(376px, 304px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-04" data-handlepos="top" data-id="1-asset-04-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="planned" type="button" aria-label="Customer Retention Overview, Scheduled for safe mutation"><span class="asset-node-index">04</span><span class="asset-node-copy"><strong>Retention overview</strong><small>looker · Growth Analytics</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-layout-dashboard " aria-hidden="true"><path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"></path><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"></path><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"></path><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"></path></svg></button><div data-nodeid="asset-04" data-handlepos="bottom" data-id="1-asset-04-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-05" data-testid="rf__node-asset-05" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(376px, 154px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-05" data-handlepos="top" data-id="1-asset-05-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="legal-hold" type="button" aria-label="finance.invoices, Retained — legal hold"><span class="asset-node-index">05</span><span class="asset-node-copy"><strong>Finance invoices</strong><small>snowflake · Finance Data</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-lock " aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M8 11v-4a4 4 0 1 1 8 0v4"></path></svg></button><div data-nodeid="asset-05" data-handlepos="bottom" data-id="1-asset-05-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-06" data-testid="rf__node-asset-06" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(8px, 304px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-06" data-handlepos="top" data-id="1-asset-06-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="planned" type="button" aria-label="marketing.customer_export, Scheduled for safe mutation"><span class="asset-node-index">06</span><span class="asset-node-copy"><strong>Marketing export</strong><small>snowflake · Marketing Engineering</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-database " aria-hidden="true"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"></path><path d="M4 6v6a8 3 0 0 0 16 0v-6"></path><path d="M4 12v6a8 3 0 0 0 16 0v-6"></path></svg></button><div data-nodeid="asset-06" data-handlepos="bottom" data-id="1-asset-06-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div><div class="react-flow__node react-flow__node-asset" data-id="asset-07" data-testid="rf__node-asset-07" tabindex="0" role="group" aria-roledescription="node" aria-describedby="react-flow__node-desc-1" style="z-index: 0; transform: translate(192px, 322px); pointer-events: none; visibility: visible;"><div class="flow-node-shell"><div data-nodeid="asset-07" data-handlepos="top" data-id="1-asset-07-null-target" class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"></div><button class="asset-node" data-state="manual-review" type="button" aria-label="ml.customer_churn_features, Manual review — not modified"><span class="asset-node-index">07</span><span class="asset-node-copy"><strong>Churn features</strong><small>snowflake · ML Platform</small></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-alert-triangle " aria-hidden="true"><path d="M12 9v4"></path><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0"></path><path d="M12 16h.01"></path></svg></button><div data-nodeid="asset-07" data-handlepos="bottom" data-id="1-asset-07-null-source" class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"></div></div></div></div><div class="react-flow__viewport-portal"></div></div></div></div><svg class="react-flow__background" data-testid="rf__background" style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: #1d2a30;"><pattern id="pattern-1" x="21.4" y="10.79999999999999" width="21.6" height="21.6" patternUnits="userSpaceOnUse" patternTransform="translate(-11.8,-11.8)"><circle cx="0.45" cy="0.45" r="0.45" class="react-flow__background-pattern dots"></circle></pattern><rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-1)"></rect></svg><div id="react-flow__node-desc-1" style="display: none;">Press enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.</div><div id="react-flow__edge-desc-1" style="display: none;">Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.</div><div id="react-flow__aria-live-1" aria-live="assertive" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(100%);"></div></div></div><ol class="mobile-asset-list" aria-label="Affected DataHub assets"><li data-state="planned"><span>01</span><div><strong>Ecommerce customers</strong><small>Privacy Engineering</small></div><em>Scheduled for safe mutation</em></li><li data-state="planned"><span>02</span><div><strong>Support tickets</strong><small>Support Data</small></div><em>Scheduled for safe mutation</em></li><li data-state="planned"><span>03</span><div><strong>Customer 360</strong><small>Analytics Platform</small></div><em>Scheduled for safe mutation</em></li><li data-state="planned"><span>04</span><div><strong>Retention overview</strong><small>Growth Analytics</small></div><em>Scheduled for safe mutation</em></li><li data-state="legal-hold"><span>05</span><div><strong>Finance invoices</strong><small>Finance Data</small></div><em>Retained — legal hold</em></li><li data-state="planned"><span>06</span><div><strong>Marketing export</strong><small>Marketing Engineering</small></div><em>Scheduled for safe mutation</em></li><li data-state="manual-review"><span>07</span><div><strong>Churn features</strong><small>ML Platform</small></div><em>Manual review — not modified</em></li></ol><div class="impact-map-footer"><ul class="graph-legend" aria-label="Impact map legend"><li data-state="planned">Scheduled for safe mutation (5)</li><li data-state="legal-hold">Retained — legal hold (1)</li><li data-state="manual-review">Manual review — not modified (1)</li></ul><div class="graph-proof" aria-live="polite"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-layers-linked " aria-hidden="true"><path d="M19 8.268a2 2 0 0 1 1 1.732v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h3"></path><path d="M5 15.734a2 2 0 0 1 -1 -1.734v-8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-3"></path></svg><span><strong>Lineage &amp; ownership from DataHub</strong>Verified snapshot datahub-ecommerce-demo-2026-07-15</span></div></div></section></div><section class="approval-console" aria-label="Approval and execution controls"><div class="approval-review"><span class="console-label">Approval console</span><label class="review-check"><input type="checkbox"><span aria-hidden="true"></span><strong>Protected outcomes reviewed: legal hold retained; model feature requires human review.</strong></label><p>This is a dry run. No data will be changed.</p></div><div class="approval-scope"><span class="console-label">Scope</span><h2>Approve 5 mutations only</h2><dl class="safety-facts"><div><dt>Execution mode</dt><dd>Dry run</dd></div><div><dt>Transaction</dt><dd>One idempotent transaction</dd></div><div><dt>Safety</dt><dd><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-shield-check " aria-hidden="true"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"></path><path d="M15 19l2 2l4 -4"></path></svg>Rollback armed</dd></div></dl></div><div class="approval-actions"><button class="primary-action" type="button" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-player-play " aria-hidden="true"><path d="M7 4v16l13 -8l-13 -8"></path></svg>Authorize execution<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-lock " aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M8 11v-4a4 4 0 1 1 8 0v4"></path></svg></button><button class="secondary-action" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-rotate-2 " aria-hidden="true"><path d="M15 4.55a8 8 0 0 0 -6 14.9m0 -4.45v5h-5"></path><path d="M18.37 7.16l0 .01"></path><path d="M13 19.94l0 .01"></path><path d="M16.84 18.37l0 .01"></path><path d="M19.37 15.1l0 .01"></path><path d="M19.94 11l0 .01"></path></svg>Return to plan</button></div><div class="action-explainer"><span class="console-label">About this action</span><p>This approval authorizes execution of the plan in dry-run mode.</p><p>Legal hold and manual-review items are not modified.</p></div></section><footer class="evidence-footer"><div class="footer-heading"><span>Evidence footer</span><em>Upcoming verification targets</em></div><dl class="proof-metrics"><div><dt>Permitted residuals</dt><dd data-tone="verified">0</dd></div><div><dt>Retained under legal hold</dt><dd data-tone="exception">1</dd></div><div><dt>Pending manual review</dt><dd data-tone="exception">1</dd></div><div><dt>Expected status</dt><dd data-tone="verified">Partial_verified</dd></div></dl><div class="writeback-proof" data-state="queued"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-layers-linked " aria-hidden="true"><path d="M19 8.268a2 2 0 0 1 1 1.732v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h3"></path><path d="M5 15.734a2 2 0 0 1 -1 -1.734v-8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-3"></path></svg><span><strong>DataHub write-back queued</strong><small>Queued after verification</small></span><button type="button">View details</button></div></footer><p class="sr-only" aria-live="polite" aria-atomic="true">Execution is waiting for protected-outcomes approval.</p></main></div>
+    <script type="module" src="/src/main.jsx?t=1784126855593"></script>
+
+
+
+</body>
+</html>

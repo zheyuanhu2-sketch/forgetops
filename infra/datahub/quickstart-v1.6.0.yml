@@ -132,10 +132,7 @@ services:
     - mode: ingress
       target: 8080
       published: ${DATAHUB_MAPPED_GMS_PORT:-8080}
-      protocol: tcp
-    - mode: ingress
-      target: 4319
-      published: '4319'
+      host_ip: 127.0.0.1
       protocol: tcp
     volumes:
     - type: bind
@@ -186,6 +183,7 @@ services:
     - mode: ingress
       target: 9002
       published: ${DATAHUB_MAPPED_FRONTEND_PORT:-9002}
+      host_ip: 127.0.0.1
       protocol: tcp
     volumes:
     - type: bind
@@ -246,6 +244,7 @@ services:
     - mode: ingress
       target: 9092
       published: '9092'
+      host_ip: 127.0.0.1
       protocol: tcp
     volumes:
     - type: volume
@@ -297,6 +296,7 @@ services:
     - mode: ingress
       target: 3306
       published: '3306'
+      host_ip: 127.0.0.1
       protocol: tcp
     restart: on-failure
     volumes:
@@ -350,6 +350,7 @@ services:
     - mode: ingress
       target: 9200
       published: '9200'
+      host_ip: 127.0.0.1
       protocol: tcp
     volumes:
     - type: volume

@@ -1,0 +1,158 @@
+[span] Forget
+[span] Ops
+[span] Case
+[strong] DSR-2026-0042
+[span] DataHub connected
+[span] Dry run
+[span] Audit clock
+[time] 2026-07-15 10:47:02 UTC
+[span] Discover
+[span] Complete
+[span] Complete
+[span] In progress
+[span] Remember
+[span] Time (UTC)
+[span] Event
+[span] Evidence & provenance
+[h1] Case evidence trace
+[time] 10:46:58
+[h2] Case intake
+[p] Subject request received and normalized. The raw identifier was immediately hashed.
+[strong] 0 raw identifiers in audit
+[strong] ForgetOps
+[dt] call
+[dd] hash_subject
+[dt] duration
+[dd] 0.42s
+[dt] evidence
+[dd] ev_20260715_104658_01
+[span] Complete
+[time] 10:47:02
+[h2] DataHub discovery
+[p] Bounded MCP traversal reconstructed the privacy scope without retrieving a raw subject identifier.
+[strong] assets ·
+[strong] edges ·
+[strong] PII fields
+[strong] DataHub calls ·
+[strong] 100
+[strong] % owner coverage
+[strong] DataHub
+[dt] call
+[dd] discover_scope
+[dt] duration
+[dd] 2.81s
+[dt] evidence
+[dd] ev_20260715_104702_02
+[span] Complete
+[time] 10:47:06
+[h2] Decision
+[p] Policy evidence classified every asset and preserved both protected outcomes.
+[strong] approved mutations
+[strong] legal hold
+[strong] manual review
+[strong] DataHub context
+[dt] call
+[dd] compile_plan
+[dt] duration
+[dd] 0.91s
+[dt] evidence
+[dd] ev_20260715_104706_03
+[span] Complete
+[time] 10:47:08
+[h2] Approval boundary
+[p] Approval is scope-bound to five safe mutations in dry-run mode.
+[span] Scope
+[strong] assets scheduled for safe mutation.
+[strong] retained under legal hold.
+[strong] routed to manual review — not modified.
+[strong] ForgetOps
+[dt] call
+[dd] bind_approval
+[dt] duration
+[dd] 0.67s
+[dt] evidence
+[dd] ev_20260715_104708_04
+[p] Raw subject identifiers never appear.
+[span] In progress
+[span] Impact map
+[h2] assets discovered ·
+[h2] lineage edges
+[strong] Owner coverage:
+[strong] 100
+[p] Provenance: DataHub
+[strong] Ecommerce customers
+[small] postgres
+[small] Privacy Engineering
+[strong] Support tickets
+[small] postgres
+[small] Support Data
+[strong] Customer 360
+[small] snowflake
+[small] Analytics Platform
+[strong] Retention overview
+[small] looker
+[small] Growth Analytics
+[strong] Finance invoices
+[small] snowflake
+[small] Finance Data
+[strong] Marketing export
+[small] snowflake
+[small] Marketing Engineering
+[strong] Churn features
+[small] snowflake
+[small] ML Platform
+[strong] Ecommerce customers
+[small] Privacy Engineering
+[em] Scheduled for safe mutation
+[strong] Support tickets
+[small] Support Data
+[em] Scheduled for safe mutation
+[strong] Customer 360
+[small] Analytics Platform
+[em] Scheduled for safe mutation
+[strong] Retention overview
+[small] Growth Analytics
+[em] Scheduled for safe mutation
+[strong] Finance invoices
+[small] Finance Data
+[em] Retained — legal hold
+[strong] Marketing export
+[small] Marketing Engineering
+[em] Scheduled for safe mutation
+[strong] Churn features
+[small] ML Platform
+[em] Manual review — not modified
+[li] Scheduled for safe mutation (
+[li] Retained — legal hold (
+[li] Manual review — not modified (
+[strong] Lineage & ownership from DataHub
+[span] Verified snapshot
+[span] datahub-ecommerce-demo-2026-07-15
+[span] Approval console
+[strong] Protected outcomes reviewed: legal hold retained; model feature requires human review.
+[p] This is a dry run. No data will be changed.
+[span] Scope
+[h2] Approve
+[h2] mutations only
+[dt] Execution mode
+[dd] Dry run
+[dt] Transaction
+[dd] One idempotent transaction
+[dt] Safety
+[dd] Rollback armed
+[button] Authorize execution
+[button] Return to plan
+[span] About this action
+[p] This approval authorizes execution of the plan in dry-run mode.
+[p] Legal hold and manual-review items are not modified.
+[span] Evidence footer
+[em] Upcoming verification targets
+[dt] Permitted residuals
+[dt] Retained under legal hold
+[dt] Pending manual review
+[dt] Expected status
+[dd] Partial_verified
+[strong] DataHub write-back
+[small] Queued after verification
+[button] View details
+[p] Execution is waiting for protected-outcomes approval.
