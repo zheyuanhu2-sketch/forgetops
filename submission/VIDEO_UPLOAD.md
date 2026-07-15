@@ -1,5 +1,7 @@
 # Public video upload package
 
+Published video: https://youtu.be/XLa1o_3wABY
+
 ## File
 
 - Upload: `demo-video/renders/forgetops-datahub-demo-submission.mp4`
@@ -54,3 +56,5 @@ Built for the DataHub Agent Hackathon. The demo uses synthetic data only. No thi
 3. Watch from beginning to end with sound.
 4. Confirm captions remain readable and the duration is strictly below three minutes.
 5. Add the final URL to README, `submission/DEVPOST.md`, and `submission/RELEASE_CHECKLIST.md`.
+
+The published upload is unlisted, reports a platform duration of 2:16, exposes an HD transcode, and resolves through YouTube's unauthenticated oEmbed endpoint with the intended title.

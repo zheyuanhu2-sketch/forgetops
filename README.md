@@ -10,6 +10,8 @@ The submission candidate includes a polished reviewer workbench, a deterministic
 
 **Source:** [github.com/zheyuanhu2-sketch/forgetops](https://github.com/zheyuanhu2-sketch/forgetops)
 
+**Demo video:** [ForgetOps — DataHub context becomes operational proof](https://youtu.be/XLa1o_3wABY)
+
 ![ForgetOps reviewer workbench showing truthful partial verification](demo-video/capture/product-states/04-verify.png)
 
 ## The problem

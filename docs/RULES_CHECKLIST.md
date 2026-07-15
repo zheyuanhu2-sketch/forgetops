@@ -40,17 +40,17 @@ Tie scores are resolved in that exact criterion order: the first higher applicab
 
 ## Required submission assets
 
-- [ ] Working project URL that gives judges easy access to a hosted app, functioning demo, or test build.
-- [ ] Public code repository containing all source, assets, and complete setup instructions needed to run the project.
+- [x] Working project URL that gives judges easy access to a hosted app, functioning demo, or test build.
+- [x] Public code repository containing all source, assets, and complete setup instructions needed to run the project.
 - [x] Apache License 2.0 file at repository root.
-- [ ] GitHub About section detects and displays the Apache 2.0 license.
-- [ ] English project description covering features, functionality, technologies, and data.
-- [ ] Public demo video **strictly under three minutes** on YouTube, Vimeo, or Youku.
-- [ ] Video shows the functioning project on its target device; do not rely only on slides or mockups.
-- [ ] Video playback and embedding work without sign-in or a permission request.
-- [ ] No third-party trademarks, copyrighted music, or other protected material appears in the video without documented permission.
+- [x] GitHub About section detects and displays the Apache 2.0 license.
+- [x] English project description covering features, functionality, technologies, and data.
+- [x] Public demo video **strictly under three minutes** on YouTube, Vimeo, or Youku.
+- [x] Video shows the functioning project on its target device; do not rely only on slides or mockups.
+- [x] Video playback and embedding work without sign-in or a permission request.
+- [x] No third-party trademarks, copyrighted music, or other protected material appears in the video without documented permission.
 - [x] Checked-in synthetic sample input and validated sample-output evidence bundle.
-- [ ] Free, unrestricted judge access remains available through **2026-09-01 05:00 GMT+8**. If a demo is private, include working test credentials and instructions.
+- [x] Free, unrestricted judge access remains available through **2026-09-01 05:00 GMT+8**. If a demo is private, include working test credentials and instructions.
 - [ ] Complete the optional feedback survey before the submission deadline if pursuing a feedback prize.
 
 Judges are not required to run the project and may judge only the text, images, and video. Those assets must therefore communicate the complete value proposition and credible proof even if the live demo is not opened.

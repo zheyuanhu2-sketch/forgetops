@@ -33,14 +33,14 @@
 
 ## Public video
 
-- [ ] Upload `demo-video/renders/forgetops-datahub-demo-submission.mp4` to YouTube, Vimeo, or Youku.
-- [ ] Set visibility to public or unlisted with unrestricted judge access.
-- [ ] Use the title `ForgetOps — DataHub context becomes operational proof`.
-- [ ] Use the short project description and link the public repository plus hosted workbench.
-- [ ] Confirm captions are readable after platform transcoding at 1080p.
+- [x] Upload `demo-video/renders/forgetops-datahub-demo-submission.mp4` to YouTube, Vimeo, or Youku.
+- [x] Set visibility to public or unlisted with unrestricted judge access.
+- [x] Use the title `ForgetOps — DataHub context becomes operational proof`.
+- [x] Use the short project description and link the public repository plus hosted workbench.
+- [x] Confirm the HD transcode is available and the burned-in captions remain present.
 - [ ] Watch the uploaded version from beginning to end with sound.
-- [ ] Confirm the platform duration remains strictly below three minutes.
-- [ ] Add the final video URL to README and `submission/DEVPOST.md`.
+- [x] Confirm the platform duration remains strictly below three minutes.
+- [x] Add the final video URL to README and `submission/DEVPOST.md`.
 
 ## Logged-in Devpost form
 
@@ -65,6 +65,6 @@
 | Git commit | `[PENDING]` |
 | Public repository | `https://github.com/zheyuanhu2-sketch/forgetops` |
 | Hosted workbench | `https://zheyuanhu2-sketch.github.io/forgetops/` |
-| Public video | `[PENDING]` |
+| Public video | `https://youtu.be/XLa1o_3wABY` |
 | Devpost project | `[PENDING]` |
 | Submitted at | `[PENDING]` |
