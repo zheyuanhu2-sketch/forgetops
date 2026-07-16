@@ -63,6 +63,15 @@
 - [x] Add team members and verify account names.
 - [x] Complete required acknowledgements, feedback fields, and organizer questions.
 - [x] Save, use Devpost's View action, and inspect the rendered public entry.
+
+## Community and feedback
+
+- [x] Prepare actionable MCP mutation-verification feedback in `submission/DATAHUB_FEEDBACK.md`.
+- [x] Prepare a focused Build Session question and `#agent-hackathon` review request in
+      `submission/COMMUNITY_OUTREACH.md`.
+- [ ] Register for the July 21 official Build Session.
+- [ ] Submit the separate Most Valuable Feedback form when the organizer provides its entry point.
+- [ ] Post the reviewed Slack message or ask the question live.
 - [x] Select **Submit project** and confirm the green success notice and public project page.
 
 ## Final freeze
