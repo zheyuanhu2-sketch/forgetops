@@ -78,11 +78,16 @@ The logged-in submission flow was inspected and completed on 2026-07-16. Devpost
 ## Ownership and third-party licensing
 
 - [x] Confirm the submission is the entrant's original work, is owned by the entrant, and does not violate copyright, trademark, patent, contract, privacy, publicity, or other rights.
-- [ ] Inventory every third-party SDK, API, dataset, font, icon, media asset, and code dependency used by the project or video.
-- [ ] Confirm authorization under each third party's terms and licensing requirements; retain notices and attribution where required.
-- [ ] Confirm every open-source component is used in compliance with its license and that ForgetOps builds on, enhances, or composes the underlying functionality.
-- [ ] Disclose any permitted pre-existing code or work incorporated into the entry.
-- [ ] Remove personal data, secrets, unlicensed marks/media, and material that cannot be made public from the repository, evidence, screenshots, and video.
+- [x] Inventory every direct third-party SDK, API, font, icon, media-generation tool, and code dependency; retain transitive version records in the three lockfiles and license/source records in `THIRD_PARTY_NOTICES.md`.
+- [x] Confirm authorization under each third party's terms and licensing requirements; retain notices and attribution where required, including GSAP's embedded Standard License notice and OFL font attribution.
+- [x] Confirm every open-source component is used in compliance with its license and that ForgetOps builds on, enhances, or composes the underlying functionality.
+- [x] Disclose permitted pre-existing code or work incorporated into the entry: none; all application code was created during the submission period, with third-party libraries and generation tools disclosed separately.
+- [x] Remove personal data, secrets, unlicensed marks/media, and material that cannot be made public from the repository, evidence, screenshots, and video.
+
+License evidence was re-audited on 2026-07-16 from installed Python package metadata, direct npm
+package manifests, model cards, embedded GSAP notices, and upstream repository licenses. The demo
+uses synthetic product captures and generated narration only; it contains no stock footage or
+third-party music.
 
 ## Prize administration notes
 
