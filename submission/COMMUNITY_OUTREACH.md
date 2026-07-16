@@ -6,6 +6,9 @@ Official session:
 [From Zero to a Working DataHub Agent in 30 Minutes](https://datahub.devpost.com/updates/45303-free-build-session-next-week-july-21),
 July 21 at 10:00 ET / 14:00 UTC.
 
+Registration confirmed on July 16, 2026. The confirmation email is pending; the session page
+provides a resend option if it does not arrive.
+
 Question to ask:
 
 > For an agent that writes operational evidence back to DataHub, do you recommend treating a

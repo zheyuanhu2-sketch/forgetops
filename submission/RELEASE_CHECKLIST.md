@@ -69,10 +69,10 @@
 - [x] Prepare actionable MCP mutation-verification feedback in `submission/DATAHUB_FEEDBACK.md`.
 - [x] Prepare a focused Build Session question and `#agent-hackathon` review request in
       `submission/COMMUNITY_OUTREACH.md`.
-- [ ] Register for the July 21 official Build Session.
-- [ ] Verify the Most Valuable Feedback opt-in and actionable response in Devpost's
-      **Additional information** step; the organizer describes it as a feedback section during
-      submission, not a separate public form.
+- [x] Register for the July 21 official Build Session; Zoom registration confirmed on July 16.
+- [x] Complete the Most Valuable Feedback opt-in and actionable response in Devpost's
+      **Additional information** step during the original submission; this is the organizer's
+      feedback section, not a separate public form.
 - [x] Post the reviewed Slack message in `#agent-hackathon` and verify the rendered text and links
       (`2026-07-16 16:21 GMT+8`).
 - [x] Select **Submit project** and confirm the green success notice and public project page.
