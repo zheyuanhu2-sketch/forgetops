@@ -17,6 +17,8 @@ jobs:
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run mypy src
+      - name: Verify judge-facing evidence
+        run: uv run python scripts/verify_judging_evidence.py
       - run: uv run pytest --cov=forgetops --cov-report=term-missing
 
   web:

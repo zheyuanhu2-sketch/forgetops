@@ -49,6 +49,20 @@ The demo deliberately reports `PARTIAL_VERIFIED`, not a misleading all-green suc
 
 One verified run uses 21 bounded official MCP calls to reconstruct seven assets, six lineage edges, nineteen PII fields, and complete owner coverage. The plan produces five permitted mutations, one legal hold, and one human-review outcome. Approved write-back is then verified across all seven entities and one evidence document from a fresh read-only session.
 
+The repository includes a fail-closed judging-evidence gate that checks those headline numbers,
+required MCP tools, policy provenance, protected outcomes, permitted residuals, transaction and
+replay guarantees, write-back verification, and absence of raw subject material. A compact judging
+guide maps every scoring criterion to a working product state and a checked-in source artifact.
+
+## Open-source contribution
+
+We generalized the safety model into
+[DataHub Skills PR #37](https://github.com/datahub-project/datahub-skills/pull/37). The contribution
+adds a standalone `datahub-privacy-ops` skill, normalized evidence contract, approval-ready plan
+template, routing updates, and five adversarial evaluations for raw identifiers, legal holds,
+truncated lineage, unbound approval, and failed write-back verification. It contains no ForgetOps
+application code, credentials, tenant data, or subject identifiers.
+
 ## Challenges we ran into
 
 The hardest boundary was not generating a deletion recommendation; it was preventing an agent from overstating what happened. We had to model legal hold and human review as first-class outcomes, bind approval to a specific plan, make execution idempotent, validate field-level postconditions, and separate execution authority from metadata write-back authority.
@@ -66,6 +80,7 @@ We also kept the live DataHub runtime fully isolated from unrelated local projec
 - Write-back has its own approval and fresh-session verification.
 - The public story is reproducible from synthetic evidence and contains no real personal data.
 - The complete product journey is understandable in a 2:15 captioned video.
+- The safety model is packaged as a reviewable upstream DataHub Skills contribution.
 
 ## What we learned
 

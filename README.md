@@ -16,6 +16,24 @@ The submission candidate includes a polished reviewer workbench, a deterministic
 
 ![ForgetOps reviewer workbench showing truthful partial verification](demo-video/capture/product-states/04-verify.png)
 
+## 60-second judge route
+
+Open the [hosted workbench](https://zheyuanhu2-sketch.github.io/forgetops/), follow the stage
+rail from **Discover** to **Remember**, and inspect the protected legal-hold outcome before
+approving the exact five-action scope. No account, credentials, or local setup are required.
+
+The compact [judging guide](JUDGING.md) maps every scoring criterion to working product behavior
+and checked-in evidence. Headline claims are also protected by a deterministic evidence gate:
+
+```bash
+uv run python scripts/verify_judging_evidence.py
+```
+
+ForgetOps also contributes the generalized workflow upstream through
+[DataHub Skills PR #37](https://github.com/datahub-project/datahub-skills/pull/37): a standalone
+privacy-operations skill, evidence contract, approval-ready plan template, and five adversarial
+safety evaluations.
+
 ## The problem
 
 Deleting one customer row is easy. Proving that the same person's data was handled across source tables, warehouse copies, support systems, derived features, and downstream consumers is not. A reliable operation must follow lineage, respect legal holds, identify owners, limit mutation scope, verify postconditions, and preserve audit evidence.
@@ -49,16 +67,16 @@ flowchart LR
 
 The checked-in synthetic case contains no real personal data. One verified DataHub run produced:
 
-| Evidence | Result |
-|---|---:|
-| Bounded official MCP calls | 21 |
-| Assets reconstructed | 7 |
-| Lineage edges | 6 |
-| PII fields | 19 |
-| Assets with owner coverage | 100% |
-| Permitted actions | 5 |
-| Legal holds | 1 |
-| Human-review outcomes | 1 |
+| Evidence                   | Result |
+| -------------------------- | -----: |
+| Bounded official MCP calls |     21 |
+| Assets reconstructed       |      7 |
+| Lineage edges              |      6 |
+| PII fields                 |     19 |
+| Assets with owner coverage |   100% |
+| Permitted actions          |      5 |
+| Legal holds                |      1 |
+| Human-review outcomes      |      1 |
 
 The correct case result is `PARTIAL_VERIFIED`: every permitted residual is zero, while the legal-hold and manual-review records remain untouched and visible. An idempotent replay returns the same evidence without executing the work twice.
 
@@ -166,6 +184,7 @@ ForgetOps is an engineering demonstration, not legal advice. Organizations remai
 uv run ruff format --check .
 uv run ruff check .
 uv run mypy src
+uv run python scripts/verify_judging_evidence.py
 uv run pytest --cov=forgetops --cov-report=term-missing
 
 cd web
@@ -192,6 +211,7 @@ scripts/             dry-run seed, live MCP smokes, and isolated runtime control
 demo-video/          design direction, script, captions, composition, and source captures
 submission/          Devpost copy and release checklist
 docs/                architecture, official rules, migration proof, and delivery state
+JUDGING.md            60-second judge route and criterion-to-evidence map
 ```
 
 ## Hackathon fit

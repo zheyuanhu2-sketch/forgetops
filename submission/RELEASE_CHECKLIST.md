@@ -11,6 +11,8 @@
 - [x] Encoded-video contact sheet has no missing, black, cropped, or contradictory product state.
 - [x] Offline evidence matches the claims made in README, Devpost, screenshots, and video.
 - [x] Live DataHub read, approved write-back, and fresh-session read-back evidence remain reproducible.
+- [x] Judge-facing headline claims pass `scripts/verify_judging_evidence.py`.
+- [x] The 60-second judging guide maps every criterion to working, public evidence.
 
 ## Public repository
 
@@ -20,6 +22,7 @@
 - [x] Confirm GitHub Actions is green on the public default branch.
 - [x] Confirm a fresh GitHub Actions checkout runs the deterministic Python and web gates.
 - [x] Add the final public repository URL to `submission/DEVPOST.md`.
+- [x] Link the upstream DataHub Skills contribution from README and submission copy.
 
 ## Hosted workbench
 
@@ -60,11 +63,11 @@
 - [x] Record commit SHA, deployment version, and video URL below.
 - [x] Make no feature changes after the internal freeze unless they fix a submission blocker.
 
-| Item | Final value |
-|---|---|
-| Git commit | `a16f87b31c85af7c69bf1a9cacaec8ac34e147c1` |
-| Public repository | `https://github.com/zheyuanhu2-sketch/forgetops` |
-| Hosted workbench | `https://zheyuanhu2-sketch.github.io/forgetops/` |
-| Public video | `https://youtu.be/XLa1o_3wABY` |
-| Devpost project | `https://devpost.com/software/forgetops` |
-| Submitted at | `2026-07-16 GMT+8 (confirmed by Devpost success notice)` |
+| Item              | Final value                                              |
+| ----------------- | -------------------------------------------------------- |
+| Git commit        | `a16f87b31c85af7c69bf1a9cacaec8ac34e147c1`               |
+| Public repository | `https://github.com/zheyuanhu2-sketch/forgetops`         |
+| Hosted workbench  | `https://zheyuanhu2-sketch.github.io/forgetops/`         |
+| Public video      | `https://youtu.be/XLa1o_3wABY`                           |
+| Devpost project   | `https://devpost.com/software/forgetops`                 |
+| Submitted at      | `2026-07-16 GMT+8 (confirmed by Devpost success notice)` |
