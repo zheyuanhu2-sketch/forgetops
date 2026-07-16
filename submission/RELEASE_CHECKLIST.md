@@ -45,6 +45,13 @@
 - [x] Confirm the platform duration remains strictly below three minutes.
 - [x] Add the final video URL to README and `submission/DEVPOST.md`.
 
+## Judge gallery and frozen release
+
+- [x] Select three truthful 1920×1080 product captures and document captions in
+      `submission/GALLERY.md`.
+- [ ] Upload the three captures to the Devpost image gallery and verify them logged out.
+- [ ] Publish the verified GitHub release `v1.0.0-hackathon-submission`.
+
 ## Logged-in Devpost form
 
 - [x] Create or open the DataHub Agent Hackathon submission draft.
