@@ -16,7 +16,7 @@ Question to ask:
 
 ## Slack message
 
-Post in `#agent-hackathon` only after reviewing the final wording:
+Posted in `#agent-hackathon` on 2026-07-16 at 16:21 GMT+8 after reviewing the final wording:
 
 > Hi DataHub builders — I built ForgetOps, a lineage-aware privacy-operations agent for the
 > hackathon. DataHub schema, lineage, ownership, and governance signals determine an exact,
@@ -27,6 +27,9 @@ Post in `#agent-hackathon` only after reviewing the final wording:
 > judge route: https://github.com/zheyuanhu2-sketch/forgetops/blob/main/JUDGING.md
 >
 > PR: https://github.com/datahub-project/datahub-skills/pull/37
+
+The rendered message and both public GitHub links were visually verified in Slack. Slack's optional
+GitHub sign-in notice affects rich link previews only, not link accessibility.
 
 ## PR follow-up
 
