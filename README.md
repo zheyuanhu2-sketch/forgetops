@@ -10,6 +10,8 @@ The submission candidate includes a polished reviewer workbench, a deterministic
 
 **Source:** [github.com/zheyuanhu2-sketch/forgetops](https://github.com/zheyuanhu2-sketch/forgetops)
 
+**Frozen release:** [v1.0.0-hackathon-submission](https://github.com/zheyuanhu2-sketch/forgetops/releases/tag/v1.0.0-hackathon-submission)
+
 **Demo video:** [ForgetOps — DataHub context becomes operational proof](https://youtu.be/XLa1o_3wABY)
 
 **Devpost submission:** [devpost.com/software/forgetops](https://devpost.com/software/forgetops)

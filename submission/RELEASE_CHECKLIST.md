@@ -50,7 +50,8 @@
 - [x] Select three truthful 1920×1080 product captures and document captions in
       `submission/GALLERY.md`.
 - [ ] Upload the three captures to the Devpost image gallery and verify them logged out.
-- [ ] Publish the verified GitHub release `v1.0.0-hackathon-submission`.
+- [x] Publish the verified GitHub release `v1.0.0-hackathon-submission` with three screenshots and
+      three core JSON evidence artifacts.
 
 ## Logged-in Devpost form
 
