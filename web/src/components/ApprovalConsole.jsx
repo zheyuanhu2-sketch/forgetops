@@ -64,11 +64,28 @@ function ExecutionApproval({ data, workflow }) {
           type="button"
           onClick={workflow.authorizeExecution}
           disabled={!workflow.protectedOutcomesReviewed}
+          aria-describedby="execution-approval-requirement"
         >
           <IconPlayerPlay aria-hidden="true" size={18} fill="currentColor" />
           Authorize execution
           <IconLock aria-hidden="true" size={17} />
         </button>
+        <small
+          id="execution-approval-requirement"
+          className="action-requirement"
+          data-state={workflow.protectedOutcomesReviewed ? "ready" : "blocked"}
+        >
+          {workflow.protectedOutcomesReviewed ? (
+            <IconCheck aria-hidden="true" size={13} stroke={2} />
+          ) : (
+            <IconLock aria-hidden="true" size={12} stroke={2} />
+          )}
+          <span>
+            {workflow.protectedOutcomesReviewed
+              ? `Scope locked to ${data.metrics.safeMutations} permitted mutations.`
+              : "Review protected outcomes to unlock."}
+          </span>
+        </small>
         <button className="secondary-action" type="button" onClick={workflow.returnToPlan}>
           <IconRotate2 aria-hidden="true" size={17} />
           Return to plan
@@ -100,7 +117,14 @@ function ExecutionRunning({ data, workflow }) {
         <h2>
           {workflow.executionProgress} of {data.metrics.safeMutations} receipts captured
         </h2>
-        <div className="console-progress" aria-hidden="true">
+        <div
+          className="console-progress"
+          role="progressbar"
+          aria-label="Mutation receipts captured"
+          aria-valuemin={0}
+          aria-valuemax={data.metrics.safeMutations}
+          aria-valuenow={workflow.executionProgress}
+        >
           <span
             style={{ width: `${(workflow.executionProgress / data.metrics.safeMutations) * 100}%` }}
           />
@@ -166,11 +190,28 @@ function WritebackApproval({ data, workflow }) {
           type="button"
           onClick={workflow.authorizeWriteback}
           disabled={!workflow.writebackReviewed}
+          aria-describedby="writeback-approval-requirement"
         >
           <IconDatabaseExport aria-hidden="true" size={18} />
           Approve DataHub write-back
           <IconLock aria-hidden="true" size={17} />
         </button>
+        <small
+          id="writeback-approval-requirement"
+          className="action-requirement"
+          data-state={workflow.writebackReviewed ? "ready" : "blocked"}
+        >
+          {workflow.writebackReviewed ? (
+            <IconCheck aria-hidden="true" size={13} stroke={2} />
+          ) : (
+            <IconLock aria-hidden="true" size={12} stroke={2} />
+          )}
+          <span>
+            {workflow.writebackReviewed
+              ? "Fresh-session evidence is ready to publish."
+              : "Review verification evidence to unlock."}
+          </span>
+        </small>
         <button
           className="secondary-action"
           type="button"
@@ -241,7 +282,11 @@ function RememberedState({ data, workflow }) {
 /** @param {{ data: CaseData; workflow: Workflow }} props */
 export function ApprovalConsole({ data, workflow }) {
   return (
-    <section className="approval-console" aria-label="Approval and execution controls">
+    <section
+      className="approval-console"
+      aria-label="Approval and execution controls"
+      aria-busy={workflow.phase === "execute"}
+    >
       {workflow.phase === "approve" ? (
         <ExecutionApproval data={data} workflow={workflow} />
       ) : workflow.phase === "execute" ? (

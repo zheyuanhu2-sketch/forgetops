@@ -161,13 +161,20 @@ function EventMetrics({ event, data, executionProgress }) {
         <span>Scope</span>
         <strong>{data.metrics.safeMutations} assets scheduled for safe mutation.</strong>
         <strong>{data.metrics.legalHolds} retained under legal hold.</strong>
-        <strong>{data.metrics.manualReviews} routed to manual review — not modified.</strong>
+        <strong>{data.metrics.manualReviews} routed to manual review; not modified.</strong>
       </div>
     );
   }
   if (event.type === "execute") {
     return (
-      <div className="execution-meter" aria-label={`${executionProgress} of 5 actions evidenced`}>
+      <div
+        className="execution-meter"
+        role="progressbar"
+        aria-label="Mutation actions evidenced"
+        aria-valuemin={0}
+        aria-valuemax={5}
+        aria-valuenow={executionProgress}
+      >
         <span style={{ width: `${(executionProgress / 5) * 100}%` }} />
         <strong>{executionProgress} / 5 mutation receipts</strong>
       </div>

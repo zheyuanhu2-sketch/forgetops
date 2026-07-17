@@ -86,3 +86,27 @@ A separate crop was not required because both 1487 x 1058 originals were inspect
 - Optional P3 only: capture one additional public gallery image from the completed `Remember` state for the Devpost submission.
 
 final result: passed
+
+## 2026-07-17 finesse polish pass
+
+- Preserved the accepted Case Filmstrip / Evidence Timeline structure, graphite palette, crimson
+  approval boundary, DataHub provenance blue, and two distinct approvals.
+- Increased the smallest evidence, provenance, status, and console labels by 1 px and raised the
+  muted-ink token so dense evidence remains readable without reducing information density.
+- Added visible, state-aware explanations directly under both gated approval buttons. Each message
+  changes from the missing review requirement to the exact locked scope when the acknowledgement is
+  complete, and each button exposes that explanation through `aria-describedby`.
+- Added a keyboard skip link, `aria-current="step"` on the active workflow stage, `aria-busy` during
+  execution, and semantic progressbar values for receipt capture.
+- Consolidated bar, node, disabled, overlay, edge, and grid colors into the design token layer; no
+  component retains a raw color value.
+- The static detector's eyebrow heuristic remains a documented false positive: `console-label`,
+  `section-kicker`, and footer labels identify operational regions in a dense product console; they
+  are not repeated marketing eyebrows and removing them would reduce evidence scanability.
+- Browser QA passed at 1920 x 1080, 1280 x 720, and 390 x 844. The compact desktop pass found and
+  fixed an overlap between `PARTIAL_VERIFIED` and the DataHub write-back region. The final layouts
+  have no page-level horizontal or vertical overflow; the mobile stage rail remains the only
+  intentional horizontal scroller, and all seven assets remain visible in the semantic mobile list.
+- The real interaction path passed from protected-outcome acknowledgement through five receipt
+  captures, the separate DataHub write-back approval, and fresh-session read-back. Browser console
+  output remained free of warnings and errors.

@@ -15,6 +15,7 @@ describe("ForgetOps case workflow", () => {
 
     const authorizeExecution = screen.getByRole("button", { name: "Authorize execution" });
     expect(authorizeExecution).toBeDisabled();
+    expect(authorizeExecution).toHaveAccessibleDescription("Review protected outcomes to unlock.");
 
     await user.click(
       screen.getByRole("checkbox", {
@@ -22,9 +23,16 @@ describe("ForgetOps case workflow", () => {
       }),
     );
     expect(authorizeExecution).toBeEnabled();
+    expect(authorizeExecution).toHaveAccessibleDescription(
+      "Scope locked to 5 permitted mutations.",
+    );
     await user.click(authorizeExecution);
 
     expect(screen.getByRole("button", { name: "Execution in progress" })).toBeDisabled();
+    expect(screen.getByRole("progressbar", { name: "Mutation receipts captured" })).toHaveAttribute(
+      "aria-valuemax",
+      "5",
+    );
 
     await waitFor(
       () => {
@@ -34,12 +42,14 @@ describe("ForgetOps case workflow", () => {
     );
 
     expect(screen.getByText("5 / 5 mutation receipts")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Approve DataHub write-back" })).toBeDisabled();
-    expect(screen.getAllByText("Retained — legal hold", { exact: false }).length).toBeGreaterThan(
-      0,
-    );
+    const approveWriteback = screen.getByRole("button", {
+      name: "Approve DataHub write-back",
+    });
+    expect(approveWriteback).toBeDisabled();
+    expect(approveWriteback).toHaveAccessibleDescription("Review verification evidence to unlock.");
+    expect(screen.getAllByText("Retained: legal hold", { exact: false }).length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText("Manual review — not modified", { exact: false }).length,
+      screen.getAllByText("Manual review: not modified", { exact: false }).length,
     ).toBeGreaterThan(0);
 
     await user.click(
@@ -47,10 +57,10 @@ describe("ForgetOps case workflow", () => {
         name: "Verification reviewed: 5 cleared, 1 retained, 1 pending human review.",
       }),
     );
-    const approveWriteback = screen.getByRole("button", {
-      name: "Approve DataHub write-back",
-    });
     expect(approveWriteback).toBeEnabled();
+    expect(approveWriteback).toHaveAccessibleDescription(
+      "Fresh-session evidence is ready to publish.",
+    );
     await user.click(approveWriteback);
 
     expect(screen.getByText("Fresh DataHub read-back verified")).toBeInTheDocument();

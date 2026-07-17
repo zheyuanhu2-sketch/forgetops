@@ -5,17 +5,27 @@
   --canvas: #071117;
   --canvas-raised: #0b161d;
   --panel: #0d1920;
+  --surface-bar: #081219;
+  --surface-node: #0b171d;
+  --surface-node-hover: #101f26;
+  --surface-disabled: #1a252b;
   --rule: #3b4b52;
   --rule-quiet: #26353c;
   --text: #f0f2ee;
   --text-secondary: #a5b0b2;
-  --text-muted: #77858a;
+  --text-muted: #87969a;
   --crimson: #d4363e;
   --crimson-hover: #ec4950;
+  --crimson-bright: #ff6268;
   --datahub: #45a7ff;
   --verified: #78dd67;
+  --verified-fill: #2f7f3d;
   --exception: #f3a70b;
+  --flow-edge: #9babad;
+  --flow-grid: #1d2a30;
   --focus: #d9f0ff;
+  --on-accent: #f7f8f5;
+  --backdrop: rgb(2 7 10 / 84%);
   --mono: "IBM Plex Mono", "Cascadia Mono", monospace;
   --sans: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
   --brand: "Fraunces", Georgia, serif;
@@ -54,6 +64,28 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 30;
+  top: 8px;
+  left: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--focus);
+  border-radius: 3px;
+  background: var(--panel);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 160ms ease-out;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -82,7 +114,7 @@ input:focus-visible {
   min-width: 0;
   padding: 0 18px;
   border: 1px solid var(--rule);
-  background: #081219;
+  background: var(--surface-bar);
 }
 
 .brand-lockup {
@@ -151,7 +183,7 @@ input:focus-visible {
   padding: 0 11px;
   border: 1px solid var(--crimson);
   border-radius: 4px;
-  color: #ff6268;
+  color: var(--crimson-bright);
 }
 
 .audit-clock {
@@ -167,7 +199,7 @@ input:focus-visible {
   padding: 4px 6px 5px;
   border-top: 3px dotted var(--rule-quiet);
   border-bottom: 3px dotted var(--rule-quiet);
-  background: #081219;
+  background: var(--surface-bar);
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -204,7 +236,7 @@ input:focus-visible {
 
 .stage-item[data-state="current"] {
   background: var(--crimson);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .stage-copy {
@@ -246,6 +278,11 @@ input:focus-visible {
   border-bottom: 1px solid var(--rule);
 }
 
+.case-work-area:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
 .evidence-timeline,
 .impact-map {
   min-width: 0;
@@ -267,7 +304,7 @@ input:focus-visible {
   border-bottom: 1px solid var(--rule);
   color: var(--text-secondary);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -306,7 +343,7 @@ input:focus-visible {
 }
 
 .timeline-event[data-state="current"] > time {
-  color: #ff5d63;
+  color: var(--crimson-bright);
   font-weight: 600;
 }
 
@@ -365,7 +402,7 @@ input:focus-visible {
 }
 
 .timeline-event[data-state="current"] .event-copy h2 {
-  color: #ff666c;
+  color: var(--crimson-bright);
 }
 
 .event-copy > p {
@@ -382,7 +419,7 @@ input:focus-visible {
 .scope-facts strong {
   display: block;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.07em;
   line-height: 1.6;
@@ -390,7 +427,7 @@ input:focus-visible {
 }
 
 .proof-alert {
-  color: #ff5e64;
+  color: var(--crimson-bright);
 }
 
 .event-facts strong {
@@ -415,7 +452,7 @@ input:focus-visible {
   margin-bottom: 3px;
   color: var(--text-muted);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -482,7 +519,7 @@ input:focus-visible {
 .event-provenance dd {
   margin: 0;
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   line-height: 1.35;
 }
 
@@ -502,7 +539,7 @@ input:focus-visible {
   border: 1px solid var(--rule);
   color: var(--text);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -516,7 +553,7 @@ input:focus-visible {
   border-radius: 3px;
   color: var(--verified);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-align: center;
@@ -525,7 +562,7 @@ input:focus-visible {
 
 .timeline-event[data-state="current"] .event-status {
   border-color: var(--crimson-hover);
-  color: #ff6268;
+  color: var(--crimson-bright);
 }
 
 .impact-map {
@@ -554,7 +591,7 @@ input:focus-visible {
   display: block;
   color: var(--text-secondary);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
@@ -620,7 +657,7 @@ input:focus-visible {
   padding: 8px 9px;
   border: 1px solid var(--verified);
   border-radius: 5px;
-  background: #0b171d;
+  background: var(--surface-node);
   color: var(--text);
   text-align: left;
   cursor: pointer;
@@ -628,7 +665,7 @@ input:focus-visible {
 
 .asset-node:hover,
 .asset-node:focus-visible {
-  background: #101f26;
+  background: var(--surface-node-hover);
 }
 
 .asset-node[data-state="executing"] {
@@ -670,7 +707,7 @@ input:focus-visible {
 .asset-node-copy strong {
   overflow: hidden;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.2;
@@ -786,7 +823,7 @@ input:focus-visible {
     );
   min-width: 0;
   border-bottom: 1px solid var(--rule);
-  background: #081219;
+  background: var(--surface-bar);
 }
 
 .approval-console > div {
@@ -830,6 +867,11 @@ input:focus-visible {
   color: var(--verified);
 }
 
+.review-check:hover > span {
+  border-color: var(--focus);
+  background: var(--panel);
+}
+
 .review-check input:focus-visible + span {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
@@ -854,7 +896,7 @@ input:focus-visible {
 .approval-review > p {
   color: var(--text-muted);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -897,7 +939,7 @@ input:focus-visible {
   margin-bottom: 5px;
   color: var(--text-muted);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -921,7 +963,28 @@ input:focus-visible {
 .approval-actions {
   display: grid;
   align-content: center;
-  gap: 10px;
+  gap: 7px;
+}
+
+.action-requirement {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  line-height: 1.25;
+}
+
+.action-requirement svg {
+  flex: none;
+}
+
+.action-requirement[data-state="ready"] {
+  color: var(--verified);
 }
 
 .primary-action,
@@ -941,13 +1004,17 @@ input:focus-visible {
   letter-spacing: 0.03em;
   line-height: 1;
   text-transform: uppercase;
+  transition:
+    border-color 160ms ease-out,
+    background-color 160ms ease-out,
+    color 160ms ease-out;
   cursor: pointer;
 }
 
 .primary-action {
   border-color: var(--crimson);
   background: var(--crimson);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .primary-action:hover:not(:disabled) {
@@ -957,7 +1024,7 @@ input:focus-visible {
 
 .primary-action:disabled {
   border-color: var(--rule);
-  background: #1a252b;
+  background: var(--surface-disabled);
   color: var(--text-muted);
   cursor: not-allowed;
 }
@@ -973,8 +1040,8 @@ input:focus-visible {
 }
 
 .success-action {
-  border-color: #2f7f3d;
-  background: #2f7f3d;
+  border-color: var(--verified-fill);
+  background: var(--verified-fill);
 }
 
 .action-explainer {
@@ -1029,7 +1096,7 @@ input:focus-visible {
   grid-template-columns: 220px minmax(520px, 1fr) minmax(350px, 0.78fr);
   align-items: stretch;
   min-width: 0;
-  background: #081219;
+  background: var(--surface-bar);
 }
 
 .footer-heading,
@@ -1142,7 +1209,7 @@ input:focus-visible {
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgb(2 7 10 / 84%);
+  background: var(--backdrop);
 }
 
 .evidence-dialog {
@@ -1239,7 +1306,7 @@ input:focus-visible {
   .event-facts strong,
   .decision-facts strong,
   .scope-facts strong {
-    font-size: 7.5px;
+    font-size: 8.5px;
     line-height: 1.45;
   }
 
@@ -1256,17 +1323,21 @@ input:focus-visible {
   .subject-proof {
     margin-top: 5px;
     padding-block: 4px;
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .approval-console > div {
-    padding: 11px 15px;
+    padding: 10px 15px;
   }
 
   .primary-action,
   .secondary-action {
-    min-height: 42px;
+    min-height: 40px;
     font-size: 12px;
+  }
+
+  .action-requirement {
+    font-size: 8.5px;
   }
 
   .footer-heading,
@@ -1276,7 +1347,12 @@ input:focus-visible {
   }
 
   .proof-metrics dd {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .proof-metrics > div:last-child dd {
+    font-size: 15px;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -1550,7 +1626,7 @@ input:focus-visible {
     position: sticky;
     bottom: 0;
     z-index: 4;
-    background: #081219;
+    background: var(--surface-bar);
   }
 
   .safety-facts {

@@ -35,7 +35,12 @@ export function StageRail({ stages, stageStates }) {
         {stages.map((stage, index) => {
           const state = stageStates[stage.id];
           return (
-            <li key={stage.id} className="stage-item" data-state={state}>
+            <li
+              key={stage.id}
+              className="stage-item"
+              data-state={state}
+              aria-current={state === "current" ? "step" : undefined}
+            >
               <div className="stage-copy">
                 <span className="stage-index">{String(index + 1).padStart(2, "0")}</span>
                 <span className="stage-label">{stage.label}</span>

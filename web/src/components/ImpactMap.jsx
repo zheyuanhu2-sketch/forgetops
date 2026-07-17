@@ -110,8 +110,8 @@ const nodeTypes = { asset: AssetNode };
  */
 function stateLabel(node, phase) {
   const state = nodeState(node, phase);
-  if (state === "legal-hold") return "Retained — legal hold";
-  if (state === "manual-review") return "Manual review — not modified";
+  if (state === "legal-hold") return "Retained: legal hold";
+  if (state === "manual-review") return "Manual review: not modified";
   if (state === "executing") return "Mutation receipt pending";
   if (state === "verified") return "Verified permitted outcome";
   return "Scheduled for safe mutation";
@@ -150,9 +150,9 @@ export function ImpactMap({ data, phase }) {
           type: MarkerType.ArrowClosed,
           width: 13,
           height: 13,
-          color: "#9babad",
+          color: "var(--flow-edge)",
         },
-        style: { stroke: "#9babad", strokeWidth: 1.25 },
+        style: { stroke: "var(--flow-edge)", strokeWidth: 1.25 },
         animated: phase === "execute",
       })),
     [data.graph.edges, phase],
@@ -197,7 +197,7 @@ export function ImpactMap({ data, phase }) {
           preventScrolling={false}
           proOptions={{ hideAttribution: true }}
         >
-          <Background color="#1d2a30" gap={24} size={1} />
+          <Background color="var(--flow-grid)" gap={24} size={1} />
         </ReactFlow>
       </div>
 
@@ -217,9 +217,9 @@ export function ImpactMap({ data, phase }) {
       <div className="impact-map-footer">
         <ul className="graph-legend" aria-label="Impact map legend">
           <li data-state="planned">Scheduled for safe mutation ({data.metrics.safeMutations})</li>
-          <li data-state="legal-hold">Retained — legal hold ({data.metrics.legalHolds})</li>
+          <li data-state="legal-hold">Retained: legal hold ({data.metrics.legalHolds})</li>
           <li data-state="manual-review">
-            Manual review — not modified ({data.metrics.manualReviews})
+            Manual review: not modified ({data.metrics.manualReviews})
           </li>
         </ul>
         <div className="graph-proof" aria-live="polite">

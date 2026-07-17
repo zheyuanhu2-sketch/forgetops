@@ -12,9 +12,12 @@ export function App() {
 
   return (
     <main className="workbench" data-phase={workflow.phase}>
+      <a className="skip-link" href="#case-evidence">
+        Skip to case evidence
+      </a>
       <AppHeader caseRecord={caseData.case} connected={caseData.datahub.connected} />
       <StageRail stages={caseData.stages} stageStates={workflow.stageStates} />
-      <div className="case-work-area">
+      <div id="case-evidence" className="case-work-area" tabIndex={-1}>
         <EvidenceTimeline
           data={caseData}
           phase={workflow.phase}
